@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/loginman"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#EB9069"/>
+
+    <com.github.florent37.shapeofview.shapes.RoundRectView
+        android:id="@+id/roundRectView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        app:shape_roundRect_borderWidth="2dp"
+        app:shape_roundRect_topLeftRadius="40dp"
+        app:shape_roundRect_topRightRadius="40dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="#fff"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="JOIN THE EXPLORER !"
+                android:textColor="#EB9069"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/emailtxt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:hint="Email Adress"
+                app:layout_constraintEnd_toStartOf="@+id/guideline5"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/guideline4"
+                app:layout_constraintTop_toBottomOf="@+id/textView"/>
+
+
+            <EditText
+                android:id="@+id/passwordtxt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:hint="Password"
+                app:layout_constraintEnd_toEndOf="@+id/emailtxt"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/emailtxt"
+                app:layout_constraintTop_toBottomOf="@+id/emailtxt" />
+
+            <TextView
+                android:id="@+id/forget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Forget ?"
+                android:textColor="#000"
+                android:layout_marginRight="10dp"
+                android:textSize="15dp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/passwordtxt"
+                app:layout_constraintEnd_toEndOf="@+id/passwordtxt"
+                app:layout_constraintTop_toTopOf="@+id/passwordtxt" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/loginbtn"
+                app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/guideline6"
+                app:layout_constraintTop_toBottomOf="@+id/passwordtxt" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+                app:layout_constraintEnd_toEndOf="@+id/imageButton"
+                app:layout_constraintStart_toStartOf="@+id/imageButton"
+                app:layout_constraintTop_toTopOf="@+id/imageButton" />
+
+            <TextView
+                android:id="@+id/or"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="OR"
+                android:textColor="#EB9069"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/imageButton"
+                app:layout_constraintStart_toStartOf="@+id/imageButton"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/login_button_facebook"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/facebookbtn"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toStartOf="@+id/guideline10"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/guideline9"
+                app:layout_constraintTop_toBottomOf="@+id/or" />
+
+            <Button
+                android:id="@+id/googlesignInButton"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/googlebtn"
+                android:text="Continue with Gmail"
+                android:textColor="@color/black"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/guideline10"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/guideline9"
+                app:layout_constraintTop_toBottomOf="@+id/login_button_facebook" />
+
+            <LinearLayout
+                android:id="@+id/signupbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/googlesignInButton"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="@+id/googlesignInButton"
+                app:layout_constraintTop_toBottomOf="@+id/googlesignInButton"
+                app:layout_constraintVertical_bias="0.0">
+
+                <TextView
+                    android:id="@+id/create"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Create new account "
+                    android:textColor="#000"
+                    android:textSize="15dp"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="@+id/imageButton"
+                    app:layout_constraintStart_toStartOf="@+id/imageButton"
+                    app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+                <TextView
+                    android:id="@+id/signup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="12dp"
+                    android:text="Sign up"
+                    android:textColor="#01C179"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/imageButton"
+                    app:layout_constraintStart_toStartOf="@+id/imageButton"
+                    app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.10" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.90" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.17" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.83" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.13" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.87" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.github.florent37.shapeofview.shapes.RoundRectView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.42407662" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3515732" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
