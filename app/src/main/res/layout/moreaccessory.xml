@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,8 +10,8 @@
 
     <ImageView
         android:id="@+id/imageView62"
-        android:layout_width="170dp"
-        android:layout_height="229dp"
+        android:layout_width="205dp"
+        android:layout_height="240dp"
 
         android:background="@drawable/arect"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,24 +23,25 @@
         android:id="@+id/title2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:text="Title"
-        android:textStyle="bold"
-        android:layout_marginStart="8dp"
+        android:textSize="20dp"
         android:textColor="@color/black"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/imageView62"
-        app:layout_constraintHorizontal_bias="0.076"
-        app:layout_constraintStart_toStartOf="@+id/imageView62"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imagestore12" />
 
     <ImageView
         android:id="@+id/imagestore12"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:padding="6dp"
-        android:layout_marginTop="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
         android:background="@drawable/balbal"
-        app:layout_constraintEnd_toEndOf="@+id/imageView62"
+        android:padding="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="@+id/imageView62"
         app:layout_constraintTop_toTopOf="@+id/imageView62" />
 
@@ -48,12 +50,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/imagestore12"
         app:layout_constraintEnd_toEndOf="@id/imageView62"
+        app:layout_constraintHorizontal_bias="0.944"
+        app:layout_constraintStart_toStartOf="@+id/imageView62"
         app:layout_constraintTop_toTopOf="@+id/imageView62"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/green" />
 
     <TextView
@@ -73,6 +73,19 @@
         app:layout_constraintStart_toStartOf="@+id/imageView11"
         app:layout_constraintTop_toTopOf="@+id/imageView11"
         app:layout_constraintVertical_bias="0.478" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginRight="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/title2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="@+id/imageView62"
+        app:layout_constraintTop_toTopOf="@+id/title2"
+        app:srcCompat="@drawable/redheart" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.example.bassametproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,13 +25,13 @@ import java.util.List;
 
 public class Produits extends AppCompatActivity {
 
-    List<ListProduct> productList ;
-    RecyclerView recycler2;
+    List<ListProduct> accessoryList;
+    RecyclerView recyclerAccessory;
     private SnapHelper snapHelper;
     ScaleCenterItemManager scaleCenterItemManager;
-    MyAdapterprod myAdapat1 ;
-
-    DatabaseReference ref;
+    adapterAccessory adapterAccessory;
+    List<ListProduct> listMaisons= new ArrayList<>();
+    DatabaseReference ref,refAccessory;
     ImageView store;
 
 
@@ -40,29 +41,37 @@ public class Produits extends AppCompatActivity {
         setContentView(R.layout.activity_products);
         store=findViewById(R.id.imageView);
 
-        recycler2 = findViewById(R.id.recycler1);
+        recyclerAccessory = findViewById(R.id.moreaccessory);
+        recyclerAccessory.setLayoutManager(new GridLayoutManager(Produits.this,2));
+        recyclerAccessory.setLayoutManager(scaleCenterItemManager);
+
+        recyclerAccessory.setAdapter(adapterAccessory);
         // MyAdapterprod myAdapt=new MyAdapterprod(productList,this);
         // recycler2.setAdapter(myAdapt);
         snapHelper = new LinearSnapHelper();
         scaleCenterItemManager = new ScaleCenterItemManager(this, LinearLayoutManager.HORIZONTAL, false);
-        recycler2.setLayoutManager(new LinearLayoutManager(this));
-        recycler2.setLayoutManager(scaleCenterItemManager);
-        snapHelper.attachToRecyclerView(recycler2);
+       // recycler2.setLayoutManager(new LinearLayoutManager(this));
+        //recycler2.setLayoutManager(scaleCenterItemManager);
+        snapHelper.attachToRecyclerView(recyclerAccessory);
 
         //Firebase
         ref = FirebaseDatabase.getInstance().getReference().child("shops").child("store1").child("products");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                productList = new ArrayList<>();
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    ListProduct p = dataSnapshot1.getValue(ListProduct.class);
+                accessoryList = new ArrayList<>();
+                for (DataSnapshot data2 : dataSnapshot.getChildren()) {
+                    ListProduct p1 = data2.getValue(ListProduct.class);
 
-                    productList.add(p);
+                    accessoryList.add(p1);
                 }
-                myAdapat1 = new MyAdapterprod(productList,Produits.this);
-                recycler2.setAdapter(myAdapat1);
+                adapterAccessory = new adapterAccessory(accessoryList,Produits.this);
+
+                recyclerAccessory.setLayoutManager(new GridLayoutManager(Produits.this,2));
+
+                recyclerAccessory.setAdapter(adapterAccessory);
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

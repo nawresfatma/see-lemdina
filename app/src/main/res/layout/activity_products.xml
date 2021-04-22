@@ -20,6 +20,14 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@+id/guidelineBottom"
+                app:srcCompat="@drawable/barr"
+                tools:layout_editor_absoluteX="-8dp" />
+
+            <ImageView
                 android:id="@+id/imageView23"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,6 +60,22 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_begin="197dp" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginLeft="55dp"
+                android:layout_marginBottom="8dp"
+                android:ems="10"
+                android:hint="Search a specific souk or product"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+                app:layout_constraintEnd_toEndOf="@+id/imageView5"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+                app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guidelineBottom"
@@ -124,20 +148,74 @@
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/tradional" />
 
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+                app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+                app:layout_constraintTop_toTopOf="@+id/imageView5"
+                app:srcCompat="@drawable/search" />
+
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
                 android:layout_marginBottom="16dp"
                 android:text="Most Popular"
                 android:textColor="#000000"
                 android:textSize="19dp"
+                android:layout_marginTop="20dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/recycler"
                 app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-                app:layout_constraintTop_toBottomOf="@+id/guidelineBottom"
+                app:layout_constraintTop_toBottomOf="@+id/imageView5"
                 app:layout_constraintVertical_bias="0.0" />
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/imageView5"
+                app:layout_constraintBottom_toTopOf="@+id/textView3"
+                android:layout_marginBottom="30dp"
+                app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineRight">
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="All"
+                    android:layout_marginLeft="12dp"/>
+
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="New Product" />
+
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="popular Product" />
+
+                <TextView
+                    android:id="@+id/textView27"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Favourite" />
+
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler1"
@@ -145,12 +223,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="90dp"
                 android:clipToPadding="false"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
                 app:layout_constraintTop_toBottomOf="@+id/textView3"
-                tools:listitem="@layout/activity_item_product"></androidx.recyclerview.widget.RecyclerView>
+                tools:listitem="@layout/moreaccessory"></androidx.recyclerview.widget.RecyclerView>
 
 
             <TextView

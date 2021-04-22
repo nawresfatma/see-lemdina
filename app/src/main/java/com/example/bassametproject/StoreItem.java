@@ -5,14 +5,13 @@ public class StoreItem {
   private String storeName;
   private String storeDescription;
 
-    public StoreItem() {
-
-    }
-
     public StoreItem(String storeImage, String storeName, String storeDescription) {
         this.storeImage = storeImage;
         this.storeName = storeName;
         this.storeDescription = storeDescription;
+    }
+    public StoreItem() {
+
     }
 
     public String getStoreImage() {
