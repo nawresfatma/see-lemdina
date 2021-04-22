@@ -1,14 +1,14 @@
 package com.example.bassametproject;
 
-public class event {
+public class eventList {
 
 private String eventName,eventLocation,eventPrice;
 private String eventimg;
 
-    public event() {
+    public eventList() {
     }
 
-    public event(String eventName, String eventLocation, String eventPrice, String eventimg) {
+    public eventList(String eventName, String eventLocation, String eventPrice, String eventimg) {
         this.eventName = eventName;
         this.eventLocation = eventLocation;
         this.eventPrice = eventPrice;

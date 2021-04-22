@@ -9,18 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bassametproject">
-        <activity android:name=".Scan"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Scan" />
         <activity android:name=".Rating" />
         <activity android:name=".activity_products_recycler" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".Produits" />
         <activity android:name=".SellproductActivity" />
-        <activity android:name=".MapActivity" />
+        <activity android:name=".Home" />
         <activity android:name=".MissionsActivity" />
         <activity android:name=".MarketActivity" />
         <activity android:name=".Maison" />
         <activity android:name=".Register" />
-        <activity android:name=".Home">
+        <activity android:name=".MapActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

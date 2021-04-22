@@ -17,13 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class adapterEvent extends RecyclerView.Adapter<com.example.bassametproject.adapterEvent.ViewHolder>{
-private List<event> eventList=new ArrayList<>();
+private List<com.example.bassametproject.eventList> eventList=new ArrayList<>();
     private Context context;
 
     public adapterEvent() {
     }
 
-    public adapterEvent(List<event> eventList, Context context) {
+    public adapterEvent(List<com.example.bassametproject.eventList> eventList, Context context) {
         this.eventList = eventList;
         this.context = context;
     }
@@ -38,7 +38,7 @@ private List<event> eventList=new ArrayList<>();
 
     @Override
     public void onBindViewHolder(@NonNull com.example.bassametproject.adapterEvent.ViewHolder holder, int position) {
-        event e =eventList.get(position);
+        com.example.bassametproject.eventList e =eventList.get(position);
         holder.eventName.setText(e.getEventName());
         holder.eventLocation.setText(e.getEventLocation());
         Picasso.get().load(eventList.get(position).getEventimg()).into(holder.eventpic);
