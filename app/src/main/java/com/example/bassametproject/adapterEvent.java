@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,7 +31,7 @@ private List<event> eventList=new ArrayList<>();
     @NonNull
     @Override
     public com.example.bassametproject.adapterEvent.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_menu,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_menu_events,parent,false);
         return  new ViewHolder(v);
     }
 

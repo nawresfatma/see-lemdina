@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="200dp"
-    android:layout_height="290dp"
+    android:layout_width="240dp"
+    android:layout_height="300dp"
     android:layout_marginLeft="8dp"
     android:layout_marginTop="10dp"
-    android:layout_marginBottom="10dp"
-    android:paddingBottom="10dp"
+    android:paddingBottom="3dp"
+    android:layout_marginBottom="3dp"
     android:paddingTop="8dp">
 
     <com.github.florent37.shapeofview.shapes.RoundRectView
@@ -20,24 +20,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shape_roundRect_borderColor="@android:color/white"
-        app:shape_roundRect_borderWidth="2dp"
-        app:shape_roundRect_bottomLeftRadius="30dp"
-        app:shape_roundRect_bottomRightRadius="30dp"
-        app:shape_roundRect_topLeftRadius="30dp"
-        app:shape_roundRect_topRightRadius="30dp">
+        app:shape_roundRect_borderWidth="1dp"
+        app:shape_roundRect_bottomLeftRadius="10dp"
+        app:shape_roundRect_bottomRightRadius="10dp"
+        app:shape_roundRect_topLeftRadius="10dp"
+        app:shape_roundRect_topRightRadius="10dp">
 
         <ImageView
-            android:id="@+id/rajel"
-            android:layout_width="200dp"
-            android:layout_height="290dp"
+            android:id="@+id/StoreImage"
+            android:layout_width="240dp"
+            android:layout_height="300dp"
             android:background="@drawable/rajell"
 
-           />
+            />
 
         <ImageView
             android:layout_marginTop="260dp"
             android:id="@+id/imageView19"
-            android:scaleY="16"
+            android:scaleY="5.8"
             android:scaleX="10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,43 +45,37 @@
 
         <ImageView
             android:id="@+id/sh"
-            android:layout_width="200dp"
-            android:layout_height="290dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/shadoww" />
 
         <ImageButton
             android:id="@+id/imageButton4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="160dp"
+            android:layout_marginLeft="12dp"
             android:layout_marginTop="13dp"
             android:background="@drawable/like"
+
             app:srcCompat="@drawable/like" />
 
-        <ImageView
-            android:id="@+id/imageView21"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView18"
-            app:srcCompat="@drawable/orange" />
 
     </com.github.florent37.shapeofview.shapes.RoundRectView>
 
     <TextView
         android:id="@+id/shopname"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="105dp"
+        android:layout_marginTop="115dp"
+        android:layout_marginRight="55dp"
+        android:paddingLeft="10dp"
         android:text="shopname"
         android:textColor="@color/white"
         android:textSize="19dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView26"
+        app:layout_constraintStart_toStartOf="@+id/description"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -89,7 +83,7 @@
         android:layout_width="160dp"
         android:layout_height="60dp"
 
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="25dp"
         android:text="Description"
@@ -100,30 +94,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shopname" />
 
-    <ImageView
-        android:id="@+id/imageView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="22dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/star" />
-
     <TextView
-        android:id="@+id/rate"
+        android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="21dp"
-        android:text="5"
-        android:paddingLeft="5dp"
-        android:textSize="14dp"
+        android:layout_marginTop="194dp"
+        android:text="4.8"
+        android:layout_marginLeft="150dp"
+        android:textColor="#FFCB22"
+        android:textSize="18dp"
         android:textStyle="bold"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView22"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/roundRectView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView26"
+        app:layout_constraintStart_toEndOf="@+id/textView26"
+        app:layout_constraintTop_toTopOf="@+id/textView26"
+        app:srcCompat="@drawable/yellowstar"
+        android:layout_marginLeft="5dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -41,9 +41,9 @@ public class SellproductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sellproduct);
-        recyclerM=findViewById(R.id.recyclerMS);
+        //recyclerM=findViewById(R.id.recyclerMS);
         recycler=findViewById(R.id.recycler);
-        product=findViewById(R.id.Product);
+        product=findViewById(R.id.products);
 
 
 
@@ -93,9 +93,13 @@ public class SellproductActivity extends AppCompatActivity {
         product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentLoadNewActivity = new Intent(SellproductActivity.this, products.class);
+                Intent intentLoadNewActivity = new Intent(SellproductActivity.this, Produits.class);
                 startActivity(intentLoadNewActivity);
             }
         });
+    }
+    public void ScanInterface (View v){
+        Intent intentLoadNewActivity = new Intent(SellproductActivity.this, Scan.class);
+        startActivity(intentLoadNewActivity);
     }
 }

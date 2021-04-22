@@ -65,7 +65,8 @@
                     app:layout_constraintStart_toStartOf="@+id/imageView16"
                     app:layout_constraintTop_toBottomOf="@+id/imageView16"
                     app:layout_constraintVertical_bias="0.0"
-                    tools:listitem="@layout/mycard" />
+                    tools:listitem="@layout/mycard"
+                    android:onClick="MaisonInterface"/>
 
                 <ImageView
                     android:id="@+id/imageView16"

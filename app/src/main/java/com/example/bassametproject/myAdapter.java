@@ -30,6 +30,8 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
     @Override
     public com.example.bassametproject.myAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater =LayoutInflater.from(context);
+        LayoutInflater inflater1=LayoutInflater.from(context);
+        View view1=inflater1.inflate(R.layout.item_menu_sellers,parent,false);
         View view=inflater.inflate(R.layout.activity_item_seller,parent,false);
         return new MyViewHolder(view);
     }
@@ -55,7 +57,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
             super(itemView);
             myText=itemView.findViewById(R.id.shopname);
             myText2=itemView.findViewById(R.id.description);
-            myImage=itemView.findViewById(R.id.rajel);
+            myImage=itemView.findViewById(R.id.Storename);
 
         }
     }

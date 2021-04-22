@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Rating">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/dialogHeytheretxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="HEY THERE !"
+            android:textColor="#000"
+            android:textSize="30dp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/dialogsharemomenttxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dialogHeytheretxt"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="SHARE YOUR\nREVIEW WITH US"
+            android:textColor="#000"
+            android:textSize="20dp"></TextView>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ReviewImageuser"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="30dp">
+
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+
+        <EditText
+            android:id="@+id/reviewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/dialogsharemomenttxt"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="10dp"
+            android:hint="TITLE"></EditText>
+
+        <EditText
+            android:id="@+id/reviewDescription"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/reviewTitle"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="10dp"
+            android:hint="Description"></EditText>
+
+
+        <RatingBar
+            android:id="@+id/dialograting_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/reviewDescription"
+
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="171dp"
+            android:layout_marginRight="171dp"
+            android:layout_marginBottom="40dp"
+            android:max="5"
+            android:numStars="5"
+            android:theme="@style/RatingBar" />
+
+        <ImageView
+            android:id="@+id/dialogimgsubmit"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@+id/dialograting_bar"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="14dp"
+            android:src="@drawable/writing"
+            android:background="@drawable/custombut"
+            android:padding="15dp"
+            />
+
+
+    </RelativeLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
