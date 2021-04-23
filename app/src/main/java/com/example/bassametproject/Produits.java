@@ -34,7 +34,7 @@ public class Produits extends AppCompatActivity {
     List<ListProduct> listMaisons= new ArrayList<>();
     DatabaseReference ref;
     ImageView store;
-
+//produits
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

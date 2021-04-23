@@ -22,10 +22,11 @@
         <activity android:name=".MissionsActivity" />
         <activity android:name=".MarketActivity" />
         <activity android:name=".MapActivity" />
-        <activity android:name=".Register" />
+
         <activity android:name=".Maison" />
         <activity android:name=".Produits"/>
-            <activity android:name=".LoginActivity" >
+            <activity android:name=".LoginActivity" />
+        <activity android:name=".Register" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

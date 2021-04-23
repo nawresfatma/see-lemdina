@@ -22,7 +22,7 @@ public class adapterAccessory extends RecyclerView.Adapter<adapterAccessory.MyVi
         this.accessoryList = accessoryList;
         this.context = context;
     }
-
+//commit
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ListProduct product=accessoryList.get(position);

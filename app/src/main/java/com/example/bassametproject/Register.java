@@ -200,6 +200,7 @@ public class Register extends AppCompatActivity {
                                         mRegisterBtn.setEnabled(true);
                                         counter.setText("");
                                         counter.setVisibility(View.INVISIBLE);
+
                                     }
                                 };
 
@@ -210,6 +211,8 @@ public class Register extends AppCompatActivity {
 
                                 Toast.makeText(com.example.bassametproject.Register.this,"User Created",Toast.LENGTH_SHORT).show();
                                 uploadPicture();
+                                Intent i = new Intent(Register.this, Produits.class);
+                                startActivity(i);
                             }
                             else
                             {
