@@ -2,7 +2,9 @@
     <string name="app_name">bassametproject</string>
     <string name="facebook_app_id">1641716489549885</string>
     <string name="fb_login_protocol_scheme">fb1641716489549885</string>
-
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navi"></string>
     <string-array name="shopName">
         <item>Maison el Balgha</item>
         <item>Maison el Balgha 2</item>
@@ -27,4 +29,5 @@
 </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

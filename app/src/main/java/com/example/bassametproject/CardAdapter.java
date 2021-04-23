@@ -1,5 +1,6 @@
 package com.example.bassametproject;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +15,14 @@ import java.util.ArrayList;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> {
     ArrayList<Card> CardList;
+    Context c;
 
     public CardAdapter(ArrayList<Card> list){
         this.CardList = list;
     }
+
+
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
