@@ -2,8 +2,8 @@ package com.example.bassametproject;
 
 public class StoreItem {
     private String storeImage;
-  private String storeName;
-  private String storeDescription;
+    private String storeName;
+    private String storeDescription;
 
     public StoreItem(String storeImage, String storeName, String storeDescription) {
         this.storeImage = storeImage;

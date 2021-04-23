@@ -9,12 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.MediaController;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 
 import com.denzcoskun.imageslider.ImageSlider;
@@ -32,14 +29,13 @@ import java.util.List;
 public class Maison extends AppCompatActivity {
 
     List<ListProduct> accessoryList;
-    RecyclerView maisonRecycler,recyclerAccessory;
+    RecyclerView recyclerAccessory;
     SnapHelper snapHelper;
     ScaleCenterItemManager scaleCenterItemManager;
-    List<ListProduct> listMaisons= new ArrayList<>();
     List<SlideModel> slideModels= new ArrayList<>();
     //adapter
     myAdapterrecy maisonAdapter;
-    adapterAccessory adapterAccessory;
+    adapterAccessory adapterAccessory1;
     //firebase
     DatabaseReference maisonsref,refAccessory;
 
@@ -50,13 +46,11 @@ public class Maison extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maison);
-        maisonRecycler=findViewById(R.id.moreaccessory);
 
-        snapHelper = new LinearSnapHelper();
-        scaleCenterItemManager = new ScaleCenterItemManager(this, LinearLayoutManager.HORIZONTAL, false);
-        maisonRecycler.setLayoutManager(new LinearLayoutManager(this));
-        maisonRecycler.setLayoutManager(scaleCenterItemManager);
 
+
+
+/*
         //videoView
         VideoView videoView=findViewById(R.id.videoView);
         String videoPath="android.resource://"+getPackageName() + "/"+R.raw.video;
@@ -65,14 +59,13 @@ public class Maison extends AppCompatActivity {
 
         MediaController mediaController=new MediaController(this);
         videoView.setMediaController(mediaController);
-        mediaController.setAnchorView(videoView);
-
+        mediaController.setAnchorView(videoView);*/
+/*
         maisonsref= FirebaseDatabase.getInstance().getReference().child("shops").child("store1").child("products");
         maisonsref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds:dataSnapshot.getChildren()){
-                    Toast.makeText(Maison.this, ds.toString(), Toast.LENGTH_SHORT).show();
                     ListProduct data=ds.getValue(ListProduct.class);
 
                     listMaisons.add(data);
@@ -86,7 +79,7 @@ public class Maison extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             } });
-
+*/
 
         ImageSlider imageSlider = findViewById(R.id.image_slider1);
 
@@ -94,8 +87,8 @@ public class Maison extends AppCompatActivity {
         slideModels.add(new SlideModel(R.drawable.slider, ScaleTypes.FIT));
         imageSlider.setImageList(slideModels);
 
-        //accessory
-        recyclerAccessory=findViewById(R.id.moreaccessory);
+       //accessory
+        recyclerAccessory=findViewById(R.id.moreaccessory1);
         //Firebase accessory
         refAccessory = FirebaseDatabase.getInstance().getReference().child("shops").child("store1").child("products");
         refAccessory.addValueEventListener(new ValueEventListener() {
@@ -103,15 +96,20 @@ public class Maison extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 accessoryList = new ArrayList<>();
                 for (DataSnapshot data2 : dataSnapshot.getChildren()) {
-                    ListProduct p1 = data2.getValue(ListProduct.class);
+                    Toast.makeText(Maison.this, data2.toString(), Toast.LENGTH_SHORT).show();
 
+                    ListProduct p1 = data2.getValue(ListProduct.class);
                     accessoryList.add(p1);
                 }
-                adapterAccessory = new adapterAccessory(accessoryList,Maison.this);
+                adapterAccessory1 = new adapterAccessory(accessoryList,Maison.this);
+                snapHelper = new LinearSnapHelper();
+                scaleCenterItemManager = new ScaleCenterItemManager(Maison.this, LinearLayoutManager.HORIZONTAL, false);
 
-                recyclerAccessory.setLayoutManager(new GridLayoutManager(Maison.this,2));
+                recyclerAccessory.setLayoutManager(new LinearLayoutManager(Maison.this));
+                recyclerAccessory.setLayoutManager(scaleCenterItemManager);
+                recyclerAccessory.setAdapter(adapterAccessory1);
 
-                recyclerAccessory.setAdapter(adapterAccessory);
+
             }
 
             @Override

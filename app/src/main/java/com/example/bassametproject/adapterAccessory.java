@@ -27,9 +27,7 @@ public class adapterAccessory extends RecyclerView.Adapter<adapterAccessory.MyVi
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ListProduct product=accessoryList.get(position);
         holder.prodName.setText(product.getProdName());
-
         holder.prodPrice.setText(product.getProdPrice());
-
         Picasso.get().load(accessoryList.get(position).getProd()).into(holder.prodImg1);
     }
 
@@ -54,11 +52,9 @@ public class adapterAccessory extends RecyclerView.Adapter<adapterAccessory.MyVi
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            prodName=itemView.findViewById(R.id.title2);
-
+            prodName=itemView.findViewById(R.id.prodName);
             prodPrice=itemView.findViewById(R.id.price);
-
-            prodImg1=itemView.findViewById(R.id.imagestore12);
+            prodImg1=itemView.findViewById(R.id.prod);
 
         }
     }

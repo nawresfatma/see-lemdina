@@ -24,24 +24,22 @@ import java.util.List;
 public class SellproductActivity extends AppCompatActivity {
     ImageView product ;
     RecyclerView recycler;
-    RecyclerView recyclerM;
-    SnapHelper snapHelper , snapHelperM;
-    //jdida
-    myAdapter myAdapt;
+
+    SnapHelper snapHelper;
+  adapterShops myAdapt;
 
     //firebase
 
-    DatabaseReference mreff,mreff1 ;
+    DatabaseReference mreff ;
 
     List<StoreItem> StoreItems;
-    ScaleCenterItemManager scaleCenterItemManager , scaleCenterItemManagerM;
+    ScaleCenterItemManager scaleCenterItemManager ;
     //StoreItem s=new StoreItem(R.drawable.rajel,"maison belgassem","best host in the medina , a coffee u would like to try in ur life");
     //StoreItem s1=new StoreItem(R.drawable.rajelekher,"hanout el Bey","best jebba in town and a handmade one");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sellproduct);
-        //recyclerM=findViewById(R.id.recyclerMS);
         recycler=findViewById(R.id.recycler);
         product=findViewById(R.id.products);
 
@@ -54,14 +52,6 @@ public class SellproductActivity extends AppCompatActivity {
         recycler.setLayoutManager(new LinearLayoutManager(this));
         recycler.setLayoutManager(scaleCenterItemManager);
         snapHelper.attachToRecyclerView(recycler);
-
-        //2nd
-        snapHelperM = new LinearSnapHelper();
-        scaleCenterItemManagerM = new ScaleCenterItemManager(this, LinearLayoutManager.VERTICAL, false);
-        recyclerM.setLayoutManager(new LinearLayoutManager(this));
-        recyclerM.setLayoutManager(scaleCenterItemManagerM);
-        snapHelperM.attachToRecyclerView(recyclerM);
-
 
 
 
@@ -76,7 +66,7 @@ public class SellproductActivity extends AppCompatActivity {
                     StoreItems.add(data);
 
                 }
-                myAdapt = new myAdapter(StoreItems,SellproductActivity.this);
+                myAdapt = new adapterShops(StoreItems,SellproductActivity.this);
                 recycler.setAdapter(myAdapt);
             }
 
@@ -86,7 +76,6 @@ public class SellproductActivity extends AppCompatActivity {
             }
         });
 
-        //Firebase(Moresellers)
 
 
 

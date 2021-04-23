@@ -23,9 +23,10 @@
                 android:id="@+id/imageView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guidelineBottom"
-                app:srcCompat="@drawable/barr"
-                tools:layout_editor_absoluteX="-8dp" />
+                app:srcCompat="@drawable/barr" />
 
             <ImageView
                 android:id="@+id/imageView23"

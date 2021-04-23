@@ -60,7 +60,8 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/imageView24"
-                app:layout_constraintTop_toTopOf="@+id/guideline11" />
+                app:layout_constraintTop_toTopOf="@+id/guideline11"
+                android:layout_marginLeft="20dp" />
 
 
             <TextView
@@ -118,7 +119,8 @@
                 android:textColor="#EB9069"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@id/imageView24"
-                app:layout_constraintTop_toBottomOf="@+id/roundRectView4" />
+                app:layout_constraintTop_toBottomOf="@+id/roundRectView4"
+                android:layout_marginLeft="32dp" />
 
             <TextView
                 android:id="@+id/textView22"
@@ -130,7 +132,8 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/textView23"
                 app:layout_constraintStart_toEndOf="@+id/textView23"
-                app:layout_constraintTop_toTopOf="@+id/textView23" />
+                app:layout_constraintTop_toTopOf="@+id/textView23"
+                android:layout_marginLeft="10dp" />
 
             <TextView
                 android:id="@+id/textView23"
@@ -144,7 +147,8 @@
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/textView13"
                 app:layout_constraintStart_toStartOf="@+id/textView10"
-                app:layout_constraintTop_toBottomOf="@+id/textView26" />
+                app:layout_constraintTop_toBottomOf="@+id/textView26"
+                android:layout_marginLeft="80dp" />
 
             <TextView
                 android:id="@+id/textView26"
@@ -259,7 +263,8 @@
                 app:layout_constraintEnd_toEndOf="@+id/videoView"
                 app:layout_constraintHorizontal_bias="0.408"
                 app:layout_constraintStart_toStartOf="@+id/videoView"
-                app:layout_constraintTop_toBottomOf="@+id/textView14" />
+                app:layout_constraintTop_toBottomOf="@+id/textView14"
+                tools:ignore="NotSibling" />
 
             <TextView
                 android:id="@+id/textView16"
@@ -271,10 +276,11 @@
                 android:textColor="#EB9069"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@id/imageView24"
-                app:layout_constraintTop_toBottomOf="@+id/textView15" />
+                app:layout_constraintTop_toBottomOf="@+id/textView15"
+                android:layout_marginLeft="24dp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/moreaccessory"
+                android:id="@+id/moreaccessory1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="16dp"
@@ -294,7 +300,8 @@
                 android:textColor="#000000"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/moreaccessory" />
+                app:layout_constraintTop_toBottomOf="@+id/moreaccessory1"
+                android:layout_marginLeft="16dp" />
 
             <ImageView
                 android:id="@+id/cadre1"
@@ -306,7 +313,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView17"
                 app:srcCompat="@drawable/rectanglerate"
                 android:onClick="RateInterface"
-                tools:ignore="OnClick" />
+                tools:ignore="OnClick"
+                android:layout_marginLeft="16dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/ratingrecycler"
@@ -329,7 +337,8 @@
                 android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="@+id/cadre1"
                 app:layout_constraintStart_toStartOf="@+id/cadre1"
-                app:layout_constraintTop_toTopOf="@+id/cadre1" />
+                app:layout_constraintTop_toTopOf="@+id/cadre1"
+                android:layout_marginLeft="8dp" />
 
             <ImageView
                 android:id="@+id/star1"
@@ -339,7 +348,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/cadre1"
                 app:layout_constraintEnd_toEndOf="@+id/cadre1"
                 app:layout_constraintTop_toTopOf="@+id/cadre1"
-                app:srcCompat="@drawable/starrate" />
+                app:srcCompat="@drawable/starrate"
+                android:layout_marginRight="8dp" />
 
             <ImageView
                 android:id="@+id/cadre2"
@@ -352,7 +362,8 @@
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/rectanglerate"
                 android:onClick="RateInterface"
-                tools:ignore="OnClick" />
+                tools:ignore="OnClick"
+                android:layout_marginLeft="20dp" />
 
             <TextView
                 android:id="@+id/rate2"
@@ -363,7 +374,8 @@
                 android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="@+id/cadre2"
                 app:layout_constraintStart_toStartOf="@+id/cadre2"
-                app:layout_constraintTop_toTopOf="@+id/cadre2" />
+                app:layout_constraintTop_toTopOf="@+id/cadre2"
+                android:layout_marginLeft="8dp" />
 
             <ImageView
                 android:id="@+id/star2"
@@ -374,7 +386,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/cadre2"
                 app:layout_constraintEnd_toEndOf="@+id/cadre2"
                 app:layout_constraintTop_toTopOf="@+id/cadre2"
-                app:srcCompat="@drawable/starrate" />
+                app:srcCompat="@drawable/starrate"
+                android:layout_marginRight="8dp" />
 
             <ImageView
                 android:id="@+id/cadre3"
@@ -387,7 +400,8 @@
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/rectanglerate"
                 android:onClick="RateInterface"
-                tools:ignore="OnClick"/>
+                tools:ignore="OnClick"
+                android:layout_marginLeft="20dp" />
 
             <ImageView
                 android:id="@+id/star3"
@@ -398,7 +412,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/cadre3"
                 app:layout_constraintEnd_toEndOf="@+id/cadre3"
                 app:layout_constraintTop_toTopOf="@+id/cadre3"
-                app:srcCompat="@drawable/starrate" />
+                app:srcCompat="@drawable/starrate"
+                android:layout_marginRight="8dp" />
 
             <TextView
                 android:id="@+id/rate3"
@@ -409,7 +424,8 @@
                 android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="@+id/cadre3"
                 app:layout_constraintStart_toStartOf="@+id/cadre3"
-                app:layout_constraintTop_toTopOf="@+id/cadre3" />
+                app:layout_constraintTop_toTopOf="@+id/cadre3"
+                android:layout_marginLeft="8dp" />
 
             <ImageView
                 android:id="@+id/cadre4"
@@ -422,7 +438,8 @@
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/rectanglerate"
                 android:onClick="RateInterface"
-                tools:ignore="OnClick"/>
+                tools:ignore="OnClick"
+                android:layout_marginLeft="20dp" />
 
             <ImageView
                 android:id="@+id/star4"
@@ -433,7 +450,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/cadre4"
                 app:layout_constraintEnd_toEndOf="@+id/cadre4"
                 app:layout_constraintTop_toTopOf="@+id/cadre4"
-                app:srcCompat="@drawable/starrate" />
+                app:srcCompat="@drawable/starrate"
+                android:layout_marginRight="8dp" />
 
             <TextView
                 android:id="@+id/rate4"
@@ -444,7 +462,8 @@
                 android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="@+id/cadre4"
                 app:layout_constraintStart_toStartOf="@+id/cadre4"
-                app:layout_constraintTop_toTopOf="@+id/cadre4" />
+                app:layout_constraintTop_toTopOf="@+id/cadre4"
+                android:layout_marginLeft="8dp" />
 
             <ImageView
                 android:id="@+id/cadre5"
@@ -457,7 +476,8 @@
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/rectanglerate"
                 android:onClick="RateInterface"
-                tools:ignore="OnClick"/>
+                tools:ignore="OnClick"
+                android:layout_marginLeft="20dp" />
 
             <ImageView
                 android:id="@+id/star5"
@@ -468,7 +488,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/cadre5"
                 app:layout_constraintEnd_toEndOf="@+id/cadre5"
                 app:layout_constraintTop_toTopOf="@+id/cadre5"
-                app:srcCompat="@drawable/starrate" />
+                app:srcCompat="@drawable/starrate"
+                android:layout_marginRight="8dp" />
 
             <TextView
                 android:id="@+id/rate5"
@@ -479,7 +500,8 @@
                 android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="@+id/cadre5"
                 app:layout_constraintStart_toStartOf="@+id/cadre5"
-                app:layout_constraintTop_toTopOf="@+id/cadre5" />
+                app:layout_constraintTop_toTopOf="@+id/cadre5"
+                android:layout_marginLeft="8dp" />
 
             <TextView
                 android:id="@+id/textView19"
@@ -503,7 +525,8 @@
                 android:text="Add Your Reveiw"
                 android:textColor="#EB9069"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+                app:layout_constraintTop_toBottomOf="@+id/textView19"
+                android:layout_marginLeft="16dp" />
 
             <TextView
                 android:id="@+id/textView21"
@@ -515,7 +538,8 @@
                 android:textColor="#000000"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView20" />
+                app:layout_constraintTop_toBottomOf="@+id/textView20"
+                android:layout_marginLeft="16dp" />
 
 
             <!--<androidx.recyclerview.widget.RecyclerView

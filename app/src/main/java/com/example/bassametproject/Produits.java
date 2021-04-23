@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class Produits extends AppCompatActivity {
     ScaleCenterItemManager scaleCenterItemManager;
     adapterAccessory adapterAccessory;
     List<ListProduct> listMaisons= new ArrayList<>();
-    DatabaseReference ref,refAccessory;
+    DatabaseReference ref;
     ImageView store;
 
 
@@ -41,18 +42,14 @@ public class Produits extends AppCompatActivity {
         setContentView(R.layout.activity_products);
         store=findViewById(R.id.imageView);
 
-        recyclerAccessory = findViewById(R.id.moreaccessory);
-        recyclerAccessory.setLayoutManager(new GridLayoutManager(Produits.this,2));
-        recyclerAccessory.setLayoutManager(scaleCenterItemManager);
+        recyclerAccessory = findViewById(R.id.recycler1);
 
-        recyclerAccessory.setAdapter(adapterAccessory);
         // MyAdapterprod myAdapt=new MyAdapterprod(productList,this);
         // recycler2.setAdapter(myAdapt);
-        snapHelper = new LinearSnapHelper();
-        scaleCenterItemManager = new ScaleCenterItemManager(this, LinearLayoutManager.HORIZONTAL, false);
+
        // recycler2.setLayoutManager(new LinearLayoutManager(this));
         //recycler2.setLayoutManager(scaleCenterItemManager);
-        snapHelper.attachToRecyclerView(recyclerAccessory);
+
 
         //Firebase
         ref = FirebaseDatabase.getInstance().getReference().child("shops").child("store1").child("products");
@@ -61,15 +58,18 @@ public class Produits extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 accessoryList = new ArrayList<>();
                 for (DataSnapshot data2 : dataSnapshot.getChildren()) {
+                    Toast.makeText(Produits.this, data2.toString(), Toast.LENGTH_LONG).show();
                     ListProduct p1 = data2.getValue(ListProduct.class);
-
                     accessoryList.add(p1);
                 }
                 adapterAccessory = new adapterAccessory(accessoryList,Produits.this);
+                snapHelper = new LinearSnapHelper();
+                scaleCenterItemManager = new ScaleCenterItemManager(Produits.this, LinearLayoutManager.HORIZONTAL, false);
 
-                recyclerAccessory.setLayoutManager(new GridLayoutManager(Produits.this,2));
-
+                recyclerAccessory.setLayoutManager(new LinearLayoutManager(Produits.this));
+                recyclerAccessory.setLayoutManager(scaleCenterItemManager);
                 recyclerAccessory.setAdapter(adapterAccessory);
+
             }
 
 
