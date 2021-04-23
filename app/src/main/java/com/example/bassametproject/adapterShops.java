@@ -23,7 +23,7 @@ public class adapterShops extends RecyclerView.Adapter<adapterShops.MyViewHolder
         StoreItems = storeItems;
         context = c;
     }
-
+//commit
 
     @NonNull
     @Override

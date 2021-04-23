@@ -15,7 +15,7 @@ public class ListClassement {
         this.profile = profile;
     }
 
-
+//commit
 
     public int getRank() {
         return rank;
