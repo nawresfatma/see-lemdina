@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                app:layout_constraintTop_toBottomOf="@+id/features"
                 app:srcCompat="@drawable/rectangle" />
 
             <TextView
@@ -170,7 +170,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/features"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -251,7 +251,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/imageView6"
                 app:layout_constraintHorizontal_bias="0.746"
                 app:layout_constraintStart_toStartOf="@+id/imageView5"
-                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                app:layout_constraintTop_toBottomOf="@+id/features"
                 app:srcCompat="@drawable/bubble" />
 
             <TextView
