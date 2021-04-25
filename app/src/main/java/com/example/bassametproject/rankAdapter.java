@@ -10,64 +10,53 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
+import com.squareup.picasso.Picasso;
 
-public class rankAdapter extends RecyclerView.Adapter<rankAdapter.MyViewHolder> {
-    private List<ListClassement> ListClassement;
-    private Context context;
+import java.util.ArrayList;
 
-    public rankAdapter(List<com.example.bassametproject.ListClassement> listClassement, Context context) {
-        ListClassement = listClassement;
-        this.context = context;
+public class rankAdapter extends RecyclerView.Adapter<rankAdapter.RatingViewHolder>{
+
+    Context context;
+    ArrayList<User> users;
+
+    public rankAdapter(Context c , ArrayList<User> u)
+    {
+        context = c;
+        users = u;
     }
 
     @NonNull
     @Override
-    public rankAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view  = LayoutInflater.from(parent.getContext()).inflate(R.layout.ranki_tem,parent,false);
-        MyViewHolder rankAdapter = new MyViewHolder(view);
-        return  rankAdapter;
+    public rankAdapter.RatingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new rankAdapter.RatingViewHolder(LayoutInflater.from(context).inflate(R.layout.ranki_tem, parent , false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull rankAdapter.MyViewHolder holder, int position) {
-        ListClassement listClassement=ListClassement.get(position);
-        holder.rank.setText(String.valueOf(listClassement.getRank()));
-        holder.name.setText(listClassement.getName());
-        holder.points.setText(String.valueOf(listClassement.getPoints()));
-        holder.coin.setImageResource(listClassement.getCoin());
-        holder.profile.setImageResource(listClassement.getProfile());
+    public void onBindViewHolder(@NonNull rankAdapter.RatingViewHolder holder, int position) {
+        Picasso.get().load(users.get(position).getImage()).resize(500 , 500).into(holder.userimg);
+        holder.username.setText(users.get(position).getName());
+        holder.userpoints.setText(String.valueOf(users.get(position).getPoint()));
+        holder.position.setText(String.valueOf(users.get(position).getRank()));
     }
-
-
-
-
 
     @Override
     public int getItemCount() {
-        return ListClassement.size();
+        return users.size();
     }
 
+    class RatingViewHolder extends  RecyclerView.ViewHolder{
 
-
-
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView rank;
-        public TextView name;
-        public TextView points ;
-        public ImageView coin;
-        public ImageView profile;
-
-        public MyViewHolder(@NonNull View itemView) {
+        ImageView userimg;
+        TextView username , userpoints , position;
+        public RatingViewHolder(@NonNull View itemView) {
             super(itemView);
-            rank=(TextView) itemView.findViewById(R.id.rank);
-            points=(TextView) itemView.findViewById(R.id.points);
-            name=(TextView) itemView.findViewById(R.id.namee);
-            profile=(ImageView) itemView.findViewById(R.id.profilee);
-            coin=(ImageView) itemView.findViewById(R.id.coin);
+
+            userimg = (ImageView) itemView.findViewById(R.id.profilee);
+            username = (TextView) itemView.findViewById(R.id.namee);
+            userpoints = (TextView) itemView.findViewById(R.id.points);
+            position = (TextView) itemView.findViewById(R.id.rank);
 
         }
-
-
     }
+
 }

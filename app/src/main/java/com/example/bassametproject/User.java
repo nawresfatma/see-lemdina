@@ -1,16 +1,30 @@
 package com.example.bassametproject;
 
+import java.util.Comparator;
+
 public class User {
 
+    public static Comparator<? super User> pointSort;
     private String id;
     private String name;
     private String email;
     private String password;
     private String image;
+    private int point;
+    private int rank;
 
+
+    public User(String name) {
+        this.name = name;
+    }
 
     public User(){
 
+    }
+
+    public User(String name,  String image) {
+        this.name = name;
+        this.image = image;
     }
 
     public User(String id, String name, String email, String password, String image) {
@@ -19,6 +33,22 @@ public class User {
         this.email = email;
         this.password = password;
         this.image = image;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
+    }
+
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
     }
 
     public String getId() {
@@ -60,4 +90,5 @@ public class User {
     public void setImage(String image) {
         this.image = image;
     }
+
 }
