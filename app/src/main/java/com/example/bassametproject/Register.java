@@ -372,7 +372,7 @@ public class Register extends AppCompatActivity {
         user.setId(fAuth.getUid());
         user.setImage(DownloadUrl);
 
-        ref.child(fAuth.getUid()).child("user").setValue(user);
+        ref.child(fAuth.getUid()).child("User").setValue(user);
 
     }
 

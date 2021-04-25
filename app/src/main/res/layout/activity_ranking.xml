@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LeaderBoard">
-
+    tools:context=".Ranking">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -25,6 +24,20 @@
             app:layout_constraintHorizontal_bias="0.046"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView60"
+            android:layout_width="12dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="12dp"
+
+            app:layout_constraintBottom_toBottomOf="@+id/Back"
+            app:layout_constraintStart_toStartOf="@+id/Back"
+            app:layout_constraintTop_toTopOf="@+id/Back"
+            app:layout_constraintVertical_bias="0.75"
+            app:srcCompat="@drawable/back" />
 
         <TextView
             android:id="@+id/textView32"
@@ -150,7 +163,7 @@
 
             android:textSize="16dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView3"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView33" />
 
@@ -189,19 +202,6 @@
             app:layout_constraintHorizontal_bias="0.557"
             app:layout_constraintStart_toEndOf="@+id/textView35" />
 
-        <ImageView
-            android:id="@+id/imageView60"
-            android:layout_width="12dp"
-            android:layout_height="10dp"
-            android:layout_marginStart="2dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="12dp"
-
-            app:layout_constraintBottom_toBottomOf="@+id/Back"
-            app:layout_constraintStart_toStartOf="@+id/Back"
-            app:layout_constraintTop_toTopOf="@+id/Back"
-            app:layout_constraintVertical_bias="0.75"
-            app:srcCompat="@drawable/back" />
 
         <TextView
             android:id="@+id/SecondplaceName"
@@ -277,7 +277,7 @@
             app:layout_constraintTop_toBottomOf="@+id/FirstplaceName" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView3"
+            android:id="@+id/rankingRecycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"

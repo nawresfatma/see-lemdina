@@ -105,8 +105,8 @@ public class LoadActivity extends AppCompatActivity implements NavigationView.On
                                 Intent MapIntent = new Intent(LoadActivity.this,MapActivity.class);
                                 startActivity(MapIntent);
                                 break;
-                        case R.id.LeaderBoard:
-                                Intent LeaderBoardIntent = new Intent(LoadActivity.this,LeaderBoard.class);
+                        case R.id.Ranking:
+                                Intent LeaderBoardIntent = new Intent(LoadActivity.this,Ranking.class);
                                 startActivity(LeaderBoardIntent);
                                 break;
 
