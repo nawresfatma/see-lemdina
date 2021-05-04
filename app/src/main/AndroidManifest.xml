@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bassametproject">
-        <activity android:name=".LeaderBoard"></activity>
+
         <activity android:name=".Profile" />
         <activity android:name=".LoadActivity" />
         <activity android:name=".MainActivity" />
@@ -18,7 +18,7 @@
         <activity android:name=".Rating" />
         <activity android:name=".activity_products_recycler" />
         <activity android:name=".SellproductActivity" />
-        <activity android:name=".Home" />
+        <activity android:name=".Register" />
         <activity android:name=".MissionsActivity" />
         <activity android:name=".MarketActivity" />
         <activity android:name=".MapActivity" />
@@ -26,7 +26,7 @@
         <activity android:name=".Maison" />
         <activity android:name=".Produits"/>
             <activity android:name=".LoginActivity" />
-        <activity android:name=".Register" >
+        <activity android:name=".Home" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
