@@ -48,39 +48,6 @@ public class Maison extends AppCompatActivity {
         setContentView(R.layout.activity_maison);
 
 
-
-
-/*
-        //videoView
-        VideoView videoView=findViewById(R.id.videoView);
-        String videoPath="android.resource://"+getPackageName() + "/"+R.raw.video;
-        Uri uri= Uri.parse(videoPath);
-        videoView.setVideoURI(uri);
-
-        MediaController mediaController=new MediaController(this);
-        videoView.setMediaController(mediaController);
-        mediaController.setAnchorView(videoView);*/
-/*
-        maisonsref= FirebaseDatabase.getInstance().getReference().child("shops").child("store1").child("products");
-        maisonsref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds:dataSnapshot.getChildren()){
-                    ListProduct data=ds.getValue(ListProduct.class);
-
-                    listMaisons.add(data);
-
-                }
-                maisonAdapter =new myAdapterrecy(listMaisons,Maison.this);
-                maisonRecycler.setAdapter(maisonAdapter);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            } });
-*/
-
         ImageSlider imageSlider = findViewById(R.id.image_slider1);
 
         slideModels.add(new SlideModel(R.drawable.balghaslider, ScaleTypes.FIT));

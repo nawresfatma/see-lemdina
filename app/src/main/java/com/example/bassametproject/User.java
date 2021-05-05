@@ -10,9 +10,17 @@ public class User {
     private String email;
     private String password;
     private String image;
+    private int image2;
     private int point;
     private int rank;
 
+    public User(int image2, String name,int point, int rank) {
+
+        this.image2 = image2;
+        this.name = name;
+        this.point = point;
+        this.rank = rank;
+    }
 
     public User(String name) {
         this.name = name;
@@ -27,7 +35,7 @@ public class User {
         this.image = image;
     }
 
-    public User(String id, String name, String email, String password, String image) {
+    public User(String id, String name, String email, String password,String image) {
         this.id = id;
         this.name = name;
         this.email = email;

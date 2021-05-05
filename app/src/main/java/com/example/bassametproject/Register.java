@@ -83,7 +83,7 @@ public class Register extends AppCompatActivity {
 
 
         user = new User();
-        ref = database.getInstance("https://basamet-6876b-default-rtdb.firebaseio.com/").getReference().child("User");
+        ref = database.getInstance("https://pfe2021-270a5-default-rtdb.firebaseio.com/").getReference().child("User");
 
 
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
@@ -371,6 +371,7 @@ public class Register extends AppCompatActivity {
         user.setEmail(mEmail.getText().toString());
         user.setId(fAuth.getUid());
         user.setImage(DownloadUrl);
+        user.setPoint(0);
 
         ref.child(fAuth.getUid()).child("User").setValue(user);
 

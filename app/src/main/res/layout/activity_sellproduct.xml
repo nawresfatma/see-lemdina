@@ -158,7 +158,7 @@
                 app:layout_constraintTop_toTopOf="@+id/guidelineBottom" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler"
+                android:id="@+id/recyclerMarket"
                 android:layout_width="wrap_content"
                 android:layout_height="298dp"
                 android:layout_marginTop="44dp"
@@ -218,27 +218,7 @@
 
     </ScrollView>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:itemBackground="@color/white"
-        app:itemIconTint="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bar_menu">
-
-        <ImageButton
-            android:id="@+id/imageButton5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/white"
-            app:srcCompat="@drawable/scann"
-            android:onClick="ScanInterface"/>
-
-
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+  
 
 
 

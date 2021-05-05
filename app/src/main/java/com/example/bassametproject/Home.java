@@ -28,7 +28,7 @@ public class Home extends AppCompatActivity {
     private SnapHelper snapHelper;
    // List<com.example.bassametproject.event> eventList1;
     //Firebase
-    DatabaseReference mreff,eventReference;
+    DatabaseReference mref,eventReference;
     //intents
     ImageView market , map , missions;
     //storerecycler
@@ -41,7 +41,7 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        recycler=findViewById(R.id.recycler);
+        recycler=findViewById(R.id.recyclerMarket);
         //stores
         snapHelper = new LinearSnapHelper();
         scaleCenterItemManager = new ScaleCenterItemManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -75,15 +75,16 @@ public class Home extends AppCompatActivity {
         }); */
         //Stores
 
-        mreff= FirebaseDatabase.getInstance().getReference("shops");
-        mreff.addListenerForSingleValueEvent(new ValueEventListener() {
+        mref= FirebaseDatabase.getInstance().getReference("shops");
+        mref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 StoreItems=new ArrayList<>();
                 for(DataSnapshot ds:dataSnapshot.getChildren()){
                     StoreItem data=ds.getValue(StoreItem.class);
-                    StoreItems.add(data);
+                    Toast.makeText(Home.this, data.toString(), Toast.LENGTH_LONG).show();
 
+                    StoreItems.add(data);
                 }
                 myAdapt = new StoreAdapter(StoreItems,Home.this);
                 recycler.setAdapter(myAdapt);
@@ -105,7 +106,6 @@ public class Home extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intentLoadNewActivity = new Intent(Home.this,MarketActivity.class);
                 //normalement bel market
-
                 startActivity(intentLoadNewActivity);
 
             }

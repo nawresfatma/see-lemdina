@@ -19,7 +19,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoadActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class LoadActivity extends AppCompatActivity {
         ///////Home page controle wowéh //////////
         RecyclerView recycler3;
         private SnapHelper snapHelper;
@@ -28,7 +28,6 @@ public class LoadActivity extends AppCompatActivity implements NavigationView.On
 
 
         DrawerLayout drawerLayout;
-        NavigationView navigationView;
         Toolbar toolbar;
 
         @Override
@@ -47,7 +46,6 @@ public class LoadActivity extends AppCompatActivity implements NavigationView.On
                 //////////////////////////*snapHelper.attachToRecyclerView(recycler3);
                 //////////HooooKs/////////////////////////
                 drawerLayout=findViewById(R.id.drawer_layout);
-                navigationView=findViewById(R.id.nav_view);
                 toolbar= findViewById(R.id.imageView11);
                 //////////////////TOOLBAR//////////
                 setSupportActionBar(toolbar);
@@ -55,14 +53,6 @@ public class LoadActivity extends AppCompatActivity implements NavigationView.On
                 ////////// Hide Or Show items
                 /////////////Menu menu=navigationView.getMenu();/////////////::
 
-
-
-                navigationView.bringToFront();
-                ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
-                drawerLayout.addDrawerListener(toggle);
-                toggle.syncState();
-                navigationView.setNavigationItemSelectedListener(this);
-                navigationView.setCheckedItem(R.id.nav_home);
 
 
         }
@@ -85,34 +75,4 @@ public class LoadActivity extends AppCompatActivity implements NavigationView.On
          * @param item The selected item
          * @return true to display the item as the selected item
          */
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                        case R.id.nav_home:
-                                break;
-                        case R.id.sign_scanner:
-                                Intent ScanIntent = new Intent(LoadActivity.this,Scan.class);
-                                startActivity(ScanIntent);
-                                break;
-                        case R.id.achivements:
-                                Toast.makeText(this ,"Share",Toast.LENGTH_SHORT).show();
-                                break;
-                        case R.id.profile:
-                                Intent ProfileIntent = new Intent(LoadActivity.this,Profile.class);
-                                startActivity(ProfileIntent);
-                                break;
-                        case R.id.map:
-                                Intent MapIntent = new Intent(LoadActivity.this,MapActivity.class);
-                                startActivity(MapIntent);
-                                break;
-                        case R.id.Ranking:
-                                Intent LeaderBoardIntent = new Intent(LoadActivity.this,Ranking.class);
-                                startActivity(LeaderBoardIntent);
-                                break;
-
-
-                }
-                drawerLayout.closeDrawer(GravityCompat.START);
-                return true;
-        }
-}
+      }

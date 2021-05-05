@@ -18,7 +18,7 @@ public class LeaderBoard extends AppCompatActivity {
     private ImageView FirstI, SecondI, ThirdI;
     RecyclerView recyclerView;
 
-    static ArrayList<ListClassement> listClassement = new ArrayList<>();
+    static ArrayList<User> listClassement = new ArrayList<>();
     rankAdapter adapter;
 
 
@@ -31,11 +31,11 @@ public class LeaderBoard extends AppCompatActivity {
         Second = findViewById(R.id.SecondplaceName);
         Third = findViewById(R.id.ThirdplaceName);
 
-        listClassement.add(new ListClassement(1, "fathi", 8000, R.drawable.coin, R.drawable.cube));
-        listClassement.add(new ListClassement(2, "mohssen", 1000, R.drawable.coin, R.drawable.img));
-        listClassement.add(new ListClassement(3, "nawres", 7000, R.drawable.coin, R.drawable.iimg));
-        listClassement.add(new ListClassement(4, "Samy", 8000, R.drawable.coin, R.drawable.iimg));
-        adapter = new rankAdapter(listClassement, this);
+        listClassement.add(new User(R.drawable.cube, "fathi",8000,1));
+        listClassement.add(new User( R.drawable.img,"mohssen", 1000,2));
+        listClassement.add(new User( R.drawable.iimg, "nawres", 7000,3));
+        listClassement.add(new User(R.drawable.iimg,"Samy", 8000 ,3));
+        adapter = new rankAdapter(this , listClassement);
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

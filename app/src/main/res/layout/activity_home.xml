@@ -115,15 +115,17 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler"
+                android:id="@+id/recyclerMarket"
                 android:layout_width="match_parent"
-                android:layout_height="199dp"
+                android:layout_height="330dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toStartOf="@+id/gRight"
                 app:layout_constraintStart_toStartOf="@id/gLeft"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                android:layout_marginLeft="10dp"
+                tools:listitem="@layout/activity_item_seller"/>
 
             <TextView
                 android:id="@+id/textView4"
@@ -137,7 +139,7 @@
                 android:textSize="24sp"
 
                 app:layout_constraintStart_toStartOf="@id/gLeft"
-                app:layout_constraintTop_toBottomOf="@+id/recycler" />
+                app:layout_constraintTop_toBottomOf="@+id/recyclerMarket" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -295,7 +297,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/gRight"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recycler"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerMarket"
                 app:srcCompat="@drawable/cube" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -324,5 +326,4 @@
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 </androidx.constraintlayout.widget.ConstraintLayout>
-
 
