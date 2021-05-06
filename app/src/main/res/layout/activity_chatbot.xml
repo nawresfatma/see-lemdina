@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    tools:context=".chatbotActivity">
+
+    <!--Messages RecyclerView-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/messages_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorInBetween"
+        app:layout_constraintBottom_toTopOf="@+id/messages_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/user_chatbot"
+        tools:itemCount="3"
+        />
+    <!--Bottom Layout-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/messages_input"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorInBetween"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <ImageButton
+            android:id="@+id/send_btn"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginHorizontal="4dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/btn"
+            android:clickable="true"
+            android:elevation="4dp"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/sent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@id/messages_input"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/send_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/message_input"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/input"
+                android:elevation="4dp"
+                android:hint="Type a message..."
+                android:maxLines="6"
+                android:paddingLeft="16dp"
+                android:paddingRight="32dp" />
+
+            <ImageButton
+                android:id="@+id/btn_micro"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="8dp"
+                android:background="@null"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/mic" />
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.agrawalsuneet.dotsloader.loaders.CircularDotsLoader
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/messages_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:loader_animDur="100"
+        app:loader_bigCircleRadius="18dp"
+        app:loader_circleRadius="5dp"
+        app:loader_defaultColor="#FB3C00"
+        app:loader_firstShadowColor="#FF5722"
+        app:loader_secondShadowColor="#F48460"
+        app:loader_selectedColor="#FF9800"
+        app:loader_showRunningShadow="true" />
+
+    <TextView
+        android:id="@+id/tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text='Tip : Start by saying "Hello"'
+        android:textColor="@color/colorPrimary"
+        android:textSize="12dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/messages_recycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

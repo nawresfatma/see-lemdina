@@ -21,15 +21,16 @@
         <activity android:name=".MarketActivity" />
         <activity android:name=".MapActivity" />
         <activity android:name=".Produits" />
-        <activity android:name=".Ranking"/>
-        <activity android:name=".Maison"
-            android:parentActivityName=".SellproductActivity"
+        <activity android:name=".Ranking" />
+        <activity
+            android:name=".Maison"
             android:label="Detail"
-            />
-            <activity android:name=".Register"/>
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".Home">
-        <intent-filter>
+            android:parentActivityName=".SellproductActivity" />
+        <activity android:name=".Register" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".Home"/>
+        <activity android:name=".chatbotActivity">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />

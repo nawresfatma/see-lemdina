@@ -57,6 +57,13 @@ dependencies {
     //facebook
     implementation 'com.facebook.android:facebook-android-sdk:4.42.0'
 
+    //chat bot dialogflow
+    implementation 'ai.api:sdk:2.0.7@aar'
+    implementation 'ai.api:libai:1.6.12'
+
+    //For chatbot & loading animation
+    implementation 'com.agrawalsuneet.androidlibs:dotsloader:1.4'
+
 
 
 }

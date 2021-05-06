@@ -85,7 +85,7 @@
                     android:id="@+id/userphoto"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/uploadimg" />
+                    android:src="@drawable/bot" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -110,7 +110,8 @@
                 app:layout_constraintEnd_toStartOf="@+id/guideline5"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline4"
-                app:layout_constraintTop_toBottomOf="@+id/choseimgbtn" />
+                app:layout_constraintTop_toBottomOf="@+id/choseimgbtn"
+                android:drawableLeft="@drawable/userico" />
 
             <EditText
                 android:id="@+id/emailtxt"
@@ -123,7 +124,8 @@
                 app:layout_constraintEnd_toStartOf="@+id/guideline5"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline4"
-                app:layout_constraintTop_toBottomOf="@+id/nametxt" />
+                app:layout_constraintTop_toBottomOf="@+id/nametxt"
+                android:drawableLeft="@drawable/emailico" />
 
             <EditText
                 android:id="@+id/passtxt"

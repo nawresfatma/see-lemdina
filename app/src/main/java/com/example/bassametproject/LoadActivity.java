@@ -15,6 +15,13 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +30,12 @@ public class LoadActivity extends AppCompatActivity {
         ///////Home page controle wowéh //////////
         RecyclerView recycler3;
         private SnapHelper snapHelper;
+       //firebase
+        private DatabaseReference userRef2;
+        private FirebaseAuth fAuth;
+        private FirebaseUser user;
 
+        public static String username , userphotourl , useremail;
 
 
 
@@ -35,7 +47,31 @@ public class LoadActivity extends AppCompatActivity {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_load);
                 recycler3=findViewById(R.id.recyclerView);
+                fAuth = FirebaseAuth.getInstance();
 
+                user = fAuth.getCurrentUser();
+
+                userRef2 = FirebaseDatabase.getInstance().getReference("User").child(user.getUid());
+
+                userRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for (DataSnapshot ds : snapshot.getChildren()) {
+                                        userphotourl = ds.child("photoURL").getValue().toString();
+                                        username = ds.child("name").getValue().toString();
+                                        useremail = ds.child("email").getValue().toString();
+                                }
+
+                                finish();
+
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                });
 
                 //////////////////////////*myAdapter myAdapt=new myAdapter(eventList1,this);
                 //////////////////////////* recycler3.setAdapter(myAdapt);
