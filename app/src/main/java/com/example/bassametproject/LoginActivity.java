@@ -1,5 +1,6 @@
 package com.example.bassametproject;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -280,7 +281,7 @@ public class LoginActivity extends AppCompatActivity {
 //facebook start
 
         userr = new User();
-        database = FirebaseDatabase.getInstance("https://basamet-6876b-default-rtdb.firebaseio.com/");
+        database = FirebaseDatabase.getInstance("https://pfe2021-270a5-default-rtdb.firebaseio.com/");
         ref = database.getReference().child("User");
 
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -290,17 +291,20 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setReadPermissions("email" , "public_profile");
         mCallbackManager = CallbackManager.Factory.create();
         loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+            @SuppressLint("LongLogTag")
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Log.d(TAG, "onSuccess" + loginResult);
                 handleFacebookToken(loginResult.getAccessToken());
             }
 
+            @SuppressLint("LongLogTag")
             @Override
             public void onCancel() {
                 Log.d(TAG, "onCancel");
             }
 
+            @SuppressLint("LongLogTag")
             @Override
             public void onError(FacebookException error) {
                 Log.d(TAG, "onError");
@@ -400,7 +404,7 @@ public class LoginActivity extends AppCompatActivity {
         }catch (ApiException e)
         {
             Toast.makeText(com.example.bassametproject.LoginActivity.this , "Signed In Failed !" , Toast.LENGTH_SHORT).show();
-            FirebaseGoogleAuth(null);
+            //FirebaseGoogleAuth(null);
         }
 
     }
@@ -458,6 +462,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     //facebook start
+    @SuppressLint("LongLogTag")
     private  void handleFacebookToken(AccessToken token)
     {
         Log.d(TAG , "handleFacebookToken" + token);
@@ -494,14 +499,14 @@ public class LoginActivity extends AppCompatActivity {
         //facebook end
         super.onActivityResult(requestCode, resultCode, data);
         //google start
+        if(resultCode != RESULT_CANCELED) {
+            if (requestCode == RC_SIGN_IN)
+            {
+                Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+                handleSignInResult(task);
+            }
 
-        if(requestCode == RC_SIGN_IN)
-        {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
         }
-
-
         //google end
     }
 
@@ -510,7 +515,7 @@ public class LoginActivity extends AppCompatActivity {
 
         DatabaseReference userRef;
 
-        userRef = database.getInstance("https://basamet-6876b-default-rtdb.firebaseio.com/").getReference("User");
+        userRef = database.getInstance("https://pfe2021-270a5-default-rtdb.firebaseio.com/").getReference("User");
 
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -560,7 +565,7 @@ public class LoginActivity extends AppCompatActivity {
 
         DatabaseReference userRef;
 
-        userRef = database.getInstance("https://basamet-6876b-default-rtdb.firebaseio.com/").getReference("User");
+        userRef = database.getInstance("https://pfe2021-270a5-default-rtdb.firebaseio.com/").getReference("User");
 
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

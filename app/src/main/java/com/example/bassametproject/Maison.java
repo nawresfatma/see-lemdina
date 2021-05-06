@@ -11,17 +11,22 @@ import androidx.recyclerview.widget.SnapHelper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,28 +41,51 @@ public class Maison extends AppCompatActivity {
     //adapter
     myAdapterrecy maisonAdapter;
     adapterAccessory adapterAccessory1;
-    //firebase
-    DatabaseReference maisonsref,refAccessory;
-// commit
+// onClick Item
+   TextView shopName , shopDescription,openHour,storeLocation;
+   String name , desc,hour,location;
 
+    //firebase
+    private FirebaseDatabase database;
+
+    private DatabaseReference userRef, refRate ,refAccessory,refShop;
+    private FirebaseAuth fAuth;
+    private FirebaseUser user;
+    public String username, userphotourl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maison);
-
-
+//imageSlider
         ImageSlider imageSlider = findViewById(R.id.image_slider1);
-
         slideModels.add(new SlideModel(R.drawable.balghaslider, ScaleTypes.FIT));
         slideModels.add(new SlideModel(R.drawable.slider, ScaleTypes.FIT));
         imageSlider.setImageList(slideModels);
+        //onclick Item
+        shopDescription=findViewById(R.id.shopDesc1);
+        shopName=findViewById(R.id.shopName1);
+        storeLocation=findViewById(R.id.storeLocation);
+        openHour=findViewById(R.id.openingHour);
+        getData();
+        setData();
 
        //accessory
         recyclerAccessory=findViewById(R.id.moreaccessory1);
+        //user firebase
+        fAuth = FirebaseAuth.getInstance();
+        user = fAuth.getCurrentUser();
+        userRef = database.getInstance().getReference("User").child(user.getUid());
+
+       // refRate = database.getInstance().getReference(adapterShops.theChosenOne).child(adapterShops.shopStatic.getStoreName());
+     //   refShop = database.getInstance().getReference("shops").child("store1").child(adapterShops.shopStatic.getStoreName());
+
+
+        //ratingbarRestau.setRating(RestaurantMorePlacesAdapter.restaurantStatic.getRating());
+
         //Firebase accessory
-        refAccessory = FirebaseDatabase.getInstance().getReference().child("shops").child("store1").child("products");
+        refAccessory = FirebaseDatabase.getInstance().getReference(adapterShops.shops).child("store2").child("products");
         refAccessory.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -85,8 +113,22 @@ public class Maison extends AppCompatActivity {
             }
         });
 
+    }
+   //onClick
+    private void getData(){
+   if (getIntent().hasExtra("shopName")&&getIntent().hasExtra("shopDescription")){
+name=getIntent().getStringExtra("shopName");
+desc=getIntent().getStringExtra("shopDescription");
 
-
+   }
+    }
+    private void setData(){
+/*shopName.setText(name);
+shopDescription.setText(desc);*/
+        storeLocation.setText(adapterShops.shopStatic.getStoreLocation());
+        shopName.setText(adapterShops.shopStatic.getStoreName());
+        shopDescription.setText(adapterShops.shopStatic.getStoreDescription());
+        openHour.setText(adapterShops.shopStatic.getOpeningHour());
     }
     public void RateInterface (View v){
         Intent intentLoadNewActivity = new Intent(Maison.this, Rating.class);

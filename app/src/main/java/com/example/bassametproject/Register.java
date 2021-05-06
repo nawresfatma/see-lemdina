@@ -83,7 +83,7 @@ public class Register extends AppCompatActivity {
 
 
         user = new User();
-        ref = database.getInstance("https://pfe2021-270a5-default-rtdb.firebaseio.com/").getReference().child("User");
+        ref = database.getInstance("https://pfe2021-270a5-default-rtdb.firebaseio.com/").getReference("User");
 
 
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
@@ -176,7 +176,7 @@ public class Register extends AppCompatActivity {
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(com.example.bassametproject.Register.this , "Error !" , Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(com.example.bassametproject.Register.this , "Error Occured !" , Toast.LENGTH_SHORT).show();
                                     }
                                 });
 

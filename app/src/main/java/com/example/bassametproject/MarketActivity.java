@@ -12,28 +12,54 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class MarketActivity extends AppCompatActivity{
-    RecyclerView recyclerView;
+    RecyclerView recyclerSouk;
 
-    ArrayList<Card> Mylist= new ArrayList<>();
-    CardAdapter adapter;
+    ArrayList<soukList> Mylist;
+    CardAdapter Soukadapter;
+    //firebase
 
+    DatabaseReference soukRef ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market);
-        recyclerView=findViewById(R.id.recyclerView);
-        Mylist.add(new Card("Souk sidi Mehéz ","soukberk"));
-        Mylist.add(new Card("Souk  Sidi abdesslem","soukb"));
-        Mylist.add(new Card("Souk el sabbaghin ","soukch"));
-        adapter =new CardAdapter(Mylist);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
+        recyclerSouk=findViewById(R.id.recyclerView);
+
+        recyclerSouk.setLayoutManager(new LinearLayoutManager(this));
+
+
+//Firebase(Stores)
+        soukRef= FirebaseDatabase.getInstance().getReference("Souk");
+        soukRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Mylist= new ArrayList<>();
+                for(DataSnapshot ds:dataSnapshot.getChildren()){
+                    soukList data=ds.getValue(soukList.class);
+                    Mylist.add(data);
+
+                }
+               Soukadapter = new CardAdapter(Mylist,MarketActivity.this);
+                recyclerSouk.setAdapter(Soukadapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
+
     public void ScanInterface (View v){
         Intent intentLoadNewActivity = new Intent(MarketActivity.this, Scan.class);
         startActivity(intentLoadNewActivity);

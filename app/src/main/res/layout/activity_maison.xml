@@ -39,7 +39,8 @@
             <ImageView
                 android:id="@+id/imageView24"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
                 android:foregroundGravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +51,7 @@
                 app:srcCompat="@drawable/rac" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/shopName1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -65,7 +66,7 @@
 
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/storeLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
@@ -75,7 +76,7 @@
                 android:text="Rue de Tamis , Tunis"
                 android:textColor="#949494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView8"
+                app:layout_constraintTop_toBottomOf="@+id/shopName1"
                 android:layout_marginLeft="12dp" />
 
             <com.github.florent37.shapeofview.shapes.RoundRectView
@@ -85,7 +86,7 @@
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView10"
+                app:layout_constraintTop_toBottomOf="@+id/storeLocation"
                 app:shape_roundRect_borderColor="#F1EEF5"
                 app:shape_roundRect_borderWidth="2dp"
                 app:shape_roundRect_bottomLeftRadius="10dp"
@@ -123,7 +124,7 @@
                 android:layout_marginLeft="32dp" />
 
             <TextView
-                android:id="@+id/textView22"
+                android:id="@+id/openingHour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="8:30AM-6:00PM"
@@ -146,7 +147,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/textView13"
-                app:layout_constraintStart_toStartOf="@+id/textView10"
+                app:layout_constraintStart_toStartOf="@+id/storeLocation"
                 app:layout_constraintTop_toBottomOf="@+id/textView26"
                 android:layout_marginLeft="80dp" />
 
@@ -176,10 +177,10 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:background="@color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/textView8"
+                app:layout_constraintBottom_toBottomOf="@+id/shopName1"
                 app:layout_constraintEnd_toEndOf="@+id/imageView24"
                 app:layout_constraintHorizontal_bias="0.483"
-                app:layout_constraintStart_toEndOf="@+id/textView10"
+                app:layout_constraintStart_toEndOf="@+id/storeLocation"
                 app:layout_constraintTop_toTopOf="@+id/guideline11"
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/direction" />
@@ -206,9 +207,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView10"
+                app:layout_constraintBottom_toBottomOf="@+id/storeLocation"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView10"
+                app:layout_constraintTop_toTopOf="@+id/storeLocation"
                 app:srcCompat="@drawable/ppin"
                 android:layout_marginLeft="16dp" />
 
@@ -253,7 +254,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/shopDesc1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -277,7 +278,7 @@
                 android:textColor="#EB9069"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@id/imageView24"
-                app:layout_constraintTop_toBottomOf="@+id/textView15"
+                app:layout_constraintTop_toBottomOf="@+id/shopDesc1"
                 android:layout_marginLeft="24dp" />
 
             <androidx.recyclerview.widget.RecyclerView

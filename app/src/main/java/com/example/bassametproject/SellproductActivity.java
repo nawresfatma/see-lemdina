@@ -24,7 +24,7 @@ import java.util.List;
 public class SellproductActivity extends AppCompatActivity {
     ImageView product ;
     RecyclerView recycler;
-
+    String soukName;
     SnapHelper snapHelper;
   adapterShops myAdapt;
 

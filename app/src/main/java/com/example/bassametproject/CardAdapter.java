@@ -1,5 +1,6 @@
 package com.example.bassametproject;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -9,19 +10,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> {
-    ArrayList<Card> CardList;
+    ArrayList<soukList> CardList;
     Context c;
+    public static soukList soukStatic;
+    public static  String shops="souk";
 
-    public CardAdapter(ArrayList<Card> list){
-        this.CardList = list;
+    public CardAdapter(ArrayList<soukList> cardList, Context c) {
+        CardList = cardList;
+        this.c = c;
     }
-
-
 
     @NonNull
     @Override
@@ -33,16 +38,23 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        final soukList souk =CardList.get(position);
+        holder.myText.setText(souk.getSoukName());
+        Picasso.get().load(CardList.get(position).getVidioUrl()).into(holder.myImage);
 
-        holder.myText.setText(CardList.get(position).getTitle());
-        holder.myImage.setImageResource(R.drawable.soukberk);
+        //const
+        holder.itemSouk.setOnClickListener(new View.OnClickListener(){
 
-       holder.myText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.getContext().startActivity(new Intent(v.getContext(), SellproductActivity.class));
-
-            }});
+              //  ((Activity)c).finish();
+                Intent intent=new Intent(c,SellproductActivity.class);
+                intent.putExtra("soukName", souk.getSoukName());
+                intent.putExtra("soukImage",CardList.get(position).getVidioUrl());
+                soukStatic = souk;
+                c.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -52,6 +64,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView myText;
         ImageView myImage;
+        ConstraintLayout itemSouk;
 
 
         public MyViewHolder(@NonNull View itemView) {
@@ -59,6 +72,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
 
             myText=itemView.findViewById(R.id.mycardtitle);
             myImage=itemView.findViewById(R.id.mycardimage);
+            itemSouk=itemView.findViewById(R.id.itemSouk);
+
 
         }
     }

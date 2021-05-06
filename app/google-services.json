@@ -37,20 +37,12 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:318848837576:android:e94292b122b42f8b8002fd",
+        "mobilesdk_app_id": "1:318848837576:android:358e599cbd9ade6b8002fd",
         "android_client_info": {
           "package_name": "com.example.bassametproject"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "318848837576-56kuciv73ecjtq3unaq9ek5dhglfnqgp.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.bassametproject",
-            "certificate_hash": "48b325abb64e4b29ed808ba10510c4cc9d88f32e"
-          }
-        },
         {
           "client_id": "318848837576-q7gmfhel05ev1k2i2dhqgnpdbnvnqgjn.apps.googleusercontent.com",
           "client_type": 3

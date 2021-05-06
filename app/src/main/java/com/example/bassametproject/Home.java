@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,7 +35,9 @@ public class Home extends AppCompatActivity {
     //storerecycler
     List<StoreItem> StoreItems;
     ScaleCenterItemManager scaleCenterItemManager;
-    StoreAdapter myAdapt ;
+   adapterShops myAdapt ;
+
+
 
 
     @Override
@@ -86,7 +89,7 @@ public class Home extends AppCompatActivity {
 
                     StoreItems.add(data);
                 }
-                myAdapt = new StoreAdapter(StoreItems,Home.this);
+                myAdapt = new adapterShops(StoreItems,Home.this);
                 recycler.setAdapter(myAdapt);
             }
 

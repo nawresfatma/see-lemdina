@@ -1,6 +1,8 @@
 package com.example.bassametproject;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -18,6 +21,8 @@ import java.util.List;
 public class adapterShops extends RecyclerView.Adapter<adapterShops.MyViewHolder> {
     List<StoreItem> StoreItems = new ArrayList<>();
     Context context;
+    public static StoreItem shopStatic;
+    public static  String shops="shops";
 
     public adapterShops(List<StoreItem> storeItems, Context c) {
         StoreItems = storeItems;
@@ -35,11 +40,25 @@ public class adapterShops extends RecyclerView.Adapter<adapterShops.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull adapterShops.MyViewHolder holder, int position) {
-        StoreItem store = StoreItems.get(position);
+       final StoreItem store = StoreItems.get(position);
         holder.shopName.setText(store.getStoreName());
         holder.shopDescription.setText(store.getStoreDescription());
         // holder.myImage.setImageResource(StoreItem.getStoreImage());
       Picasso.get().load(StoreItems.get(position).getStoreImage()).into(holder.shopImage);
+      //const
+        holder.itemSeller.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                ((Activity)context).finish();
+                Intent intent=new Intent(context,Maison.class);
+                intent.putExtra("shopName", store.getStoreName());
+                intent.putExtra("shopDescription",store.getStoreDescription());
+                intent.putExtra("shopImage",StoreItems.get(position).getStoreImage());
+               shopStatic = store;
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -51,12 +70,14 @@ public class adapterShops extends RecyclerView.Adapter<adapterShops.MyViewHolder
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView shopName,shopDescription;
         ImageView shopImage;
+        ConstraintLayout itemSeller;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             shopName=itemView.findViewById(R.id.shopname);
             shopDescription=itemView.findViewById(R.id.shopDescription);
             shopImage=itemView.findViewById(R.id.StoreImage);
+            itemSeller=itemView.findViewById(R.id.itemSeller);
 
         }
     }
