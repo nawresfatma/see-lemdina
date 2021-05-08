@@ -49,7 +49,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             holder.message.setText(messages.get(position).message);
             holder.time.setText(messages.get(position).createdAt);
         } else {
-            holder.image.setImageResource(R.drawable.bot);
+            holder.image.setImageResource(R.drawable.intro_bot);
             if (position+1 >= messages.size()) {
                 holder.is_writing.setVisibility(View.VISIBLE);
                 holder.message.setVisibility(View.GONE);

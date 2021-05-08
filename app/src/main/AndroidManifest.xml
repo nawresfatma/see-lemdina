@@ -10,27 +10,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bassametproject"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".Maison"
+            android:label="Detail"
+            android:parentActivityName=".SellproductActivity" />
+        <activity android:name=".Store"></activity>
         <activity android:name=".Profile" />
         <activity android:name=".LoadActivity" />
         <activity android:name=".Scan" />
         <activity android:name=".Rating" />
         <activity android:name=".activity_products_recycler" />
         <activity android:name=".SellproductActivity" />
-        <activity android:name=".MissionsActivity" />
         <activity android:name=".MarketActivity" />
         <activity android:name=".MapActivity" />
         <activity android:name=".Produits" />
         <activity android:name=".Ranking" />
-        <activity
-            android:name=".Maison"
-            android:label="Detail"
-            android:parentActivityName=".SellproductActivity" />
+
         <activity android:name=".Register" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".Home"/>
-        <activity android:name=".chatbotActivity">
-            <intent-filter>
+        <activity android:name=".Home" />
+        <activity android:name=".chatbotActivity" />
+        <activity android:name=".intro_chatbot"/>
+        <activity android:name=".MissionsActivity">
+        <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -88,7 +89,7 @@ public class chatbotActivity extends AppCompatActivity implements ai.api.AIListe
         }
 
 
-        final AIConfiguration config = new AIConfiguration("239001d3094444b390e30d3e3ea6832b",
+        final AIConfiguration config = new AIConfiguration("6a1e3c3ea493c2a7215b1553ed30e9ad90de6eb3",
                 AIConfiguration.SupportedLanguages.English,
                 AIConfiguration.RecognitionEngine.System);
 
@@ -101,7 +102,7 @@ public class chatbotActivity extends AppCompatActivity implements ai.api.AIListe
         messages_recycler.setLayoutManager(new LinearLayoutManager(this));
 
 
-        dbRef.addValueEventListener(new ValueEventListener() {
+          dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 messages.clear();
@@ -157,6 +158,7 @@ public class chatbotActivity extends AppCompatActivity implements ai.api.AIListe
                             return null;
                         }
 
+                        @SuppressLint("StaticFieldLeak")
                         @Override
                         protected void onPostExecute(AIResponse aiResponse) {
                             if (aiResponse != null || !aiResponse.getResult().getFulfillment().getSpeech().isEmpty()) {
@@ -191,7 +193,7 @@ public class chatbotActivity extends AppCompatActivity implements ai.api.AIListe
             messageKey = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(Calendar.getInstance().getTime());
             addBotMessages(messageKey + "1", result.getFulfillment().getSpeech());
         } else {
-            Toast.makeText(this, "Respond error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(chatbotActivity.this, "Respond error", Toast.LENGTH_SHORT).show();
             messageKey = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(Calendar.getInstance().getTime());
             addBotMessages(messageKey + "1", "Sorry, i didn't get that");
         }

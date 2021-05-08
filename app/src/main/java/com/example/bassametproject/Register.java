@@ -68,7 +68,7 @@ public class Register extends AppCompatActivity {
         mFullName = findViewById(R.id.nametxt);
         mEmail = findViewById(R.id.emailtxt);
         mPassword = findViewById(R.id.passtxt);
-        mRegisterBtn = findViewById(R.id.imageButton);
+        mRegisterBtn = findViewById(R.id.imageButtonchatbot);
         mPassword2 = findViewById(R.id.passtxt);
         mRegisterPhoto = findViewById(R.id.userphoto);
 

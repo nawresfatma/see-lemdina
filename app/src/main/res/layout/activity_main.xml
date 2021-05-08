@@ -85,7 +85,7 @@
                 app:layout_constraintTop_toTopOf="@+id/passwordtxt" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/imageButtonchatbot"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="16dp"
@@ -100,10 +100,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="@+id/imageButton"
-                app:layout_constraintEnd_toEndOf="@+id/imageButton"
-                app:layout_constraintStart_toStartOf="@+id/imageButton"
-                app:layout_constraintTop_toTopOf="@+id/imageButton" />
+                app:layout_constraintBottom_toBottomOf="@+id/imageButtonchatbot"
+                app:layout_constraintEnd_toEndOf="@+id/imageButtonchatbot"
+                app:layout_constraintStart_toStartOf="@+id/imageButtonchatbot"
+                app:layout_constraintTop_toTopOf="@+id/imageButtonchatbot" />
 
             <TextView
                 android:id="@+id/or"
@@ -114,9 +114,9 @@
                 android:textColor="#EB9069"
                 android:textSize="15dp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/imageButton"
-                app:layout_constraintStart_toStartOf="@+id/imageButton"
-                app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+                app:layout_constraintEnd_toEndOf="@+id/imageButtonchatbot"
+                app:layout_constraintStart_toStartOf="@+id/imageButtonchatbot"
+                app:layout_constraintTop_toBottomOf="@+id/imageButtonchatbot" />
 
 
             <com.facebook.login.widget.LoginButton
@@ -172,9 +172,9 @@
                     android:textColor="#000"
                     android:textSize="15dp"
                     android:textStyle="normal"
-                    app:layout_constraintEnd_toEndOf="@+id/imageButton"
-                    app:layout_constraintStart_toStartOf="@+id/imageButton"
-                    app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+                    app:layout_constraintEnd_toEndOf="@+id/imageButtonchatbot"
+                    app:layout_constraintStart_toStartOf="@+id/imageButtonchatbot"
+                    app:layout_constraintTop_toBottomOf="@+id/imageButtonchatbot" />
 
                 <TextView
                     android:id="@+id/signup"
@@ -186,9 +186,9 @@
                     android:textSize="15dp"
                     
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="@+id/imageButton"
-                    app:layout_constraintStart_toStartOf="@+id/imageButton"
-                    app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+                    app:layout_constraintEnd_toEndOf="@+id/imageButtonchatbot"
+                    app:layout_constraintStart_toStartOf="@+id/imageButtonchatbot"
+                    app:layout_constraintTop_toBottomOf="@+id/imageButtonchatbot" />
 
             </LinearLayout>
 

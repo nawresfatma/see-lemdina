@@ -109,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mEmail = findViewById(R.id.emailtxt);
         mPassword = findViewById(R.id.passwordtxt);
-        mLoginBtn = findViewById(R.id.imageButton);
+        mLoginBtn = findViewById(R.id.imageButtonchatbot);
         mCreateBtn = findViewById(R.id.signupbtn);
         mforgetpass = findViewById(R.id.forget);
 
