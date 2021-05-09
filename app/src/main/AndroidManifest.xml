@@ -29,9 +29,13 @@
         <activity android:name=".Register" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".Home" />
-        <activity android:name=".chatbotActivity" />
-        <activity android:name=".intro_chatbot"/>
-        <activity android:name=".MissionsActivity">
+
+
+        <activity android:name=".MissionsActivity"/>
+
+        <activity android:name=".chatbotActivity"
+            android:screenOrientation="portrait"/>
+            <activity android:name=".intro_chatbot">
         <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

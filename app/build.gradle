@@ -27,6 +27,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    // Java V2
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/INDEX.LIST'
+    }
 }
 
 dependencies {
@@ -60,11 +66,12 @@ dependencies {
 
     //chat bot dialogflow
     implementation 'ai.api:sdk:2.0.7@aar'
-    implementation 'ai.api:libai:1.6.12'
+
+    implementation 'io.grpc:grpc-okhttp:1.31.0'
+    implementation 'com.google.cloud:google-cloud-dialogflow:2.0.0'
 
     //chatbot and loading animation
     implementation 'com.agrawalsuneet.androidlibs:dotsloader:1.4'
-
 
 
 }
