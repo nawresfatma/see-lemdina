@@ -38,14 +38,14 @@
                 android:id="@+id/missbut"
                 android:layout_width="127dp"
                 android:layout_height="111dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
                 android:paddingLeft="10dp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView7"
+                app:layout_constraintBottom_toBottomOf="@+id/mapbut"
                 app:layout_constraintEnd_toStartOf="@+id/gRight"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.625"
                 app:layout_constraintStart_toStartOf="@+id/guideline16"
-                app:layout_constraintTop_toTopOf="@+id/guideBot"
+                app:layout_constraintTop_toTopOf="@+id/mapbut"
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/rectangle" />
 
@@ -56,7 +56,7 @@
                 android:layout_marginBottom="80dp"
                 android:foregroundGravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline16"
+                app:layout_constraintEnd_toStartOf="@+id/missbut"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline15"
                 app:layout_constraintTop_toTopOf="@+id/guideBot"
@@ -81,22 +81,20 @@
                 android:layout_marginRight="822dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintGuide_begin="391dp" />
+                app:layout_constraintGuide_begin="380dp" />
+
 
             <ImageView
                 android:id="@+id/marketbut"
                 android:layout_width="118dp"
                 android:layout_height="111dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView7"
                 app:layout_constraintEnd_toStartOf="@+id/guideline15"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.285"
                 app:layout_constraintStart_toStartOf="@id/gLeft"
                 app:layout_constraintTop_toTopOf="@+id/guideBot"
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/rectangle" />
-
 
             <TextView
                 android:id="@+id/textView"
@@ -113,6 +111,19 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@id/gLeft"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView29"
+                android:layout_width="133dp"
+                android:layout_height="144dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/gRight"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/guideline16"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerMarket"
+                app:srcCompat="@drawable/cube" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerMarket"
@@ -143,15 +154,16 @@
 
             <TextView
                 android:id="@+id/textView5"
-                android:layout_width="230dp"
-                android:layout_height="73dp"
+                android:layout_width="208dp"
+                android:layout_height="68dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="12dp"
                 android:lineSpacingExtra="9dp"
                 android:text="By choosing one of the bellow option you\n help us to provide you with the experience that\nfits you"
                 android:textSize="10dp"
-                app:layout_constraintEnd_toStartOf="@+id/imageView18"
+                app:layout_constraintEnd_toStartOf="@+id/guideline16"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@id/gLeft"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -161,11 +173,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
                 android:layout_marginLeft="28dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="24dp"
                 android:text="Features"
                 android:textColor="#FA845F"
                 android:textSize="24sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@id/gLeft"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
@@ -173,11 +187,12 @@
                 android:id="@+id/guideBot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="406dp"
                 android:layout_marginRight="406dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintGuide_percent="0.75"
+                app:layout_constraintGuide_percent="0.79"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -185,9 +200,9 @@
                 android:id="@+id/imageView2"
                 android:layout_width="152dp"
                 android:layout_height="46dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
 
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="@id/gLeft"
                 app:layout_constraintTop_toBottomOf="@+id/textView5"
@@ -237,7 +252,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_begin="141dp"
+                app:layout_constraintGuide_begin="122dp"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <androidx.constraintlayout.widget.Guideline
@@ -245,7 +260,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_begin="254dp"
+                app:layout_constraintGuide_begin="229dp"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
@@ -260,6 +275,7 @@
                 android:textSize="13sp"
                 app:layout_constraintStart_toStartOf="@+id/mapbut"
                 app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+
 
             <ImageView
                 android:id="@+id/imageView12"
@@ -289,16 +305,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
-            <ImageView
-                android:id="@+id/imageView18"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toStartOf="@+id/gRight"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerMarket"
-                app:srcCompat="@drawable/cube" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

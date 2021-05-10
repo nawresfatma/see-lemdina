@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.bassametproject"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -72,6 +72,15 @@ dependencies {
 
     //chatbot and loading animation
     implementation 'com.agrawalsuneet.androidlibs:dotsloader:1.4'
+
+//MAPBOX
+
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1'
+
+    implementation 'com.mapbox.navigation:ui:1.5.1'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-building-v9:0.7.0'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-places-v9:0.12.0'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-locationlayer:0.11.0'
 
 
 }

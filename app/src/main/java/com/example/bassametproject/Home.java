@@ -116,7 +116,7 @@ public class Home extends AppCompatActivity {
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentLoadNewActivity = new Intent(Home.this, MapActivity.class);
+                Intent intentLoadNewActivity = new Intent(Home.this, MapBoxActivity.class);
                 //normalement bel map
                 startActivity(intentLoadNewActivity);
 
