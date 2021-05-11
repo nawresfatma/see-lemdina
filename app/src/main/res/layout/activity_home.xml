@@ -35,7 +35,7 @@
                 app:srcCompat="@drawable/menu" />
 
             <ImageView
-                android:id="@+id/missbut"
+                android:id="@+id/Achievements"
                 android:layout_width="127dp"
                 android:layout_height="111dp"
                 android:layout_marginEnd="32dp"
@@ -56,7 +56,7 @@
                 android:layout_marginBottom="80dp"
                 android:foregroundGravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/missbut"
+                app:layout_constraintEnd_toStartOf="@+id/Achievements"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline15"
                 app:layout_constraintTop_toTopOf="@+id/guideBot"
@@ -68,9 +68,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
                 android:orientation="vertical"
-                app:layout_constraintGuide_begin="11dp"
+                app:layout_constraintGuide_begin="10dp"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <androidx.constraintlayout.widget.Guideline
@@ -112,6 +111,7 @@
                 app:layout_constraintStart_toStartOf="@id/gLeft"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
             <ImageView
                 android:id="@+id/imageView29"
                 android:layout_width="133dp"
@@ -123,7 +123,7 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline16"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerMarket"
-                app:srcCompat="@drawable/cube" />
+                app:srcCompat="@drawable/cube1" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerMarket"
@@ -224,11 +224,11 @@
                 android:id="@+id/Achivements"
                 android:layout_width="60dp"
                 android:layout_height="59dp"
-                app:layout_constraintBottom_toBottomOf="@+id/missbut"
-                app:layout_constraintEnd_toEndOf="@+id/missbut"
+                app:layout_constraintBottom_toBottomOf="@+id/Achievements"
+                app:layout_constraintEnd_toEndOf="@+id/Achievements"
                 app:layout_constraintHorizontal_bias="0.867"
                 app:layout_constraintStart_toEndOf="@+id/mapbut"
-                app:layout_constraintTop_toTopOf="@+id/missbut"
+                app:layout_constraintTop_toTopOf="@+id/Achievements"
                 app:layout_constraintVertical_bias="0.072"
                 app:srcCompat="@drawable/supercup" />
 
@@ -242,8 +242,8 @@
                 android:text="Achivements"
                 android:textColor="#000000"
                 android:textSize="13sp"
-                app:layout_constraintBottom_toBottomOf="@+id/missbut"
-                app:layout_constraintStart_toStartOf="@+id/missbut"
+                app:layout_constraintBottom_toBottomOf="@+id/Achievements"
+                app:layout_constraintStart_toStartOf="@+id/Achievements"
                 app:layout_constraintTop_toBottomOf="@+id/Achivements"
                 app:layout_constraintVertical_bias="1.0" />
 
@@ -312,23 +312,18 @@
     </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="412dp"
-        android:layout_height="60dp"
-        app:itemBackground="@color/white"
-        app:itemIconTint="@color/black"
+        android:id="@+id/navView"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        app:itemTextColor="@color/black"
+        app:itemIconSize="59dp"
+        android:background="@drawable/navcust"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bar_menu">
 
-        <ImageButton
-            android:id="@+id/imageButton5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/white"
-            android:onClick="ScanInterface"
-            app:srcCompat="@drawable/scann" />
+
+        app:menu="@menu/bar_menu">
 
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>

@@ -211,7 +211,7 @@ public class Register extends AppCompatActivity {
 
                                 Toast.makeText(com.example.bassametproject.Register.this,"User Created",Toast.LENGTH_SHORT).show();
                                 uploadPicture();
-                                Intent i = new Intent(Register.this, Produits.class);
+                                Intent i = new Intent(Register.this, LoginActivity.class);
                                 startActivity(i);
                             }
                             else

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bassametproject"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".Achievements"></activity>
         <activity
             android:name=".Maison"
             android:label="Detail"
@@ -23,18 +23,17 @@
         <activity android:name=".activity_products_recycler" />
         <activity android:name=".SellproductActivity" />
         <activity android:name=".MarketActivity" />
+        <activity android:name=".MapBoxActivity" />
         <activity android:name=".Produits" />
         <activity android:name=".Ranking" />
         <activity android:name=".Register" />
-        <activity android:name=".Home" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".intro_chatbot" />
         <activity android:name=".MissionsActivity" />
         <activity
             android:name=".chatbotActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".intro_chatbot" />
-
-        <activity android:name=".MapBoxActivity"/>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

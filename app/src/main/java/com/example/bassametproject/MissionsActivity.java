@@ -1,13 +1,17 @@
 package com.example.bassametproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
@@ -42,6 +46,20 @@ public class MissionsActivity extends AppCompatActivity {
                 startActivity(intentLoadNewActivity);
 
             }
+        });
+
+        BottomNavigationView navView=findViewById(R.id.navView);
+        navView.setItemIconTintList(null);
+
+        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                item.getItemId();
+                startActivity(new Intent(getApplicationContext(), Scan.class));
+                overridePendingTransition(0, 0);
+                return true;
+            }
+
         });
 
     }

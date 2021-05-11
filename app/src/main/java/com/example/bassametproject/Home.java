@@ -2,9 +2,9 @@ package com.example.bassametproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,6 +37,7 @@ public class Home extends AppCompatActivity {
     List<StoreItem> StoreItems;
     ScaleCenterItemManager scaleCenterItemManager;
    adapterShops myAdapt ;
+   ImageView Achievements;
 
 
 
@@ -44,6 +46,7 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         recycler=findViewById(R.id.recyclerMarket);
         //stores
         snapHelper = new LinearSnapHelper();
@@ -51,7 +54,24 @@ public class Home extends AppCompatActivity {
         recycler.setLayoutManager(new LinearLayoutManager(this));
         recycler.setLayoutManager(scaleCenterItemManager);
         snapHelper.attachToRecyclerView(recycler);
+        Achievements=findViewById(R.id.Achievements);
+        //BottomNavigation
+        BottomNavigationView navView=findViewById(R.id.navView);
+        navView.setItemIconTintList(null);
+
+        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                item.getItemId();
+                startActivity(new Intent(getApplicationContext(), Scan.class));
+                overridePendingTransition(0, 0);
+                return true;
+            }
+
+        });
+        //endNavBott
         //events
+
      /*
         com.example.bassametproject.ScaleCenterItemManager scaleCenterItemManager= new com.example.bassametproject.ScaleCenterItemManager(this, LinearLayoutManager.HORIZONTAL,false);
         recycler3.setLayoutManager(new LinearLayoutManager(this));
@@ -103,7 +123,7 @@ public class Home extends AppCompatActivity {
         //INTENTS
         market=findViewById(R.id.marketbut);
         map=findViewById(R.id.mapbut);
-        missions=findViewById(R.id.missbut);
+        missions=findViewById(R.id.Achievements);
         market.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,9 +153,16 @@ public class Home extends AppCompatActivity {
             }
         });
 
+        Achievements.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentLoadNewActivity = new Intent(Home.this, Achievements.class);
+                startActivity(intentLoadNewActivity);
+
+            }
+        });
+
+
     }
-    public void ScanInterface (View v){
-        Intent intentLoadNewActivity = new Intent(Home.this, Scan.class);
-        startActivity(intentLoadNewActivity);
-    }
+
 }

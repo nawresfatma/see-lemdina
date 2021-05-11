@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <item android:id="@+id/scan"
-        android:icon="@drawable/scann"
-        android:title="scan"
+        android:icon="@drawable/scan_selector"
+        android:title=""
+
+
         >
 
     </item>

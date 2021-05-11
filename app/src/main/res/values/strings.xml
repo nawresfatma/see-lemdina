@@ -36,7 +36,9 @@
     <string name="user_location_permission_not_granted" translatable="false">You didn\'t grant location permissions.</string>
 
     <string name="title_activity_maps">Map</string>
-
+    <string name="title_activity_main_activitytest">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_scan">scann</string>
 
 
 </resources>
