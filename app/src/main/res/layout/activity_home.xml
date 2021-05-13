@@ -38,14 +38,13 @@
                 android:id="@+id/Achievements"
                 android:layout_width="127dp"
                 android:layout_height="111dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginRight="32dp"
+                android:layout_marginStart="8dp"
                 android:paddingLeft="10dp"
-                app:layout_constraintBottom_toBottomOf="@+id/mapbut"
+                app:layout_constraintBottom_toBottomOf="@id/mapbut"
                 app:layout_constraintEnd_toStartOf="@+id/gRight"
-                app:layout_constraintHorizontal_bias="0.625"
+                app:layout_constraintHorizontal_bias="0.761"
                 app:layout_constraintStart_toStartOf="@+id/guideline16"
-                app:layout_constraintTop_toTopOf="@+id/mapbut"
+                app:layout_constraintTop_toTopOf="@id/guideBot"
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/rectangle" />
 
@@ -65,6 +64,7 @@
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gLeft"
+                app:layout_constraintGuide_percent="0.06"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -76,11 +76,11 @@
                 android:id="@+id/gRight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="822dp"
-                android:layout_marginRight="822dp"
+                android:layout_marginEnd="780dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintGuide_begin="380dp" />
+                app:layout_constraintGuide_begin="395dp"
+                app:layout_constraintGuide_percent="0.9" />
 
 
             <ImageView
@@ -116,9 +116,7 @@
                 android:id="@+id/imageView29"
                 android:layout_width="133dp"
                 android:layout_height="144dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginTop="28dp"
                 app:layout_constraintEnd_toStartOf="@+id/gRight"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline16"
@@ -142,8 +140,6 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="12dp"
                 android:text="SCAN ME"
                 android:textColor="#FA845F"
@@ -156,8 +152,6 @@
                 android:id="@+id/textView5"
                 android:layout_width="208dp"
                 android:layout_height="68dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="12dp"
                 android:lineSpacingExtra="9dp"
                 android:text="By choosing one of the bellow option you\n help us to provide you with the experience that\nfits you"
@@ -171,8 +165,6 @@
                 android:id="@+id/features"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginLeft="28dp"
                 android:layout_marginTop="24dp"
                 android:text="Features"
                 android:textColor="#FA845F"
@@ -252,7 +244,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_begin="122dp"
+                app:layout_constraintGuide_begin="128dp"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <androidx.constraintlayout.widget.Guideline
@@ -260,7 +252,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_begin="229dp"
+                app:layout_constraintGuide_begin="238dp"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView

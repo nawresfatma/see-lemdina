@@ -28,7 +28,7 @@ public class adapterAccessory extends RecyclerView.Adapter<adapterAccessory.MyVi
         ListProduct product=accessoryList.get(position);
         holder.prodName.setText(product.getProdName());
         holder.prodPrice.setText(product.getProdPrice());
-        Picasso.get().load(accessoryList.get(position).getProd()).into(holder.prodImg1);
+        Picasso.get().load(accessoryList.get(position).getProd()).resize(500,300).into(holder.prodImg1);
     }
 
 

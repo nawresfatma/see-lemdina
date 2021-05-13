@@ -23,10 +23,10 @@
         android:id="@+id/prodName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:text="Title"
-        android:textSize="20dp"
         android:textColor="@color/black"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/imageView62"
         app:layout_constraintHorizontal_bias="0.16"
@@ -37,13 +37,13 @@
         android:id="@+id/prod"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:background="@drawable/balbal"
-        android:padding="6dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView62"
+        app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toStartOf="@+id/imageView62"
-        app:layout_constraintTop_toTopOf="@+id/imageView62" />
+        app:layout_constraintTop_toTopOf="@+id/imageView62"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
         android:id="@+id/green"

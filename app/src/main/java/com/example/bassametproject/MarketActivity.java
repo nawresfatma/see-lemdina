@@ -36,7 +36,22 @@ public class MarketActivity extends AppCompatActivity{
         recyclerSouk=findViewById(R.id.recyclerView);
 
         recyclerSouk.setLayoutManager(new LinearLayoutManager(this));
+ //navbott
+        BottomNavigationView navView=findViewById(R.id.navView);
+        navView.setItemIconTintList(null);
 
+
+
+        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                item.getItemId();
+                startActivity(new Intent(getApplicationContext(), Scan.class));
+                overridePendingTransition(0, 0);
+                return true;
+            }
+
+        });
 
 //Firebase(Stores)
         soukRef= FirebaseDatabase.getInstance().getReference("Souk");
@@ -69,6 +84,7 @@ public class MarketActivity extends AppCompatActivity{
         Intent intentLoadNewActivity = new Intent(MarketActivity.this, Maison.class);
         startActivity(intentLoadNewActivity);
     }
+
 
 
     }

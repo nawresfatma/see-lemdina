@@ -3,6 +3,7 @@
     package="com.example.bassametproject">
 
     <application
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,16 +16,16 @@
             android:name=".Maison"
             android:label="Detail"
             android:parentActivityName=".SellproductActivity" />
-        <activity android:name=".Store" />
+        <activity android:name=".Store" android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Profile" />
         <activity android:name=".LoadActivity" />
         <activity android:name=".Scan" />
         <activity android:name=".Rating" />
         <activity android:name=".activity_products_recycler" />
         <activity android:name=".SellproductActivity" />
-        <activity android:name=".MarketActivity" />
+        <activity android:name=".MarketActivity" android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".MapBoxActivity" />
-        <activity android:name=".Produits" />
+        <activity android:name=".Produits" android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".Ranking" />
         <activity android:name=".Register" />
         <activity android:name=".LoginActivity" />

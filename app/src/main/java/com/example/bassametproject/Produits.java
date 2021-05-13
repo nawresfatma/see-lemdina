@@ -10,10 +10,12 @@ import androidx.recyclerview.widget.SnapHelper;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,7 +52,19 @@ public class Produits extends AppCompatActivity {
        // recycler2.setLayoutManager(new LinearLayoutManager(this));
         //recycler2.setLayoutManager(scaleCenterItemManager);
 
+        BottomNavigationView navView=findViewById(R.id.navView);
+        navView.setItemIconTintList(null);
 
+        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                item.getItemId();
+                startActivity(new Intent(getApplicationContext(), Scan.class));
+                overridePendingTransition(0, 0);
+                return true;
+            }
+
+        });
         //Firebase
         ref = FirebaseDatabase.getInstance().getReference().child("shops").child("store1").child("products");
         ref.addValueEventListener(new ValueEventListener() {
