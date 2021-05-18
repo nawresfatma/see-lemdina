@@ -120,11 +120,11 @@
                 app:layout_constraintEnd_toStartOf="@+id/gRight"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline16"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerMarket"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerMarkett"
                 app:srcCompat="@drawable/cube1" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerMarket"
+                android:id="@+id/recyclerMarkett"
                 android:layout_width="match_parent"
                 android:layout_height="330dp"
                 android:layout_marginStart="10dp"
@@ -146,7 +146,7 @@
                 android:textSize="24sp"
 
                 app:layout_constraintStart_toStartOf="@id/gLeft"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerMarket" />
+                app:layout_constraintTop_toBottomOf="@+id/recyclerMarkett" />
 
             <TextView
                 android:id="@+id/textView5"

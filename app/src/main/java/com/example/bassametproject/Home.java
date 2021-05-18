@@ -39,15 +39,12 @@ public class Home extends AppCompatActivity {
    adapterShops myAdapt ;
    ImageView Achievements;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        recycler=findViewById(R.id.recyclerMarket);
+        recycler=findViewById(R.id.recyclerMarkett);
         //stores
         snapHelper = new LinearSnapHelper();
         scaleCenterItemManager = new ScaleCenterItemManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -105,7 +102,7 @@ public class Home extends AppCompatActivity {
                 StoreItems=new ArrayList<>();
                 for(DataSnapshot ds:dataSnapshot.getChildren()){
                     StoreItem data=ds.getValue(StoreItem.class);
-                    Toast.makeText(Home.this, data.toString(), Toast.LENGTH_LONG).show();
+                 //   Toast.makeText(Home.this, data.getStoreImage().toString(),Toast.LENGTH_LONG).show();
 
                     StoreItems.add(data);
                 }

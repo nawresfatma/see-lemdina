@@ -21,7 +21,7 @@ import java.util.List;
 public class adapterShops extends RecyclerView.Adapter<adapterShops.MyViewHolder> {
     List<StoreItem> StoreItems = new ArrayList<>();
     Context context;
-    public static StoreItem shopStatic;
+    public static StoreItem shop;
     public static  String shops="shops";
 
     public adapterShops(List<StoreItem> storeItems, Context c) {
@@ -43,19 +43,16 @@ public class adapterShops extends RecyclerView.Adapter<adapterShops.MyViewHolder
        final StoreItem store = StoreItems.get(position);
         holder.shopName.setText(store.getStoreName());
         holder.shopDescription.setText(store.getStoreDescription());
-        // holder.myImage.setImageResource(StoreItem.getStoreImage());
-      Picasso.get().load(StoreItems.get(position).getStoreImage()).into(holder.shopImage);
-      //const
-        holder.itemSeller.setOnClickListener(new View.OnClickListener(){
+       // holder.shopImage.setImageResource(R.drawable.rajell);
+     Picasso.get().load(StoreItems.get(position).getStoreImage()).into(holder.shopImage);
 
+      //const
+        holder.item.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 ((Activity)context).finish();
                 Intent intent=new Intent(context,Maison.class);
-                intent.putExtra("shopName", store.getStoreName());
-                intent.putExtra("shopDescription",store.getStoreDescription());
-                intent.putExtra("shopImage",StoreItems.get(position).getStoreImage());
-               shopStatic = store;
+               shop = store;
                 context.startActivity(intent);
             }
         });
@@ -70,14 +67,14 @@ public class adapterShops extends RecyclerView.Adapter<adapterShops.MyViewHolder
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView shopName,shopDescription;
         ImageView shopImage;
-        ConstraintLayout itemSeller;
+        ConstraintLayout item;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             shopName=itemView.findViewById(R.id.shopname);
             shopDescription=itemView.findViewById(R.id.shopDescription);
-            shopImage=itemView.findViewById(R.id.StoreImage);
-            itemSeller=itemView.findViewById(R.id.itemSeller);
+            shopImage=itemView.findViewById(R.id.img);
+            item=itemView.findViewById(R.id.itemSeller);
 
         }
     }

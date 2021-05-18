@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.SnapHelper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,7 +53,8 @@ public class Maison extends AppCompatActivity {
     private FirebaseAuth fAuth;
     private FirebaseUser user;
     public String username, userphotourl;
-
+//map dialogue
+    ImageButton getdirection;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -70,6 +72,7 @@ public class Maison extends AppCompatActivity {
         openHour=findViewById(R.id.openingHour);
         getData();
         setData();
+
 
        //accessory
         recyclerAccessory=findViewById(R.id.moreaccessory1);
@@ -125,11 +128,19 @@ desc=getIntent().getStringExtra("shopDescription");
     private void setData(){
 /*shopName.setText(name);
 shopDescription.setText(desc);*/
-        storeLocation.setText(adapterShops.shopStatic.getStoreLocation());
-        shopName.setText(adapterShops.shopStatic.getStoreName());
-        shopDescription.setText(adapterShops.shopStatic.getStoreDescription());
-        openHour.setText(adapterShops.shopStatic.getOpeningHour());
+        storeLocation.setText(adapterShops.shop.getStoreLocation());
+        shopName.setText(adapterShops.shop.getStoreName());
+        shopDescription.setText(adapterShops.shop.getStoreDescription());
+        openHour.setText(adapterShops.shop.getOpeningHour());
     }
+    //map dialog
+    public void openMapDialog(View view)
+    {
+        finish();
+        Intent intent = new Intent(Maison.this , MapBoxActivity.class);
+        startActivity(intent);
+    }
+
     public void RateInterface (View v){
         Intent intentLoadNewActivity = new Intent(Maison.this, Rating.class);
         startActivity(intentLoadNewActivity);

@@ -9,7 +9,7 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.2'
+        classpath 'com.android.tools.build:gradle:4.2.0'
         classpath 'com.google.gms:google-services:4.3.5'
 
 
@@ -37,6 +37,7 @@ allprojects {
                 password = project.properties['MAPBOX_DOWNLOADS_TOKEN'] ?: "sk.eyJ1IjoibmF3cmVzOTkiLCJhIjoiY2ttNHV4ZHRyMDdkdDJycXRweWIxaDI3YSJ9.NkB9jySCSOsxINu_FQK63g"
             }
     }
+        mavenCentral()
         maven { url 'https://mapbox.bintray.com/mapbox' }
 }}
 

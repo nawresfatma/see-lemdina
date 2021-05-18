@@ -40,7 +40,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final soukList souk =CardList.get(position);
         holder.myText.setText(souk.getSoukName());
-        Picasso.get().load(CardList.get(position).getVidioUrl()).into(holder.myImage);
+       Picasso.get().load(CardList.get(position).getVidioUrl()).into(holder.myImage);
 
         //const
         holder.itemSouk.setOnClickListener(new View.OnClickListener(){
