@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Ranking extends AppCompatActivity {
-    private ArrayList<String> menus;
+
     private DatabaseReference refRank;
     private RecyclerView recyclerViewRank;
     private ArrayList<User> listRank;
@@ -78,27 +78,27 @@ public class Ranking extends AppCompatActivity {
 
         listRank = new ArrayList<User>();
 
-        //SearchView Places Names Array List
-        nameSearch = new ArrayList<>();
-        rankSearch = new ArrayList<>();
-        pointSearch = new ArrayList<>();
-        //SearchView Places Names Array List end
 
-     //   watcherlistner();
 
-        refRank = FirebaseDatabase.getInstance().getReference("User");
+     //watcherlistner();
+
+        refRank = FirebaseDatabase.getInstance().getReference().child("User");
         refRank.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+                nameSearch = new ArrayList<String>();
+                rankSearch = new ArrayList<String>();
+                pointSearch = new ArrayList<String>();
                 listRank.clear();
                 int i = 1;
 
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                for (DataSnapshot data: dataSnapshot.getChildren()) {
 
-                    User u = dataSnapshot1.child("user").getValue(User.class);
 
+                    User u =data.child("user").getValue(User.class);
+                    Toast.makeText(Ranking.this, data.toString(),Toast.LENGTH_LONG).show();
                     //SearchView Places Names Array List start
+
                     nameSearch.add(u.getName());
                     rankSearch.add(String.valueOf(i));
                     pointSearch.add(String.valueOf(u.getPoint()));
@@ -177,7 +177,7 @@ public class Ranking extends AppCompatActivity {
 
 
     }
-/*
+
     private void filterSearchRank(String text)
     {
         int i = 0;
@@ -271,7 +271,7 @@ public class Ranking extends AppCompatActivity {
             }
         });
     }
-*/
+
     @Override
     public void onBackPressed() {
         finish();

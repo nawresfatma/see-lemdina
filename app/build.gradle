@@ -13,7 +13,7 @@ android {
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
-
+        ndkVersion "21.4.7075529"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -72,21 +72,22 @@ dependencies {
 
     //chat bot dialogflow
     implementation 'ai.api:sdk:2.0.7@aar'
-
     implementation 'io.grpc:grpc-okhttp:1.31.0'
     implementation 'com.google.cloud:google-cloud-dialogflow:2.0.0'
-
-    //chatbot and loading animation
     implementation 'com.agrawalsuneet.androidlibs:dotsloader:1.4'
 
-//MAPBOX
+//MAPBOX :(
 
-    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1'
-
-    implementation 'com.mapbox.navigation:ui:1.5.1'
+    implementation ('com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1'){
+        exclude group: 'group_name', module: 'module_name'
+    }
+   // implementation 'com.mapbox.navigation:ui:1.5.1'
+    implementation "com.mapbox.navigation:android:2.0.0-beta.10"
+  //  implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation:0.42.6'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.42.6'
     implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-building-v9:0.7.0'
-    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-places-v9:0.12.0'
-    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-locationlayer:0.11.0'
+   implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-places-v9:0.12.0'
+  // implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-locationlayer:0.11.0'
 
 
 }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".Maison">
 
     <ScrollView
@@ -177,13 +178,15 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:background="@color/white"
+                android:onClick="openMapDialog"
                 app:layout_constraintBottom_toBottomOf="@+id/shopName1"
                 app:layout_constraintEnd_toEndOf="@+id/imageView24"
                 app:layout_constraintHorizontal_bias="0.483"
                 app:layout_constraintStart_toEndOf="@+id/storeLocation"
                 app:layout_constraintTop_toTopOf="@+id/guideline11"
                 app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/direction" />
+                app:srcCompat="@drawable/direction"
+                />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline8"

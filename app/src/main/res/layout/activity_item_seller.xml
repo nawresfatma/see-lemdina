@@ -28,11 +28,9 @@
         app:shape_roundRect_topRightRadius="10dp">
 
         <ImageView
-            android:id="@+id/StoreImage"
-            android:layout_width="240dp"
-            android:layout_height="300dp"
-            android:background="@drawable/rajell"
-
+            android:id="@+id/img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             />
 
         <ImageView
@@ -76,7 +74,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView26"
-        app:layout_constraintStart_toStartOf="@+id/description"
+        app:layout_constraintStart_toStartOf="@+id/shopDescription"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

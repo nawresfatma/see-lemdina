@@ -1,25 +1,25 @@
 package com.example.bassametproject;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.gson.JsonObject;
 import com.mapbox.android.core.permissions.PermissionsListener;
 import com.mapbox.android.core.permissions.PermissionsManager;
+import com.mapbox.api.directions.v5.models.DirectionsResponse;
 import com.mapbox.api.directions.v5.models.DirectionsRoute;
 import com.mapbox.api.geocoding.v5.models.CarmenFeature;
 import com.mapbox.geojson.Feature;
@@ -42,18 +42,32 @@ import com.mapbox.mapboxsdk.plugins.places.autocomplete.PlaceAutocomplete;
 import com.mapbox.mapboxsdk.plugins.places.autocomplete.model.PlaceOptions;
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
+import com.mapbox.services.android.navigation.ui.v5.NavigationLauncher;
+import com.mapbox.services.android.navigation.ui.v5.NavigationLauncherOptions;
+import com.mapbox.services.android.navigation.ui.v5.route.NavigationMapRoute;
+import com.mapbox.services.android.navigation.v5.navigation.NavigationRoute;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import timber.log.Timber;
 
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAllowOverlap;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconIgnorePlacement;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
 
-public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener, MapboxMap.OnMapClickListener {
+public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener, MapboxMap.OnMapClickListener
+      {
     private static final String SOURCE_ID = "SOURCE_ID";
     private static final String ICON_ID = "ICON_ID";
     private static final String LAYER_ID = "LAYER_ID";
+
+
     // variables for adding location layer
     private MapView mapView;
     private MapboxMap mapboxMap;
@@ -68,7 +82,7 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
     // variables for calculating and drawing a route
     private DirectionsRoute currentRoute;
     private static final String TAG = "DirectionsActivity";
-    ///private NavigationMapRoute navigationMapRoute;
+    private NavigationMapRoute navigationMapRoute;
     //search variables
     private static final int REQUEST_CODE_AUTOCOMPLETE = 1;
     private CarmenFeature home;
@@ -235,7 +249,25 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
                 buildingPlugin.setVisibility(true);
 
                 addDestinationIconSymbolLayer(style);
+
                 mapboxMap.addOnMapClickListener(MapBoxActivity.this);
+                startButton= findViewById(R.id.startButton);
+                startButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        boolean simulateRoute = true;
+
+                        CameraPosition initialPosition = new CameraPosition.Builder()
+                                .zoom(25.5)
+                                .build();
+
+                        NavigationLauncherOptions options = NavigationLauncherOptions.builder()
+                                .directionsRoute(currentRoute).initialMapCameraPosition(initialPosition).build();
+
+// Call this method with Context from within an Activity
+                        NavigationLauncher.startNavigation(MapBoxActivity.this, options);
+                    }
+                });
 
 
 
@@ -258,83 +290,95 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
         });
     }
 
+          @Override
+          public boolean onMapClick(@NonNull LatLng point) {
 
-
-    /*  private void getRoute(Point origin, Point destination) {
-          NavigationRoute.builder(this)
-                  .accessToken(Mapbox.getAccessToken())
-                  .origin(origin)
-                  .destination(destination)
-                  .build()
-                  .getRoute(new Callback<DirectionsResponse>() {
-             @Override
-              public void onResponse(Call<DirectionsResponse> call, Response<DirectionsResponse> response) {
-  // You can get the generic HTTP info about the response
-                  Log.d(TAG, "Response code: " + response.code());
-                  if (response.body() == null) {
-                      Log.e(TAG, "No routes found, make sure you set the right user and access token.");
-                      return;
-                  } else if (response.body().routes().size() < 1) {
-                      Log.e(TAG, "No routes found");
-                      return;
-                  }
-                  currentRoute = response.body().routes().get(0);
-  // Draw the route on the map
-                  if (navigationMapRoute != null) {
-                      navigationMapRoute.updateRouteVisibilityTo(false);
-                  } else {
-                      navigationMapRoute = new NavigationMapRoute(null, mapView, mapboxMap, R.style.NavigationMapRoute);
-                  }
-                  navigationMapRoute.addRoute(currentRoute);
-                  mapboxProgressBar.setVisibility(View.INVISIBLE);
-                  startButton.setEnabled(true);
-                  startButton.setBackgroundResource(R.color.mapboxBlue);
+              // Point destinationPoint = Point.fromLngLat(point.getLongitude(), point.getLatitude());
+              Point destinationPoint = Point.fromLngLat(adapterShops.shop.getLongitude(), adapterShops.shop.getLatitude());
+              Point originPoint = Point.fromLngLat(locationComponent.getLastKnownLocation().getLongitude(),
+                      locationComponent.getLastKnownLocation().getLatitude());
+              GeoJsonSource source = mapboxMap.getStyle().getSourceAs("destination-source-id");
+              if (source != null) {
+                  source.setGeoJson(Feature.fromGeometry(destinationPoint));
               }
-              @Override
-              public void onFailure(Call<DirectionsResponse> call, Throwable throwable) {
-                  Log.e(TAG, "Error: " + throwable.getMessage());
-              }
-          });
-      } */
-    @SuppressWarnings( {"MissingPermission"})
 
-    private void enableLocationComponent(@NonNull Style loadedMapStyle) {
-        // Check if permissions are enabled and if not request
-        if (PermissionsManager.areLocationPermissionsGranted(this)) {
+              getRoute(originPoint, destinationPoint);
+              mapboxProgressBar.setVisibility(View.VISIBLE);
+              return true;
 
-            // Get an instance of the component
-            LocationComponent locationComponent = mapboxMap.getLocationComponent();
 
-            // Activate with a built LocationComponentActivationOptions object
-            locationComponent.activateLocationComponent(LocationComponentActivationOptions.builder(this,loadedMapStyle ).build());
+          }
 
-            // Enable to make component visible
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return;
-            }
-            locationComponent.setLocationComponentEnabled(true);
 
-            // Set the component's camera mode
-            locationComponent.setCameraMode(CameraMode.TRACKING);
+  private void getRoute(Point origin, Point destination) {
+        NavigationRoute.builder(this)
+                .accessToken(Mapbox.getAccessToken())
+                .origin(origin)
+                .destination(destination)
+                .build()
+                .getRoute(new Callback<DirectionsResponse>() {
+                    @Override
+                    public void onResponse(@NotNull Call<DirectionsResponse> call, @NotNull Response<DirectionsResponse> response) {
+// You can get the generic HTTP info about the response
+                        Timber.tag(TAG).d("Response code: %s", response.code());
+                        if (response.body() == null) {
+                            Timber.e("No routes found, make sure you set the right user and access token.");
+                            return;
+                        } else if (response.body().routes().size() < 1) {
+                            Log.e(TAG, "No routes found");
+                            return;
+                        }
 
-            // Set the component's render mode
-            locationComponent.setRenderMode(RenderMode.COMPASS);
+                        currentRoute = response.body().routes().get(0);
+                        // Draw the route on the map
+                        if (navigationMapRoute != null) {
+                            navigationMapRoute.updateRouteVisibilityTo(false);
+                        } else {
+                            navigationMapRoute = new NavigationMapRoute(null,mapView, mapboxMap, R.style.NavigationMapRoute);                        }
+                        navigationMapRoute.addRoute(currentRoute);
+                        mapboxProgressBar.setVisibility(View.INVISIBLE);
+                        startButton.setEnabled(true);
+                        startButton.setBackgroundResource(R.color.mapboxBlue);
 
-        } else {
-
-            permissionsManager = new PermissionsManager(this);
-
-            permissionsManager.requestLocationPermissions(this);
-
-        }
     }
+
+                    @Override
+                    public void onFailure(Call<DirectionsResponse> call, Throwable t) {
+                        Log.e(TAG, "Error: " + t.getMessage());
+                    }
+                });
+    }
+
+
+                    @SuppressWarnings( {"MissingPermission"})
+          private void enableLocationComponent( @NonNull Style loadedMapStyle) {
+
+              // Check if permissions are enabled and if not request
+              if (PermissionsManager.areLocationPermissionsGranted(this)) {
+
+                  // Get an instance of the component
+                  LocationComponent locationComponent = mapboxMap.getLocationComponent();
+
+                  // Activate with a built LocationComponentActivationOptions object
+                  locationComponent.activateLocationComponent(LocationComponentActivationOptions.builder(this, loadedMapStyle).build());
+
+                  // Enable to make component visible
+                  locationComponent.setLocationComponentEnabled(true);
+
+                  // Set the component's camera mode
+                  locationComponent.setCameraMode(CameraMode.TRACKING);
+
+                  // Set the component's render mode
+                  locationComponent.setRenderMode(RenderMode.COMPASS);
+
+              } else {
+
+                  permissionsManager = new PermissionsManager(this);
+
+                  permissionsManager.requestLocationPermissions(this);
+
+              }
+          }
 
 
     @Override
@@ -392,14 +436,13 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
         mapView.onDestroy();
     }
 
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         mapView.onSaveInstanceState(outState);
     }
 
-    @Override
-    public boolean onMapClick(@NonNull LatLng point) {
-        return false;
-    }
+
+
 }
