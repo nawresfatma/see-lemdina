@@ -142,7 +142,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/emailtxt" />
 
             <ImageButton
-                android:id="@+id/imageButtonchatbot"
+                android:id="@+id/menubutt"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="36dp"
@@ -162,20 +162,20 @@
                 android:visibility="invisible"
                 android:textSize="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/imageButtonchatbot"
+                app:layout_constraintEnd_toEndOf="@+id/menubutt"
                 app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="@+id/imageButtonchatbot" />
+                app:layout_constraintStart_toStartOf="@+id/menubutt" />
 
             <ProgressBar
                 android:id="@+id/registerprogressbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/imageButtonchatbot"
-                app:layout_constraintEnd_toEndOf="@+id/imageButtonchatbot"
+                app:layout_constraintBottom_toBottomOf="@+id/menubutt"
+                app:layout_constraintEnd_toEndOf="@+id/menubutt"
                 app:layout_constraintHorizontal_bias="0.495"
                 android:visibility="invisible"
-                app:layout_constraintStart_toStartOf="@+id/imageButtonchatbot"
-                app:layout_constraintTop_toTopOf="@+id/imageButtonchatbot"
+                app:layout_constraintStart_toStartOf="@+id/menubutt"
+                app:layout_constraintTop_toTopOf="@+id/menubutt"
                 app:layout_constraintVertical_bias="1.0" />
 
             <androidx.constraintlayout.widget.Guideline

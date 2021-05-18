@@ -17,7 +17,7 @@ public class intro_chatbot extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro_chatbot);
 intentText=findViewById(R.id.btn_txt);
-btnImage=findViewById(R.id.imageButtonchatbot);
+btnImage=findViewById(R.id.menubutt);
         intentText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

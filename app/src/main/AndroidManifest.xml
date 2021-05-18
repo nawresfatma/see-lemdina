@@ -3,7 +3,6 @@
     package="com.example.bassametproject">
 
     <application
-
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,21 +10,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bassametproject"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Achievements"></activity>
+        <activity android:name=".TestActivity"></activity>
+        <activity android:name=".Achievements" />
         <activity
             android:name=".Maison"
             android:label="Detail"
             android:parentActivityName=".SellproductActivity" />
-        <activity android:name=".Store" android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Store"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Profile" />
         <activity android:name=".LoadActivity" />
         <activity android:name=".Scan" />
         <activity android:name=".Rating" />
         <activity android:name=".activity_products_recycler" />
         <activity android:name=".SellproductActivity" />
-        <activity android:name=".MarketActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".MarketActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".MapBoxActivity" />
-        <activity android:name=".Produits" android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".Produits"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Ranking" />
         <activity android:name=".Register" />
         <activity android:name=".LoginActivity" />

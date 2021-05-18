@@ -41,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <ImageButton
-        android:id="@+id/imageButtonchatbot"
+        android:id="@+id/menubutt"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
@@ -57,10 +57,10 @@
         android:text="Lets Talk"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButtonchatbot"
-        app:layout_constraintEnd_toEndOf="@+id/imageButtonchatbot"
-        app:layout_constraintStart_toStartOf="@+id/imageButtonchatbot"
-        app:layout_constraintTop_toTopOf="@+id/imageButtonchatbot" />
+        app:layout_constraintBottom_toBottomOf="@+id/menubutt"
+        app:layout_constraintEnd_toEndOf="@+id/menubutt"
+        app:layout_constraintStart_toStartOf="@+id/menubutt"
+        app:layout_constraintTop_toTopOf="@+id/menubutt" />
 
     <ImageView
         android:id="@+id/imageView21"
@@ -69,7 +69,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/btn_txt"
         app:layout_constraintEnd_toStartOf="@+id/btn_txt"
         app:layout_constraintHorizontal_bias="0.851"
-        app:layout_constraintStart_toStartOf="@+id/imageButtonchatbot"
+        app:layout_constraintStart_toStartOf="@+id/menubutt"
         app:layout_constraintTop_toTopOf="@+id/btn_txt"
         app:srcCompat="@drawable/bubble" />
 
@@ -97,7 +97,7 @@
         android:layout_marginLeft="256dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButtonchatbot"
+        app:layout_constraintTop_toBottomOf="@+id/menubutt"
         app:srcCompat="@drawable/design" />
 
     <ImageView
@@ -108,7 +108,7 @@
         android:layout_marginEnd="328dp"
         android:layout_marginRight="328dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButtonchatbot"
+        app:layout_constraintTop_toBottomOf="@+id/menubutt"
         app:srcCompat="@drawable/design_foor" />
 
 
