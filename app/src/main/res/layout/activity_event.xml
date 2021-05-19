@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Ev">
+    tools:context=".eventActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -218,7 +218,7 @@ android:scaleType="fitXY"
             android:id="@+id/recyclerPhoto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
+            tools:listitem="@layout/activity_photo_item"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/textView19"
             app:layout_constraintHorizontal_bias="0.0"

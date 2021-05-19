@@ -1,4 +1,4 @@
-package com.example.mainmenu;
+package com.example.bassametproject;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,13 +16,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class adapterEvent extends RecyclerView.Adapter<adapterEvent.ViewHolder>{
-private List<event> eventList=new ArrayList<>();
+private List<eventList> eventList=new ArrayList<>();
     private Context context;
 
     public adapterEvent() {
     }
 
-    public adapterEvent(List<event> eventList, Context context) {
+    public adapterEvent(List<eventList> eventList, Context context) {
         this.eventList = eventList;
         this.context = context;
     }
@@ -30,7 +30,7 @@ private List<event> eventList=new ArrayList<>();
     @NonNull
     @Override
     public adapterEvent.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_menu,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_menu_events,parent,false);
         return  new ViewHolder(v);
     }
 
@@ -38,7 +38,7 @@ private List<event> eventList=new ArrayList<>();
 
     @Override
     public void onBindViewHolder(@NonNull adapterEvent.ViewHolder holder, int position) {
-        event e =eventList.get(position);
+        eventList e =eventList.get(position);
         holder.eventName.setText(e.getEventName());
         holder.eventLocation.setText(e.getEventLocation());
         Picasso.get().load(eventList.get(position).getEventimg()).into(holder.eventpic);

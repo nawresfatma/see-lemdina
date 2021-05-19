@@ -47,7 +47,7 @@ public class eventActivity extends AppCompatActivity {
         snapHelper.attachToRecyclerView(recyclerPh);
 
 
-        adapterProgram myAdapt3=new com.example.mainmenu.adapterProgram(programList,this);
+        adapterProgram myAdapt3=new com.example.bassametproject.adapterProgram(programList,this);
         recyclerProgram.setAdapter(myAdapt3);
         snapHelperProgram=new LinearSnapHelper();
         ScaleCenterItemManager scaleCenterItemManagerProgram= new ScaleCenterItemManager(this, LinearLayoutManager.VERTICAL,false);

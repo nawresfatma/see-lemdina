@@ -16,6 +16,8 @@
         <activity android:name=".photoItem"></activity>
         <activity android:name=".TestActivity" />
         <activity android:name=".Achievements" />
+        <activity android:name=".Home" />
+
 
         <activity
             android:name=".Maison"
@@ -45,7 +47,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".MarketActivity" />
         <activity android:name=".Register" />
-        <activity android:name=".Home">
+        <activity android:name=".eventActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
