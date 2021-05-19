@@ -34,42 +34,15 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/menu" />
 
-            <ImageView
-                android:id="@+id/Achievements"
-                android:layout_width="127dp"
-                android:layout_height="111dp"
-                android:layout_marginStart="8dp"
-                android:paddingLeft="10dp"
-                app:layout_constraintBottom_toBottomOf="@id/mapbut"
-                app:layout_constraintEnd_toStartOf="@+id/gRight"
-                app:layout_constraintHorizontal_bias="0.761"
-                app:layout_constraintStart_toStartOf="@+id/guideline16"
-                app:layout_constraintTop_toTopOf="@id/guideBot"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/rectangle" />
-
-            <ImageView
-                android:id="@+id/mapbut"
-                android:layout_width="118dp"
-                android:layout_height="111dp"
-                android:layout_marginBottom="80dp"
-                android:foregroundGravity="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/Achievements"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/guideline15"
-                app:layout_constraintTop_toTopOf="@+id/guideBot"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/rectangle" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gLeft"
-                app:layout_constraintGuide_percent="0.06"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:orientation="vertical"
                 app:layout_constraintGuide_begin="10dp"
+                app:layout_constraintGuide_percent="0.06"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <androidx.constraintlayout.widget.Guideline
@@ -83,17 +56,7 @@
                 app:layout_constraintGuide_percent="0.9" />
 
 
-            <ImageView
-                android:id="@+id/marketbut"
-                android:layout_width="118dp"
-                android:layout_height="111dp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView7"
-                app:layout_constraintEnd_toStartOf="@+id/guideline15"
-                app:layout_constraintHorizontal_bias="0.285"
-                app:layout_constraintStart_toStartOf="@id/gLeft"
-                app:layout_constraintTop_toTopOf="@+id/guideBot"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/rectangle" />
+
 
             <TextView
                 android:id="@+id/textView"
@@ -117,8 +80,9 @@
                 android:layout_width="133dp"
                 android:layout_height="144dp"
                 android:layout_marginTop="28dp"
-                app:layout_constraintEnd_toStartOf="@+id/gRight"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
+                android:layout_marginEnd="15dp"
                 app:layout_constraintStart_toStartOf="@+id/guideline16"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerMarkett"
                 app:srcCompat="@drawable/cube1" />
@@ -153,12 +117,11 @@
                 android:layout_width="208dp"
                 android:layout_height="68dp"
                 android:layout_marginTop="12dp"
+                android:layout_marginStart="10dp"
                 android:lineSpacingExtra="9dp"
                 android:text="By choosing one of the bellow option you\n help us to provide you with the experience that\nfits you"
                 android:textSize="10dp"
-                app:layout_constraintEnd_toStartOf="@+id/guideline16"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@id/gLeft"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
             <TextView
@@ -175,18 +138,7 @@
                 app:layout_constraintStart_toStartOf="@id/gLeft"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideBot"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="406dp"
-                android:layout_marginRight="406dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintGuide_percent="0.79"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -200,102 +152,166 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView5"
                 app:srcCompat="@drawable/scan" />
 
-            <ImageView
-                android:id="@+id/imageView10"
-                android:layout_width="54dp"
-                android:layout_height="52dp"
-                android:layout_marginTop="4dp"
-                android:paddingLeft="20dp"
-                app:layout_constraintEnd_toEndOf="@+id/mapbut"
-                app:layout_constraintHorizontal_bias="0.671"
-                app:layout_constraintStart_toStartOf="@+id/mapbut"
-                app:layout_constraintTop_toTopOf="@+id/mapbut"
-                app:srcCompat="@drawable/pin" />
-
-            <ImageView
-                android:id="@+id/Achivements"
-                android:layout_width="60dp"
-                android:layout_height="59dp"
-                app:layout_constraintBottom_toBottomOf="@+id/Achievements"
-                app:layout_constraintEnd_toEndOf="@+id/Achievements"
-                app:layout_constraintHorizontal_bias="0.867"
-                app:layout_constraintStart_toEndOf="@+id/mapbut"
-                app:layout_constraintTop_toTopOf="@+id/Achievements"
-                app:layout_constraintVertical_bias="0.072"
-                app:srcCompat="@drawable/supercup" />
-
-            <TextView
-                android:id="@+id/Achivements1"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginBottom="24dp"
-                android:text="Achivements"
-                android:textColor="#000000"
-                android:textSize="13sp"
-                app:layout_constraintBottom_toBottomOf="@+id/Achievements"
-                app:layout_constraintStart_toStartOf="@+id/Achievements"
-                app:layout_constraintTop_toBottomOf="@+id/Achivements"
-                app:layout_constraintVertical_bias="1.0" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="128dp"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="238dp"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="16dp"
-                android:text="MAP"
-                android:textColor="#000000"
-                android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="@+id/mapbut"
-                app:layout_constraintTop_toBottomOf="@+id/imageView10" />
-
-
-            <ImageView
-                android:id="@+id/imageView12"
-                android:layout_width="71dp"
-                android:layout_height="64dp"
-                android:paddingLeft="20dp"
-                app:layout_constraintEnd_toEndOf="@+id/marketbut"
-                app:layout_constraintHorizontal_bias="0.744"
-                app:layout_constraintStart_toStartOf="@+id/marketbut"
-                app:layout_constraintTop_toTopOf="@+id/marketbut"
-                app:srcCompat="@drawable/purse" />
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
-                android:text="Market"
-                android:textColor="#000000"
-                android:textSize="13sp"
-                app:layout_constraintEnd_toEndOf="@+id/marketbut"
-                app:layout_constraintHorizontal_bias="0.409"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="40dp"
+                android:foregroundGravity="bottom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+                app:layout_constraintTop_toBottomOf="@+id/features">
+
+                <ImageView
+                    android:id="@+id/Achievements"
+                    android:layout_width="127dp"
+                    android:layout_height="111dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:paddingLeft="10dp"
+                    app:layout_constraintBottom_toBottomOf="@id/marketbut"
+                    app:layout_constraintHorizontal_bias="0.761"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/rectangle" />
+
+
+                <ImageView
+                    android:id="@+id/marketbut"
+                    android:layout_width="118dp"
+                    android:layout_height="111dp"
+                    android:layout_centerHorizontal="false"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="80dp"
+                    android:foregroundGravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/Achievements"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/rectangle" />
+
+                <ImageView
+                    android:id="@+id/mapbut"
+                    android:layout_width="118dp"
+                    android:layout_height="111dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView7"
+                    app:layout_constraintHorizontal_bias="0.285"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/rectangle" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideBot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="406dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintGuide_percent="0.73"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/marketimg"
+                    android:layout_width="71dp"
+                    android:layout_height="64dp"
+                    android:layout_alignTop="@+id/guideBot"
+                    android:layout_alignEnd="@+id/marketbut"
+                    android:layout_alignBottom="@+id/marketbut"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="42dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="25dp"
+
+                    app:srcCompat="@drawable/purse" />
+
+                <ImageView
+                    android:id="@+id/mapimg"
+                    android:layout_width="54dp"
+                    android:layout_height="52dp"
+                    android:layout_alignStart="@+id/mapbut"
+                    android:layout_alignTop="@+id/guideBot"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="57dp"
+                    android:layout_marginTop="25dp"
+                    android:paddingLeft="20dp"
+                    app:srcCompat="@drawable/pin"
+                    tools:layout_editor_absoluteY="64dp" />
+
+                <ImageView
+                    android:id="@+id/Achivements"
+                    android:layout_width="60dp"
+                    android:layout_height="59dp"
+                    android:layout_alignStart="@+id/Achievements"
+
+                    android:layout_alignTop="@+id/guideBot"
+                    android:layout_centerHorizontal="false"
+                    android:layout_centerVertical="false"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="25dp"
+                    app:srcCompat="@drawable/supercup" />
+
+                <TextView
+                    android:id="@+id/Achivements1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/Achivements"
+                    android:layout_alignEnd="@+id/Achivements"
+                    android:layout_marginStart="-27dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="110dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="24dp"
+                    android:text="Achivements"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/Achievements"
+                    app:layout_constraintStart_toStartOf="@+id/Achievements"
+                    app:layout_constraintTop_toBottomOf="@+id/Achivements"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/marketimg"
+                    android:layout_alignStart="@+id/marketimg"
+                    android:layout_alignEnd="@+id/marketimg"
+                    android:layout_marginStart="-16dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="13dp"
+                    android:text="Market"
+                    android:textColor="#000000"
+                    android:textSize="13sp"></TextView>
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/mapbut"
+                    android:layout_alignEnd="@+id/mapbut"
+                    android:layout_alignBottom="@+id/mapimg"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="56dp"
+                    android:layout_marginBottom="-50dp"
+                    android:text="MAP"
+                    android:textColor="#000000"
+                    android:textSize="13sp" />
+
+
+            </RelativeLayout>
+
+
+
+
+
+
 
 
 

@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shape_roundRect_borderColor="@android:color/white"
-        app:shape_roundRect_borderWidth="1dp"
+        app:shape_roundRect_borderWidth="2dp"
         app:shape_roundRect_bottomLeftRadius="10dp"
         app:shape_roundRect_bottomRightRadius="10dp"
         app:shape_roundRect_topLeftRadius="10dp"
@@ -29,8 +29,10 @@
 
         <ImageView
             android:id="@+id/img"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="290dp"
+            android:background="@drawable/rajell"
+
             />
 
         <ImageView

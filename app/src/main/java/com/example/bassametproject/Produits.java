@@ -79,9 +79,9 @@ public class Produits extends AppCompatActivity {
                 snapHelper = new LinearSnapHelper();
                 scaleCenterItemManager = new ScaleCenterItemManager(Produits.this, LinearLayoutManager.HORIZONTAL, false);
 
-                recyclerAccessory.setLayoutManager(new LinearLayoutManager(Produits.this));
-                recyclerAccessory.setLayoutManager(scaleCenterItemManager);
-                recyclerAccessory.setAdapter(adapterAccessory);
+//             recyclerAccessory.setLayoutManager(new LinearLayoutManager(Produits.this));
+              //  recyclerAccessory.setLayoutManager(scaleCenterItemManager);
+             //   recyclerAccessory.setAdapter(adapterAccessory);
 
             }
 
