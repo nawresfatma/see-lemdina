@@ -18,14 +18,14 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class adapterShops extends RecyclerView.Adapter<adapterShops.MyViewHolder> {
+public class adapterShopsHome extends RecyclerView.Adapter<adapterShopsHome.MyViewHolder> {
     List<StoreItem> StoreItems = new ArrayList<>();
     Context context;
-   String i="1";
-    public static StoreItem shop;
+    public static StoreItem shop1;
     public static  String shops="shops";
+    String i="2";
 
-    public adapterShops(List<StoreItem> storeItems, Context c) {
+    public adapterShopsHome(List<StoreItem> storeItems, Context c) {
         StoreItems = storeItems;
         context = c;
     }
@@ -33,31 +33,30 @@ public class adapterShops extends RecyclerView.Adapter<adapterShops.MyViewHolder
 
     @NonNull
     @Override
-    public adapterShops.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public adapterShopsHome.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
 
             LayoutInflater inflater = LayoutInflater.from(context);
-            View view = inflater.inflate(R.layout.activity_item_seller, parent, false);
+            View view = inflater.inflate(R.layout.item_menu_sellers, parent, false);
             return new MyViewHolder(view);
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull adapterShops.MyViewHolder holder, int position) {
-       final StoreItem store = StoreItems.get(position);
+    public void onBindViewHolder(@NonNull adapterShopsHome.MyViewHolder holder, int position) {
+        final StoreItem store = StoreItems.get(position);
         holder.shopName.setText(store.getStoreName());
-        holder.shopDescription.setText(store.getStoreDescription());
-       // holder.shopImage.setImageResource(R.drawable.rajell);
-     Picasso.get().load(StoreItems.get(position).getStoreImage()).into(holder.shopImage);
+        holder.shopDescription.setText(store.getStoreDescriptionShort());
+        // holder.shopImage.setImageResource(R.drawable.rajell);
+        Picasso.get().load(StoreItems.get(position).getStoreImage()).into(holder.shopImage);
 
-      //const
+        //const
         holder.item.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 ((Activity)context).finish();
                 Intent intent=new Intent(context,Maison.class);
-                intent.putExtra(i,"home");
-               shop = store;
+                shop1 = store;
                 context.startActivity(intent);
             }
         });
@@ -88,6 +87,3 @@ public class adapterShops extends RecyclerView.Adapter<adapterShops.MyViewHolder
         }
     }
 }
-
-
-

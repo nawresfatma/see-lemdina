@@ -6,15 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.content.ContentValues.TAG;
+import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
 
 public class adapterPhoto extends RecyclerView.Adapter<adapterPhoto.MyViewHolder> {
     List<Integer> images=new ArrayList<>();
@@ -44,7 +43,7 @@ public class adapterPhoto extends RecyclerView.Adapter<adapterPhoto.MyViewHolder
 
     @Override
     public int getItemCount() {
-            return images.size();
+        return images.size();
     }
 
 
@@ -58,3 +57,4 @@ public class adapterPhoto extends RecyclerView.Adapter<adapterPhoto.MyViewHolder
         }
     }
 }
+

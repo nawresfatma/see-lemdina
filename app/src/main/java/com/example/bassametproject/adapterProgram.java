@@ -1,4 +1,5 @@
 package com.example.bassametproject;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,9 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.bassametproject.ProgramClass;
-import com.example.bassametproject.R;
 
 import java.util.List;
 

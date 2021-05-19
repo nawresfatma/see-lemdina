@@ -15,7 +15,7 @@
         android:id="@+id/nav_view"
         app:headerLayout="@layout/header"
         app:menu="@menu/bar_menu"
-        android:layout_gravity="start"/>
+        android:layout_gravity="start"></com.google.android.material.navigation.NavigationView>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">

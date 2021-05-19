@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -56,6 +57,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import timber.log.Timber;
 
+import static com.example.bassametproject.adapterShops.shop;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAllowOverlap;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconIgnorePlacement;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
@@ -71,7 +73,8 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
     // variables for adding location layer
     private MapView mapView;
     private MapboxMap mapboxMap;
-    Button Button3D,startButton;
+    Button Button3D;
+    ImageButton startButton;
     private boolean _3d;
     EditText editTextDestination ;
     ProgressBar mapboxProgressBar;
@@ -203,13 +206,12 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
                             new CameraPosition.Builder()
                                     .target(new LatLng(((Point) selectedCarmenFeature.geometry()).latitude(),
                                             ((Point) selectedCarmenFeature.geometry()).longitude()))
-                                    .zoom(14)
+                                    .zoom(20)
                                     .build()), 4000);
                 }
             }
         }
     }
-
 
     //ON MAP READY
     @Override
@@ -255,24 +257,26 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
                 startButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        boolean simulateRoute = true;
 
+                        if (currentRoute == null) {
+                            return; // Route has not been set, so we ignore the button press
+                        }
                         CameraPosition initialPosition = new CameraPosition.Builder()
                                 .zoom(25.5)
                                 .build();
 
-                        NavigationLauncherOptions options = NavigationLauncherOptions.builder()
-                                .directionsRoute(currentRoute).initialMapCameraPosition(initialPosition).build();
+                        NavigationLauncherOptions options;
+                        options = NavigationLauncherOptions.builder()
+                                .directionsRoute(currentRoute)
+                                .initialMapCameraPosition(initialPosition)
+                                .shouldSimulateRoute(true)
+                                .build();
 
 // Call this method with Context from within an Activity
                         NavigationLauncher.startNavigation(MapBoxActivity.this, options);
                     }
                 });
-
-
-
             }
-
 
             private void addDestinationIconSymbolLayer(@NonNull Style loadedMapStyle) {
                 loadedMapStyle.addImage("destination-icon-id",
@@ -294,9 +298,15 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
           public boolean onMapClick(@NonNull LatLng point) {
 
               // Point destinationPoint = Point.fromLngLat(point.getLongitude(), point.getLatitude());
-              Point destinationPoint = Point.fromLngLat(adapterShops.shop.getLongitude(), adapterShops.shop.getLatitude());
-              Point originPoint = Point.fromLngLat(locationComponent.getLastKnownLocation().getLongitude(),
-                      locationComponent.getLastKnownLocation().getLatitude());
+              Point destinationPoint = Point.fromLngLat(shop.getLongitude(), shop.getLatitude());
+// Create a Toast which displays the new location's coordinates
+              Point originPoint = null;
+              if (locationComponent.getLastKnownLocation() != null) {
+                  originPoint = Point.fromLngLat(locationComponent.getLastKnownLocation().getLongitude(),
+                          locationComponent.getLastKnownLocation().getLatitude());
+              }
+
+
               GeoJsonSource source = mapboxMap.getStyle().getSourceAs("destination-source-id");
               if (source != null) {
                   source.setGeoJson(Feature.fromGeometry(destinationPoint));
@@ -305,16 +315,14 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
               getRoute(originPoint, destinationPoint);
               mapboxProgressBar.setVisibility(View.VISIBLE);
               return true;
-
-
           }
 
 
-  private void getRoute(Point origin, Point destination) {
+  private void getRoute(Point originP, Point destinationP) {
         NavigationRoute.builder(this)
                 .accessToken(Mapbox.getAccessToken())
-                .origin(origin)
-                .destination(destination)
+                .origin(originP)
+                .destination(destinationP)
                 .build()
                 .getRoute(new Callback<DirectionsResponse>() {
                     @Override
@@ -339,7 +347,6 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
                         mapboxProgressBar.setVisibility(View.INVISIBLE);
                         startButton.setEnabled(true);
                         startButton.setBackgroundResource(R.color.mapboxBlue);
-
     }
 
                     @Override

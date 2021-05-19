@@ -35,7 +35,7 @@ public class Home extends AppCompatActivity {
     //storerecycler
     List<StoreItem> StoreItems;
     ScaleCenterItemManager scaleCenterItemManager;
-   adapterShops myAdapt ;
+   adapterShopsHome myAdapt ;
    ImageView Achievements;
 
     @Override
@@ -105,7 +105,7 @@ public class Home extends AppCompatActivity {
 
                     StoreItems.add(data);
                 }
-                myAdapt = new adapterShops(StoreItems,Home.this);
+                myAdapt = new adapterShopsHome(StoreItems,Home.this);
                 recycler.setAdapter(myAdapt);
             }
 

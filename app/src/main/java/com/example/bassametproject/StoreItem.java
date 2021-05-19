@@ -4,11 +4,13 @@ public class StoreItem {
     private String storeImage;
     private String storeName;
     private String storeDescription;
+    private String storeDescriptionShort;
     private int id ;
     private float storeRate;
     private String storeLocation;
     private String openingHour;
     private float longitude ,latitude;
+    private int type;
 
     public StoreItem(String storeImage, String storeName, String storeDescription, int id, float storeRate, String storeLocation, String openingHour, float longitude, float latitude) {
         this.storeImage = storeImage;
@@ -31,7 +33,21 @@ public class StoreItem {
 
     }
 
+    public String getStoreDescriptionShort() {
+        return storeDescriptionShort;
+    }
 
+    public void setStoreDescriptionShort(String storeDescriptionShort) {
+        this.storeDescriptionShort = storeDescriptionShort;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     public String getStoreImage() {
         return storeImage;

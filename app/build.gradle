@@ -10,10 +10,12 @@ android {
         applicationId "com.example.bassametproject"
         minSdkVersion 21
         targetSdkVersion 30
+        compileSdkVersion 29
+
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
-        ndkVersion "21.4.7075529"
+        ndkVersion "22.1.7171670"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

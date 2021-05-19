@@ -70,8 +70,10 @@ public class Maison extends AppCompatActivity {
         shopName=findViewById(R.id.shopName1);
         storeLocation=findViewById(R.id.storeLocation);
         openHour=findViewById(R.id.openingHour);
+
         getData();
         setData();
+
 
 
        //accessory
@@ -85,7 +87,6 @@ public class Maison extends AppCompatActivity {
      //   refShop = database.getInstance().getReference("shops").child("store1").child(adapterShops.shopStatic.getStoreName());
 
 
-        //ratingbarRestau.setRating(RestaurantMorePlacesAdapter.restaurantStatic.getRating());
 
         //Firebase accessory
         refAccessory = FirebaseDatabase.getInstance().getReference(adapterShops.shops).child("store2").child("products");
@@ -119,19 +120,25 @@ public class Maison extends AppCompatActivity {
     }
    //onClick
     private void getData(){
-   if (getIntent().hasExtra("shopName")&&getIntent().hasExtra("shopDescription")){
-name=getIntent().getStringExtra("shopName");
-desc=getIntent().getStringExtra("shopDescription");
-
+   if (getIntent().hasExtra("Home")){
+       name=getIntent().getStringExtra("shopName");
    }
     }
     private void setData(){
 /*shopName.setText(name);
 shopDescription.setText(desc);*/
-        storeLocation.setText(adapterShops.shop.getStoreLocation());
-        shopName.setText(adapterShops.shop.getStoreName());
-        shopDescription.setText(adapterShops.shop.getStoreDescription());
-        openHour.setText(adapterShops.shop.getOpeningHour());
+        if(adapterShopsHome.shop1.getStoreName()!=null){
+            storeLocation.setText(adapterShopsHome.shop1.getStoreLocation());
+            shopName.setText(adapterShopsHome.shop1.getStoreName());
+            shopDescription.setText(adapterShopsHome.shop1.getStoreDescription());
+            openHour.setText(adapterShopsHome.shop1.getOpeningHour());
+
+        }else if(adapterShops.shop.getStoreName()!=null){
+            storeLocation.setText(adapterShops.shop.getStoreLocation());
+            shopName.setText(adapterShops.shop.getStoreName());
+            shopDescription.setText(adapterShops.shop.getStoreDescription());
+            openHour.setText(adapterShops.shop.getOpeningHour());
+    }
     }
     //map dialog
     public void openMapDialog(View view)
