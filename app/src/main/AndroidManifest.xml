@@ -16,8 +16,6 @@
         <activity android:name=".photoItem"></activity>
         <activity android:name=".TestActivity" />
         <activity android:name=".Achievements" />
-        <activity android:name=".Home" />
-
 
         <activity
             android:name=".Maison"
@@ -32,9 +30,7 @@
         <activity android:name=".Rating" />
         <activity android:name=".activity_products_recycler" />
         <activity android:name=".SellproductActivity" />
-        <activity
-            android:name=".LoginActivity"
-            android:windowSoftInputMode="adjustPan" />
+
         <activity android:name=".MapBoxActivity" />
         <activity
             android:name=".Produits"
@@ -47,7 +43,10 @@
             android:screenOrientation="portrait" />
         <activity android:name=".MarketActivity" />
         <activity android:name=".Register" />
-        <activity android:name=".eventActivity">
+        <activity android:name=".Home"/>
+        <activity
+            android:name=".LoginActivity"
+            android:windowSoftInputMode="adjustPan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

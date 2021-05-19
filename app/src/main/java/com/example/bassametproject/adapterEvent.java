@@ -61,7 +61,7 @@ private List<eventList> eventList=new ArrayList<>();
           eventName=(TextView) itemView.findViewById(R.id.eventname);
             eventLocation=(TextView) itemView.findViewById(R.id.eventlocation);
             eventPrice=(TextView) itemView.findViewById(R.id.eventPrice);
-            eventpic=(ImageView) itemView.findViewById(R.id.eventpic);
+            eventpic=(ImageView) itemView.findViewById(R.id.img);
 
         }
     }
