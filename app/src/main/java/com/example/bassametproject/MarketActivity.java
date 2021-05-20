@@ -1,20 +1,18 @@
 package com.example.bassametproject;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
-import android.widget.Toolbar;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -26,12 +24,14 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class MarketActivity extends AppCompatActivity  {
-    RecyclerView recyclerSouk;
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    Toolbar toolbar;
+public class MarketActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
+
+    DrawerLayout drawerLayout;
+    Toolbar toolbar;
+    NavigationView navigationView;
+
+    RecyclerView recyclerSouk;
     ArrayList<soukList> Mylist;
     CardAdapter Soukadapter;
     //firebase
@@ -45,7 +45,7 @@ public class MarketActivity extends AppCompatActivity  {
         recyclerSouk=findViewById(R.id.recyclerView);
 
         recyclerSouk.setLayoutManager(new LinearLayoutManager(this));
-        /*//navbott
+        //navbott
         BottomNavigationView navView=findViewById(R.id.navView);
         navView.setItemIconTintList(null);
 
@@ -55,13 +55,12 @@ public class MarketActivity extends AppCompatActivity  {
         toolbar=findViewById(R.id.menubut);
 //toolbar
         setSupportActionBar(toolbar);
-
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setCheckedItem(R.id.nav_home);*/
+        navigationView.setCheckedItem(R.id.nav_menu);
 //Firebase(Stores)
         soukRef= FirebaseDatabase.getInstance().getReference("Souk");
         soukRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -82,6 +81,17 @@ public class MarketActivity extends AppCompatActivity  {
 
             }
         });
+
+        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                item.getItemId();
+                startActivity(new Intent(getApplicationContext(), Scan.class));
+                overridePendingTransition(0, 0);
+                return true;
+            }
+
+        });
     }
 
 
@@ -99,25 +109,25 @@ public class MarketActivity extends AppCompatActivity  {
     }
 
 
-    /**
-     * Called when an item in the navigation menu is selected.
-     *
-     * @param v The selected item
-     * @return true to display the item as the selected item
-     **/
-   /* @Override
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_home:
+                Intent HomeIntent = new Intent(MarketActivity.this, Home.class);
+                startActivity(HomeIntent);
                 break;
             case R.id.sign_scanner:
                 Intent ScanIntent = new Intent(MarketActivity.this, Scan.class);
                 startActivity(ScanIntent);
                 break;
             case R.id.achivements:
-                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
+                Intent AchIntent = new Intent(MarketActivity.this, Achievements.class);
+                startActivity(AchIntent);
                 break;
-            case R.id.profile:
+            case R.id.chatbot:
+                Intent chatIntent = new Intent(MarketActivity.this, chatbotActivity.class);
+                startActivity(chatIntent);
+           case R.id.profile:
                 Intent ProfileIntent = new Intent(MarketActivity.this, Profile.class);
                 startActivity(ProfileIntent);
                 break;
@@ -136,29 +146,23 @@ public class MarketActivity extends AppCompatActivity  {
         return true;
 
 
-        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                item.getItemId();
-                startActivity(new Intent(getApplicationContext(), Scan.class));
-                overridePendingTransition(0, 0);
-                return true;
-            }
-
-        });
-*/
-
-    public void ScanInterface (View v){
-        Intent intentLoadNewActivity = new Intent(MarketActivity.this, Scan.class);
-        startActivity(intentLoadNewActivity);
     }
 
-    public void MaisonInterface (View v){
+
+
+    /*public void MaisonInterface (View v){
         Intent intentLoadNewActivity = new Intent(MarketActivity.this, Maison.class);
         startActivity(intentLoadNewActivity);
     }
+*/
 
 
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+
+
+}
 

@@ -18,10 +18,11 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class adapterShops extends RecyclerView.Adapter<adapterShops.MyViewHolder> {
     List<StoreItem> StoreItems = new ArrayList<>();
     Context context;
-   String i="1";
+    String i="1";
     public static StoreItem shop;
     public static  String shops="shops";
 
@@ -36,28 +37,28 @@ public class adapterShops extends RecyclerView.Adapter<adapterShops.MyViewHolder
     public adapterShops.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
 
-            LayoutInflater inflater = LayoutInflater.from(context);
-            View view = inflater.inflate(R.layout.activity_item_seller, parent, false);
-            return new MyViewHolder(view);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.activity_item_seller, parent, false);
+        return new MyViewHolder(view);
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull adapterShops.MyViewHolder holder, int position) {
-       final StoreItem store = StoreItems.get(position);
+        final StoreItem store = StoreItems.get(position);
         holder.shopName.setText(store.getStoreName());
         holder.shopDescription.setText(store.getStoreDescription());
-       // holder.shopImage.setImageResource(R.drawable.rajell);
-     Picasso.get().load(StoreItems.get(position).getStoreImage()).into(holder.shopImage);
+        // holder.shopImage.setImageResource(R.drawable.rajell);
+        Picasso.get().load(StoreItems.get(position).getStoreImage()).into(holder.shopImage);
 
-      //const
+        //const
         holder.item.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 ((Activity)context).finish();
                 Intent intent=new Intent(context,Maison.class);
                 intent.putExtra(i,"home");
-               shop = store;
+                shop = store;
                 context.startActivity(intent);
             }
         });
@@ -88,6 +89,4 @@ public class adapterShops extends RecyclerView.Adapter<adapterShops.MyViewHolder
         }
     }
 }
-
-
 

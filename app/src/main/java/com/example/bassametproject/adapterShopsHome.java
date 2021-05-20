@@ -48,7 +48,7 @@ public class adapterShopsHome extends RecyclerView.Adapter<adapterShopsHome.MyVi
         holder.shopName.setText(store.getStoreName());
         holder.shopDescription.setText(store.getStoreDescriptionShort());
         // holder.shopImage.setImageResource(R.drawable.rajell);
-        Picasso.get().load(StoreItems.get(position).getStoreImage()).into(holder.shopImage);
+        Picasso.get().load(StoreItems.get(position).getStoreImage()).resize(690,400 ).into(holder.shopImage);
 
         //const
         holder.item.setOnClickListener(new View.OnClickListener(){

@@ -19,7 +19,7 @@ public class Achievements extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_achievements);
-        missionsbut=findViewById(R.id.missionsbut);
+        missionsbut=findViewById(R.id.eventLocation);
         Rankingbut=findViewById(R.id.Rankingbut);
         Store=findViewById(R.id.Store);
         //BottomNavigation

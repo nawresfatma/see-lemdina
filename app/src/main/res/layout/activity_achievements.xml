@@ -34,7 +34,7 @@
                 app:srcCompat="@drawable/woman" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/Eventname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -62,11 +62,11 @@
                 app:layout_constraintEnd_toStartOf="@+id/imageView24"
                 app:layout_constraintHorizontal_bias="0.076"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView8"
+                app:layout_constraintTop_toBottomOf="@+id/Eventname"
                 app:layout_constraintVertical_bias="0.185" />
 
             <TextView
-                android:id="@+id/missionsbut"
+                android:id="@+id/eventLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -91,7 +91,7 @@
                 android:layout_marginTop="44dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/missionsbut"
+                app:layout_constraintTop_toBottomOf="@+id/eventLocation"
                 app:srcCompat="@drawable/ligne" />
 
             <ImageView
@@ -271,11 +271,11 @@
                 android:layout_height="12dp"
                 android:layout_marginStart="2dp"
                 android:layout_marginLeft="2dp"
-                app:layout_constraintBottom_toBottomOf="@+id/missionsbut"
-                app:layout_constraintEnd_toEndOf="@+id/missionsbut"
+                app:layout_constraintBottom_toBottomOf="@+id/eventLocation"
+                app:layout_constraintEnd_toEndOf="@+id/eventLocation"
                 app:layout_constraintHorizontal_bias="0.038"
-                app:layout_constraintStart_toStartOf="@+id/missionsbut"
-                app:layout_constraintTop_toTopOf="@+id/missionsbut"
+                app:layout_constraintStart_toStartOf="@+id/eventLocation"
+                app:layout_constraintTop_toTopOf="@+id/eventLocation"
                 app:layout_constraintVertical_bias="0.533"
                 app:srcCompat="@drawable/loop" />
 

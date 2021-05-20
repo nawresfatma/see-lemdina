@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.example.bassametproject.ScaleCenterItemManager;
 
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class eventActivity extends AppCompatActivity {
-
+    TextView eventName,eventLocation,eventPrice;
     RecyclerView recyclerPh,recyclerProgram;
     private SnapHelper snapHelper ,snapHelperProgram;
 
@@ -54,5 +55,16 @@ public class eventActivity extends AppCompatActivity {
         recyclerProgram.setLayoutManager(new LinearLayoutManager(this));
         recyclerProgram.setLayoutManager(scaleCenterItemManagerProgram);
         snapHelperProgram.attachToRecyclerView(recyclerProgram);
+
+        //event onclick
+        eventName=findViewById(R.id.Eventname);
+        eventLocation=findViewById(R.id.eventLocation);
+        eventPrice=findViewById(R.id.EventPrice);
+        setData();
     }
-}
+    private void setData(){
+        eventLocation.setText(adapterEvent.event.getEventLocation());
+        eventName.setText(adapterEvent.event.getEventName());
+        eventPrice.setText(adapterEvent.event.getEventPrice());
+
+}}

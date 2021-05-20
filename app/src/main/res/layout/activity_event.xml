@@ -39,6 +39,28 @@ android:scaleType="fitXY"
             app:srcCompat="@drawable/rac" />
 
 
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/EventPrice"
+            app:layout_constraintHorizontal_bias="0.571"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView25"
+            app:srcCompat="@drawable/coins" />
+
+        <TextView
+            android:id="@+id/EventPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="@+id/eventLocation"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/eventLocation"
+            app:layout_constraintTop_toBottomOf="@+id/eventLocation" />
+
         <TextView
             android:id="@+id/textView55"
             android:layout_width="wrap_content"
@@ -74,7 +96,7 @@ android:scaleType="fitXY"
             app:srcCompat="@drawable/loopi" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/Eventname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
@@ -98,10 +120,10 @@ android:scaleType="fitXY"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView24"
             app:layout_constraintStart_toStartOf="@id/imageView19"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            app:layout_constraintTop_toBottomOf="@+id/Eventname" />
 
         <TextView
-            android:id="@+id/missionsbut"
+            android:id="@+id/eventLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="52dp"
@@ -180,17 +202,20 @@ android:scaleType="fitXY"
             android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/missionsbut" />
+            app:layout_constraintTop_toBottomOf="@+id/eventLocation" />
+
 
         <ImageView
             android:id="@+id/imageView25"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/missionsbut"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/eventLocation"
+            app:layout_constraintHorizontal_bias="0.857"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView14"
             app:srcCompat="@drawable/pin" />
-
 
         <ImageView
             android:id="@+id/imageView24"
@@ -200,7 +225,7 @@ android:scaleType="fitXY"
             android:layout_marginLeft="12dp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="@id/textView19"
-            app:layout_constraintTop_toBottomOf="@+id/textView8"
+            app:layout_constraintTop_toBottomOf="@+id/Eventname"
             app:srcCompat="@drawable/hourglass" />
 
 

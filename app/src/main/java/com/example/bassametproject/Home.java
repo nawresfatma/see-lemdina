@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,10 +25,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Home extends AppCompatActivity {
-    RecyclerView recycler;
-   // com.example.bassametproject.adapterEvent adapterevent;
-    private SnapHelper snapHelper;
-   // List<com.example.bassametproject.event> eventList1;
+    RecyclerView recycler,recyclerevent;
+    // com.example.bassametproject.adapterEvent adapterevent;
+    private SnapHelper snapHelper,snapHelperevent;
+    adapterEvent adapterEvent;
+    //listevent
+  List<eventList> eventslist;
+  //  eventList e =new eventList("barcha alwen","mdina","25" ,R.drawable.eventone);
+    //eventList e1 =new eventList("barcha barcha alwen","mdina1","10" ,R.drawable.photoone);
+    //eventList e2 =new eventList("barcha chwaya alwen","mdina2","15" ,R.drawable.phototwo);
+
+
+    // List<com.example.bassametproject.event> eventList1;
     //Firebase
     DatabaseReference mref,eventReference;
     //intents
@@ -35,14 +44,15 @@ public class Home extends AppCompatActivity {
     //storerecycler
     List<StoreItem> StoreItems;
     ScaleCenterItemManager scaleCenterItemManager;
-   adapterShopsHome myAdapt ;
-   ImageView Achievements;
+    adapterShopsHome myAdapt ;
+    ImageView Achievements;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        Achievements=findViewById(R.id.Achievements);
+        recyclerevent=findViewById(R.id.recyclerEvent);
         recycler=findViewById(R.id.recyclerMarkett);
         //stores
         snapHelper = new LinearSnapHelper();
@@ -50,7 +60,17 @@ public class Home extends AppCompatActivity {
         recycler.setLayoutManager(new LinearLayoutManager(this));
         recycler.setLayoutManager(scaleCenterItemManager);
         snapHelper.attachToRecyclerView(recycler);
-        Achievements=findViewById(R.id.Achievements);
+
+        //events
+     /*   eventslist.add(e);
+        eventslist.add(e1);
+        eventslist.add(e2);*/
+
+        snapHelperevent = new LinearSnapHelper();
+        scaleCenterItemManager = new ScaleCenterItemManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerevent.setLayoutManager(new LinearLayoutManager(this));
+        recyclerevent.setLayoutManager(scaleCenterItemManager);
+        snapHelperevent.attachToRecyclerView(recyclerevent);
         //BottomNavigation
         BottomNavigationView navView=findViewById(R.id.navView);
         navView.setItemIconTintList(null);
@@ -68,30 +88,30 @@ public class Home extends AppCompatActivity {
         //endNavBott
         //events
 
-     /*
-        com.example.bassametproject.ScaleCenterItemManager scaleCenterItemManager= new com.example.bassametproject.ScaleCenterItemManager(this, LinearLayoutManager.HORIZONTAL,false);
-        recycler3.setLayoutManager(new LinearLayoutManager(this));
-        recycler3.setLayoutManager(scaleCenterItemManager);
-        snapHelper.attachToRecyclerView(recycler3);**/
-        /*  eventReference = FirebaseDatabase.getInstance().getReference().child("Events");
-        eventReference.addValueEventListener(new ValueEventListener() {
-          @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                eventList1 = new ArrayList<event>();
-                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
-                {
-                    event e = dataSnapshot1.getValue(event.class);
-                    eventList1.add(e);
-                }
-                adapterevent = new adapterEvent(eventList1,Home.this);
-                recycler3.setAdapter(adapterevent);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(Home.this, "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
-            }
-        }); */
+       com.example.bassametproject.ScaleCenterItemManager scaleCenterItemManager= new com.example.bassametproject.ScaleCenterItemManager(this, LinearLayoutManager.HORIZONTAL,false);
+       recyclerevent.setLayoutManager(new LinearLayoutManager(this));
+       recyclerevent.setLayoutManager(scaleCenterItemManager);
+        snapHelperevent.attachToRecyclerView(recyclerevent);
+         eventReference = FirebaseDatabase.getInstance().getReference().child("Events");
+       eventReference.addValueEventListener(new ValueEventListener() {
+         @Override
+           public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+               eventslist = new ArrayList<eventList>();
+               for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+               {
+                   eventList e = dataSnapshot1.getValue(eventList.class);
+                   eventslist.add(e);
+               }
+               adapterEvent = new adapterEvent(eventslist,Home.this);
+               recyclerevent.setAdapter(adapterEvent);
+           }
+
+           @Override
+           public void onCancelled(@NonNull DatabaseError databaseError) {
+               Toast.makeText(Home.this, "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
+           }
+       });
         //Stores
 
         mref= FirebaseDatabase.getInstance().getReference("shops");
@@ -101,7 +121,7 @@ public class Home extends AppCompatActivity {
                 StoreItems=new ArrayList<>();
                 for(DataSnapshot ds:dataSnapshot.getChildren()){
                     StoreItem data=ds.getValue(StoreItem.class);
-                 //   Toast.makeText(Home.this, data.getStoreImage().toString(),Toast.LENGTH_LONG).show();
+                    //   Toast.makeText(Home.this, data.getStoreImage().toString(),Toast.LENGTH_LONG).show();
 
                     StoreItems.add(data);
                 }

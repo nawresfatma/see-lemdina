@@ -2,6 +2,7 @@ package com.example.bassametproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,7 +44,7 @@ public class Produits extends AppCompatActivity {
 
 
         store=findViewById(R.id.imageView);
-        recyclerAccessory = findViewById(R.id.recyclerMarkett);
+        recyclerAccessory = findViewById(R.id.recycler1);
 
         // MyAdapterprod myAdapt=new MyAdapterprod(productList,this);
         // recycler2.setAdapter(myAdapt);
@@ -79,9 +80,9 @@ public class Produits extends AppCompatActivity {
                 snapHelper = new LinearSnapHelper();
                 scaleCenterItemManager = new ScaleCenterItemManager(Produits.this, LinearLayoutManager.HORIZONTAL, false);
 
-//             recyclerAccessory.setLayoutManager(new LinearLayoutManager(Produits.this));
-              //  recyclerAccessory.setLayoutManager(scaleCenterItemManager);
-             //   recyclerAccessory.setAdapter(adapterAccessory);
+           recyclerAccessory.setLayoutManager(new GridLayoutManager(Produits.this,2));
+//           recyclerAccessory.setLayoutManager(scaleCenterItemManager);
+           recyclerAccessory.setAdapter(adapterAccessory);
 
             }
 

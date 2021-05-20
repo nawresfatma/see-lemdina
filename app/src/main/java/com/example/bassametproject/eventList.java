@@ -2,8 +2,7 @@ package com.example.bassametproject;
 
 public class eventList {
 
-private String eventName,eventLocation,eventPrice;
-private String eventimg;
+private String eventName,eventLocation,eventPrice,eventimg;
 
     public eventList() {
     }
@@ -47,3 +46,4 @@ private String eventimg;
         this.eventimg = eventimg;
     }
 }
+

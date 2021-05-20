@@ -8,13 +8,18 @@ import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 
 import com.denzcoskun.imageslider.ImageSlider;
@@ -34,6 +39,7 @@ import java.util.List;
 
 public class Maison extends AppCompatActivity {
 
+
     List<ListProduct> accessoryList;
     RecyclerView recyclerAccessory;
     SnapHelper snapHelper;
@@ -42,24 +48,37 @@ public class Maison extends AppCompatActivity {
     //adapter
     myAdapterrecy maisonAdapter;
     adapterAccessory adapterAccessory1;
-// onClick Item
-   TextView shopName , shopDescription,openHour,storeLocation;
-   String name , desc,hour,location;
+    // onClick Item
+    TextView shopName , shopDescription,openHour,storeLocation;
+    String name , desc,hour,location;
 
     //firebase
     private FirebaseDatabase database;
+    //video
+    VideoView videoView;
 
+    //end video declaration
     private DatabaseReference userRef, refRate ,refAccessory,refShop;
     private FirebaseAuth fAuth;
     private FirebaseUser user;
     public String username, userphotourl;
-//map dialogue
+    //map dialogue
     ImageButton getdirection;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maison);
+ //Video
+        MediaController mediaController=new MediaController(this);
+ videoView=(VideoView) findViewById(R.id.videoView);
+videoView.setMediaController(mediaController);
+mediaController.setAnchorView(videoView);
+Uri uri =Uri.parse("gs://pfe2021-270a5.appspot.com/Video/videoTest.mp4");
+videoView.setVideoURI(uri);
+videoView.start();
+
+//end video
 //imageSlider
         ImageSlider imageSlider = findViewById(R.id.image_slider1);
         slideModels.add(new SlideModel(R.drawable.balghaslider, ScaleTypes.FIT));
@@ -76,15 +95,15 @@ public class Maison extends AppCompatActivity {
 
 
 
-       //accessory
+        //accessory
         recyclerAccessory=findViewById(R.id.moreaccessory1);
         //user firebase
         fAuth = FirebaseAuth.getInstance();
         user = fAuth.getCurrentUser();
         userRef = database.getInstance().getReference("User").child(user.getUid());
 
-       // refRate = database.getInstance().getReference(adapterShops.theChosenOne).child(adapterShops.shopStatic.getStoreName());
-     //   refShop = database.getInstance().getReference("shops").child("store1").child(adapterShops.shopStatic.getStoreName());
+        // refRate = database.getInstance().getReference(adapterShops.theChosenOne).child(adapterShops.shopStatic.getStoreName());
+        //   refShop = database.getInstance().getReference("shops").child("store1").child(adapterShops.shopStatic.getStoreName());
 
 
 
@@ -118,11 +137,16 @@ public class Maison extends AppCompatActivity {
         });
 
     }
-   //onClick
+
+
+
+
+
+    //onClick
     private void getData(){
-   if (getIntent().hasExtra("Home")){
-       name=getIntent().getStringExtra("shopName");
-   }
+        if (getIntent().hasExtra("Home")){
+            name=getIntent().getStringExtra("shopName");
+        }
     }
     private void setData(){
 /*shopName.setText(name);
@@ -138,7 +162,7 @@ shopDescription.setText(desc);*/
             shopName.setText(adapterShops.shop.getStoreName());
             shopDescription.setText(adapterShops.shop.getStoreDescription());
             openHour.setText(adapterShops.shop.getOpeningHour());
-    }
+        }
     }
     //map dialog
     public void openMapDialog(View view)

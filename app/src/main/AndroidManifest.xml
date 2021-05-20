@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -30,6 +30,8 @@
         <activity android:name=".Rating" />
         <activity android:name=".activity_products_recycler" />
         <activity android:name=".SellproductActivity" />
+        <activity android:name=".LoginActivity" />
+
 
         <activity android:name=".MapBoxActivity" />
         <activity
@@ -41,13 +43,14 @@
         <activity
             android:name=".chatbotActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".MarketActivity" />
         <activity android:name=".Register" />
-        <activity android:name=".Home"/>
+        <activity android:name=".eventActivity"/>
         <activity
-            android:name=".LoginActivity"
-            android:windowSoftInputMode="adjustPan" >
-            <intent-filter>
+            android:name=".Home"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".MarketActivity" >
+
+        <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
