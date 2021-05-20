@@ -15,4 +15,9 @@
         <!-- Scales -->
         <item name="routeScale">1.0</item>
     </style>
+    <style name="NavigationTheme">
+        <item name="android:textSize">40dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Home extends AppCompatActivity {
+public class Home extends MarketActivity {
     RecyclerView recycler,recyclerevent;
     // com.example.bassametproject.adapterEvent adapterevent;
     private SnapHelper snapHelper,snapHelperevent;

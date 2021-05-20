@@ -4,19 +4,20 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label=""
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Bassametproject"
+        android:theme="@style/Theme.Bassaametproject"
         android:usesCleartextTraffic="true">
-        <activity android:name=".photoItem"></activity>
+
+        <activity android:name=".photoItem" />
         <activity android:name=".TestActivity" />
         <activity android:name=".Achievements" />
-
         <activity
             android:name=".Maison"
             android:label="Detail"
@@ -31,8 +32,7 @@
         <activity android:name=".activity_products_recycler" />
         <activity android:name=".SellproductActivity" />
         <activity android:name=".LoginActivity" />
-
-
+        <activity android:name=".MarketActivity" />
         <activity android:name=".MapBoxActivity" />
         <activity
             android:name=".Produits"
@@ -44,13 +44,13 @@
             android:name=".chatbotActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".Register" />
-        <activity android:name=".eventActivity"/>
-        <activity
-            android:name=".Home"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".MarketActivity" >
+        <activity android:name=".eventActivity" />
 
-        <intent-filter>
+
+                <activity
+                    android:name=".Home"
+                    android:windowSoftInputMode="adjustPan">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />

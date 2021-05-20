@@ -27,7 +27,7 @@ import java.util.ArrayList;
 public class MarketActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
 
-    DrawerLayout drawerLayout;
+   DrawerLayout drawerLayout;
     Toolbar toolbar;
     NavigationView navigationView;
 
@@ -50,7 +50,7 @@ public class MarketActivity extends AppCompatActivity implements NavigationView.
         navView.setItemIconTintList(null);
 
 //Hooks
-        drawerLayout=findViewById(R.id.container);
+       drawerLayout=findViewById(R.id.container);
         navigationView=findViewById(R.id.nav_menu);
         toolbar=findViewById(R.id.menubut);
 //toolbar
@@ -59,6 +59,9 @@ public class MarketActivity extends AppCompatActivity implements NavigationView.
         ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_iconmen);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_menu);
 //Firebase(Stores)
@@ -96,7 +99,7 @@ public class MarketActivity extends AppCompatActivity implements NavigationView.
 
 
 
-    @Override
+   @Override
     public void onBackPressed(){
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
 
@@ -109,7 +112,7 @@ public class MarketActivity extends AppCompatActivity implements NavigationView.
     }
 
 
-    @Override
+   @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_home:
@@ -158,10 +161,6 @@ public class MarketActivity extends AppCompatActivity implements NavigationView.
 
 
 
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }
 
 
 }
