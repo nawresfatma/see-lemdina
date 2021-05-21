@@ -1,55 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="280dp"
-    android:layout_height="230dp"
+    android:layout_width="300dp"
+    android:layout_height="290dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/itemSeller">
+    android:id="@+id/itemSeller"
+    android:layout_marginTop="16dp"
+
+    >
+
+
     <ImageView
         android:id="@+id/StoreImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/reccc" />
-
 
     <com.github.florent37.shapeofview.shapes.RoundRectView
         android:id="@+id/roundRectView2"
-        android:layout_width="255dp"
-        android:layout_height="120dp"
+        android:layout_width="280dp"
+        android:layout_height="139dp"
         android:layout_marginTop="5dp"
         android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="@+id/StoreImage"
         app:layout_constraintStart_toStartOf="@+id/StoreImage"
+        android:scaleType="centerCrop"
 
         app:layout_constraintTop_toTopOf="parent"
         app:shape_roundRect_borderColor="@android:color/white"
         app:shape_roundRect_borderWidth="2dp"
         app:shape_roundRect_bottomLeftRadius="1dp"
         app:shape_roundRect_bottomRightRadius="1dp"
-        app:shape_roundRect_topLeftRadius="10dp"
-        app:shape_roundRect_topRightRadius="10dp">
+        app:shape_roundRect_topLeftRadius="8dp"
+        app:shape_roundRect_topRightRadius="8dp">
 
 
         <ImageView
             android:id="@+id/img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            android:src="@drawable/rajell"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/iteem"
             app:layout_constraintEnd_toEndOf="@+id/StoreImage"
             app:layout_constraintStart_toStartOf="@+id/StoreImage"
             app:layout_constraintTop_toTopOf="@+id/StoreImage" />
 
-        <ImageView
-            android:id="@+id/imageView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/shadow" />
+
 
 
 
@@ -59,29 +62,55 @@
         android:id="@+id/shopname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginLeft="18dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="sans-serif"
         android:text="Shop Name"
         android:textColor="@color/black"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/StoreImage"
+        app:layout_constraintStart_toStartOf="@+id/roundRectView2"
         app:layout_constraintTop_toBottomOf="@+id/roundRectView2"
         app:layout_constraintVertical_bias="0.135" />
 
     <TextView
         android:id="@+id/shopDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="sans-serif-light"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/StoreImage"
+        app:layout_constraintBottom_toBottomOf="@+id/StoreImage"
+        app:layout_constraintEnd_toEndOf="@+id/shopname"
         app:layout_constraintHorizontal_bias="0.048"
-        app:layout_constraintStart_toStartOf="@+id/StoreImage"
+        app:layout_constraintStart_toStartOf="@+id/shopname"
         app:layout_constraintTop_toBottomOf="@+id/shopname"
         app:layout_constraintVertical_bias="0.186" />
+
+    <ImageView
+        android:layout_marginStart="6dp"
+        android:id="@+id/imageView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/textView29"
+        app:layout_constraintStart_toEndOf="@+id/textView29"
+        app:layout_constraintTop_toTopOf="@+id/textView29"
+        app:srcCompat="@drawable/starrate" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="48dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="4.9"
+        android:textColor="#FFCB22"
+        app:layout_constraintEnd_toEndOf="@+id/StoreImage"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/shopname"
+        app:layout_constraintTop_toBottomOf="@+id/roundRectView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

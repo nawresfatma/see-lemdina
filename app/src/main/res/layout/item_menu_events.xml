@@ -49,7 +49,7 @@
             android:id="@+id/imageView15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="fitXY"
+            android:scaleType="centerCrop"
             app:srcCompat="@drawable/shadow" />
 
         <TextView
@@ -59,6 +59,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginLeft="24dp"
             android:layout_marginTop="93dp"
+            android:fontFamily="sans-serif-light"
             android:paddingLeft="20dp"
             android:text="Location "
             android:textColor="@color/white"
@@ -103,8 +104,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
 
+        android:fontFamily="sans-serif-medium"
         android:text="Free"
         android:textColor="#EB9069"
         android:textStyle="bold"

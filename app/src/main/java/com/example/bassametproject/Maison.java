@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -24,6 +25,7 @@ import android.widget.VideoView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -81,8 +83,8 @@ videoView.start();
 //end video
 //imageSlider
         ImageSlider imageSlider = findViewById(R.id.image_slider1);
-        slideModels.add(new SlideModel(R.drawable.balghaslider, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable.slider, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.mtaaslider, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.mtaaslider, ScaleTypes.FIT));
         imageSlider.setImageList(slideModels);
         //onclick Item
         shopDescription=findViewById(R.id.shopDesc1);
@@ -104,7 +106,21 @@ videoView.start();
 
         // refRate = database.getInstance().getReference(adapterShops.theChosenOne).child(adapterShops.shopStatic.getStoreName());
         //   refShop = database.getInstance().getReference("shops").child("store1").child(adapterShops.shopStatic.getStoreName());
+        //BottomNavigation
+        BottomNavigationView navView=findViewById(R.id.navView);
+        navView.setItemIconTintList(null);
 
+        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                item.getItemId();
+                startActivity(new Intent(getApplicationContext(), Scan.class));
+                overridePendingTransition(0, 0);
+                return true;
+            }
+
+        });
+        //endNavBott
 
 
         //Firebase accessory
@@ -176,8 +192,7 @@ shopDescription.setText(desc);*/
         Intent intentLoadNewActivity = new Intent(Maison.this, Rating.class);
         startActivity(intentLoadNewActivity);
     }
-    public void ScanInterface (View v){
-        Intent intentLoadNewActivity = new Intent(Maison.this, Scan.class);
-        startActivity(intentLoadNewActivity);
-    }
+   /* public void backInterface (View v){
+      finish();
+    }*/
 }

@@ -8,13 +8,18 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,7 +29,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Home extends MarketActivity {
+public class Home extends MarketActivity  implements NavigationView.OnNavigationItemSelectedListener{
+    //drawer
+    DrawerLayout drawerLayout;
+    Toolbar toolbar;
+    NavigationView navigationView;
     RecyclerView recycler,recyclerevent;
     // com.example.bassametproject.adapterEvent adapterevent;
     private SnapHelper snapHelper,snapHelperevent;
@@ -60,6 +69,23 @@ public class Home extends MarketActivity {
         recycler.setLayoutManager(new LinearLayoutManager(this));
         recycler.setLayoutManager(scaleCenterItemManager);
         snapHelper.attachToRecyclerView(recycler);
+
+        //Hooks
+        drawerLayout=findViewById(R.id.container);
+        navigationView=findViewById(R.id.nav_menu);
+        toolbar=findViewById(R.id.menubut);
+//toolbar
+        setSupportActionBar(toolbar);
+        navigationView.bringToFront();
+        ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_iconmen);
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.nav_menu);
+
 
         //events
      /*   eventslist.add(e);
@@ -181,4 +207,54 @@ public class Home extends MarketActivity {
 
     }
 
-}
+    @Override
+    public void onBackPressed(){
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else
+        {
+            super.onBackPressed();
+        }
+    }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_home:
+                Intent HomeIntent = new Intent(Home.this, Home.class);
+                startActivity(HomeIntent);
+                break;
+            case R.id.sign_scanner:
+                Intent ScanIntent = new Intent(Home.this, Scan.class);
+                startActivity(ScanIntent);
+                break;
+            case R.id.achivements:
+                Intent AchIntent = new Intent(Home.this, Achievements.class);
+                startActivity(AchIntent);
+                break;
+            case R.id.chatbot:
+                Intent chatIntent = new Intent(Home.this, chatbotActivity.class);
+                startActivity(chatIntent);
+            case R.id.profile:
+                Intent ProfileIntent = new Intent(Home.this, Profile.class);
+                startActivity(ProfileIntent);
+                break;
+            case R.id.map:
+                Intent MapIntent = new Intent(Home.this, MapBoxActivity.class);
+                startActivity(MapIntent);
+                break;
+            case R.id.LeaderBoard:
+                Intent LeaderBoardIntent = new Intent(Home.this, LeaderBoard.class);
+                startActivity(LeaderBoardIntent);
+                break;
+
+
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+
+
+    }}

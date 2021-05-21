@@ -62,9 +62,9 @@
                     android:layout_marginBottom="20dp"
                     android:clipToPadding="false"
                     app:layout_constraintBottom_toBottomOf="@id/guideline2"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView16"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/imageView16"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView16"
                     app:layout_constraintVertical_bias="0.0"
                     tools:listitem="@layout/mycard"
@@ -137,22 +137,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/navView"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navView"
 
-            app:itemIconSize="@dimen/bottom_navigation_icon_size"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:itemTextColor="@color/black"
+        app:itemIconSize="@dimen/bottom_navigation_icon_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemTextColor="@color/black"
 
-            android:background="@drawable/navcust"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/navcust"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
 
 
-            app:menu="@menu/bar_menu">
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
+        app:menu="@menu/bar_menu">
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

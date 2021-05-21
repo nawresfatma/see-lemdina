@@ -24,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/open_sans_bold"
         android:text="Title"
         android:textColor="@color/black"
         android:textSize="20dp"
@@ -61,19 +62,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:fontFamily="@font/open_sans_semibold"
         android:gravity="center"
         android:padding="7dp"
         android:text="price"
+        android:textColor="#FEFFFF"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:textColor="#FEFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/green"
         app:layout_constraintEnd_toEndOf="@+id/green"
         app:layout_constraintHorizontal_bias="0.363"
         app:layout_constraintStart_toStartOf="@+id/green"
         app:layout_constraintTop_toTopOf="@+id/green"
-        app:layout_constraintVertical_bias="0.478"
-        android:layout_marginRight="8dp" />
+        app:layout_constraintVertical_bias="0.478" />
 
     <ImageButton
         android:id="@+id/imageButton3"
