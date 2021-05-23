@@ -55,7 +55,6 @@ public class adapterShops extends RecyclerView.Adapter<adapterShops.MyViewHolder
         holder.item.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                ((Activity)context).finish();
                 Intent intent=new Intent(context,Maison.class);
                 intent.putExtra(i,"home");
                 shop = store;

@@ -50,7 +50,6 @@ private List<eventList> eventList=new ArrayList<>();
         holder.eventItem.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                ((Activity)context).finish();
                 Intent intent=new Intent(context,eventActivity.class);
                 event = e;
                 context.startActivity(intent);

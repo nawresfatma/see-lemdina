@@ -7,10 +7,10 @@
     tools:context=".MapBoxActivity"
     xmlns:mapbox="http://schemas.android.com/apk/res-auto">
 
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -27,11 +27,11 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/_3dicon"
+            android:textColor="#EB9069"
             android:layout_alignParentTop="true"
             android:layout_margin="20dp"
-            android:textColor="#000"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editTextlocation"
+            app:layout_constraintStart_toEndOf="@+id/Textlocation"
             app:layout_constraintTop_toBottomOf="@+id/mapView" />
 
         <com.mapbox.mapboxsdk.maps.MapView
@@ -75,14 +75,13 @@
             app:layout_constraintTop_toBottomOf="@+id/mapView"
             mapbox:srcCompat="@drawable/location" />
 
-        <EditText
-            android:id="@+id/editTextlocation"
+        <TextView
+            android:id="@+id/Textlocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:ems="10"
-            android:hint="where are you ?"
+            android:text="where are you ?"
             android:paddingLeft="20dp"
             android:textColor="#686666"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
@@ -91,17 +90,16 @@
 
             android:drawableLeft="@drawable/loupe" />
 
-        <EditText
-            android:id="@+id/editTextDestination"
+        <TextView
+            android:id="@+id/TextDestination"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="where are you going?"
+            android:text="where are you going?"
             android:textColor="#686666"
             android:paddingLeft="10dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintEnd_toEndOf="@+id/editTextlocation"
-            app:layout_constraintStart_toStartOf="@+id/editTextlocation"
+            app:layout_constraintEnd_toEndOf="@+id/Textlocation"
+            app:layout_constraintStart_toStartOf="@+id/Textlocation"
             app:layout_constraintTop_toTopOf="@+id/imageView"
             android:drawableLeft="@drawable/loupedestination" />
 
@@ -228,7 +226,7 @@
             android:background="@drawable/btnchatbot"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextDestination" />
+            app:layout_constraintTop_toBottomOf="@+id/TextDestination" />
 
         <TextView
             android:id="@+id/btn_txt"
@@ -242,6 +240,5 @@
             app:layout_constraintStart_toStartOf="@+id/startButton"
             app:layout_constraintTop_toTopOf="@+id/startButton" />
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>

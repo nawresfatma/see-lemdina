@@ -37,12 +37,15 @@ public class Store extends AppCompatActivity {
     DatabaseReference dbRef,refUser;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
         storeRecycler=findViewById(R.id.recyclerView5);
         currentPoints=findViewById(R.id.point);
+
+
        /*listStores.add(new ListStore("chachia" , "100" ,R.drawable.chachia));
         listStores.add(new ListStore("chachia" , "100" ,R.drawable.chachia));
         listStores.add(new ListStore("chachia" , "100",R.drawable.chachia));

@@ -5,14 +5,14 @@ public class StoreItem {
     private String storeName;
     private String storeDescription;
     private String storeDescriptionShort;
-    private int id ;
+    private String id ;
     private float storeRate;
     private String storeLocation;
     private String openingHour;
     private float longitude ,latitude;
     private int type;
 
-    public StoreItem(String storeImage, String storeName, String storeDescription, int id, float storeRate, String storeLocation, String openingHour, float longitude, float latitude) {
+    public StoreItem(String storeImage, String storeName, String storeDescription, String id, float storeRate, String storeLocation, String openingHour, float longitude, float latitude) {
         this.storeImage = storeImage;
         this.storeName = storeName;
         this.storeDescription = storeDescription;
@@ -73,11 +73,11 @@ public class StoreItem {
         this.storeDescription = storeDescription;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

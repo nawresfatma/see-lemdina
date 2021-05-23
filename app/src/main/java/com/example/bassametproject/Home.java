@@ -29,6 +29,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.bassametproject.adapterShops.shop;
+
 public class Home extends MarketActivity  implements NavigationView.OnNavigationItemSelectedListener{
     //drawer
     DrawerLayout drawerLayout;
@@ -60,6 +62,7 @@ public class Home extends MarketActivity  implements NavigationView.OnNavigation
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         Achievements=findViewById(R.id.Achievements);
         recyclerevent=findViewById(R.id.recyclerEvent);
         recycler=findViewById(R.id.recyclerMarkett);
@@ -147,8 +150,8 @@ public class Home extends MarketActivity  implements NavigationView.OnNavigation
                 StoreItems=new ArrayList<>();
                 for(DataSnapshot ds:dataSnapshot.getChildren()){
                     StoreItem data=ds.getValue(StoreItem.class);
-                    //   Toast.makeText(Home.this, data.getStoreImage().toString(),Toast.LENGTH_LONG).show();
-
+                       Toast.makeText(Home.this, String.valueOf(data.getLongitude()),Toast.LENGTH_LONG).show();
+                    System.out.println("meow " + data.getLongitude());
                     StoreItems.add(data);
                 }
                 myAdapt = new adapterShopsHome(StoreItems,Home.this);

@@ -96,7 +96,6 @@ videoView.start();
         setData();
 
 
-
         //accessory
         recyclerAccessory=findViewById(R.id.moreaccessory1);
         //user firebase
@@ -124,7 +123,7 @@ videoView.start();
 
 
         //Firebase accessory
-        refAccessory = FirebaseDatabase.getInstance().getReference(adapterShops.shops).child("store2").child("products");
+        refAccessory = FirebaseDatabase.getInstance().getReference(adapterShops.shops).child(adapterShopsHome.shop1.getId()).child("products");
         refAccessory.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -167,13 +166,13 @@ videoView.start();
     private void setData(){
 /*shopName.setText(name);
 shopDescription.setText(desc);*/
-        if(adapterShopsHome.shop1.getStoreName()!=null){
+        if(adapterShopsHome.shop1!=null){
             storeLocation.setText(adapterShopsHome.shop1.getStoreLocation());
             shopName.setText(adapterShopsHome.shop1.getStoreName());
             shopDescription.setText(adapterShopsHome.shop1.getStoreDescription());
             openHour.setText(adapterShopsHome.shop1.getOpeningHour());
 
-        }else if(adapterShops.shop.getStoreName()!=null){
+        }else if(adapterShops.shop!=null){
             storeLocation.setText(adapterShops.shop.getStoreLocation());
             shopName.setText(adapterShops.shop.getStoreName());
             shopDescription.setText(adapterShops.shop.getStoreDescription());
