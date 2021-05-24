@@ -22,9 +22,9 @@ import java.util.List;
 public class adapterShops extends RecyclerView.Adapter<adapterShops.MyViewHolder> {
     List<StoreItem> StoreItems = new ArrayList<>();
     Context context;
-    String i="1";
+    String i = "1";
     public static StoreItem shop;
-    public static  String shops="shops";
+    public static String shops = "shops";
 
     public adapterShops(List<StoreItem> storeItems, Context c) {
         StoreItems = storeItems;
@@ -52,11 +52,11 @@ public class adapterShops extends RecyclerView.Adapter<adapterShops.MyViewHolder
         Picasso.get().load(StoreItems.get(position).getStoreImage()).into(holder.shopImage);
 
         //const
-        holder.item.setOnClickListener(new View.OnClickListener(){
+        holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context,Maison.class);
-                intent.putExtra(i,"home");
+                Intent intent = new Intent(context, Maison.class);
+                intent.putExtra(i, "home");
                 shop = store;
                 context.startActivity(intent);
             }
@@ -74,18 +74,17 @@ public class adapterShops extends RecyclerView.Adapter<adapterShops.MyViewHolder
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView shopName,shopDescription;
+        TextView shopName, shopDescription;
         ImageView shopImage;
         ConstraintLayout item;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            shopName=itemView.findViewById(R.id.shopname);
-            shopDescription=itemView.findViewById(R.id.shopDescription);
-            shopImage=itemView.findViewById(R.id.img);
-            item=itemView.findViewById(R.id.itemSeller);
+            shopName = itemView.findViewById(R.id.shopname);
+            shopDescription = itemView.findViewById(R.id.shopDescription);
+            shopImage = itemView.findViewById(R.id.img);
+            item = itemView.findViewById(R.id.itemSeller);
 
         }
     }
 }
-

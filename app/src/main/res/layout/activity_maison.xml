@@ -52,6 +52,7 @@
                 app:layout_constraintHorizontal_bias="0.012"
                 app:layout_constraintStart_toEndOf="@+id/back"
                 app:layout_constraintTop_toTopOf="@+id/back"
+                android:onClick="backInterface"
                />
 
             <ImageView
@@ -158,11 +159,12 @@
                 app:layout_constraintTop_toTopOf="@+id/roundRectView4" />
 
             <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
-                app:layout_constraintEnd_toEndOf="@+id/textView26"
                 android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="@+id/textView26"
                 app:layout_constraintStart_toStartOf="@+id/textView26"
                 app:layout_constraintTop_toBottomOf="@+id/textView26">
 
@@ -239,27 +241,28 @@
                 app:srcCompat="@drawable/ppin"
                 android:layout_marginLeft="16dp" />
 
-            <FrameLayout
-                android:id="@+id/frameLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView13"
-                app:layout_constraintBottom_toBottomOf="@+id/guideline12">
 
                 <VideoView
                     android:id="@+id/videoView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="152dp"
-                    tools:layout_editor_absoluteY="531dp"
-
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView13"
+                    app:layout_constraintBottom_toBottomOf="@+id/guideline12"
                     />
 
-            </FrameLayout>
-
-
+            <ImageView
+                android:id="@+id/play_btn"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:visibility="gone"
+                android:src="@drawable/ic_play"
+                app:layout_constraintBottom_toBottomOf="@+id/videoView"
+                app:layout_constraintEnd_toEndOf="@+id/videoView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/videoView" />
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline12"
                 android:layout_width="wrap_content"
@@ -278,7 +281,7 @@
                 app:layout_constraintEnd_toEndOf="@id/imageView24"
                 app:layout_constraintHorizontal_bias="0.088"
                 app:layout_constraintStart_toStartOf="@id/imageView24"
-                app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/videoView" />
 
             <TextView
                 android:id="@+id/shopDesc1"
@@ -347,7 +350,7 @@
                 android:layout_marginLeft="16dp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/ratingrecycler"
+                    android:id="@+id/ratingrecycler"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -357,6 +360,11 @@
                 app:layout_constraintTop_toBottomOf="@id/textView21"
                 tools:listitem="@layout/ratingrecycler"
                 android:layout_marginBottom="40dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                app:layout_constraintBottom_toBottomOf="@+id/ratingrecycler" />
 
             <TextView
                 android:id="@+id/rate1"
@@ -601,7 +609,7 @@
         android:id="@+id/navView"
         app:itemIconSize="@dimen/bottom_navigation_icon_size"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         app:itemTextColor="@color/black"
         android:background="@drawable/navcust"
         app:layout_constraintBottom_toBottomOf="parent"

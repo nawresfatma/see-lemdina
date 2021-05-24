@@ -4,7 +4,6 @@ import java.util.Comparator;
 
 public class User {
 
-    public static Comparator<? super User> pointSort;
     private String id;
     private String name;
     private String email;
@@ -41,6 +40,15 @@ public class User {
         this.email = email;
         this.password = password;
         this.image = image;
+    }
+
+    public User(String id, String name, String email, String image, int point, int rank) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.image = image;
+        this.point = point;
+        this.rank = rank;
     }
 
     public int getPoint() {
@@ -98,5 +106,16 @@ public class User {
     public void setImage(String image) {
         this.image = image;
     }
+
+    public static void setPointSort(Comparator<User> pointSort) {
+        User.pointSort = pointSort;
+    }
+
+    public static Comparator<User> pointSort = new Comparator<User>() {
+        @Override
+        public int compare(User u1, User u2) {
+            return Float.compare(u1.point , u2.point);
+        }
+    };
 
 }

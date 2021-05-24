@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,11 +21,14 @@ import androidx.recyclerview.widget.SnapHelper;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,10 +45,12 @@ public class Home extends MarketActivity  implements NavigationView.OnNavigation
     private SnapHelper snapHelper,snapHelperevent;
     adapterEvent adapterEvent;
     //listevent
-  List<eventList> eventslist;
-  //  eventList e =new eventList("barcha alwen","mdina","25" ,R.drawable.eventone);
+    List<eventList> eventslist;
+    //  eventList e =new eventList("barcha alwen","mdina","25" ,R.drawable.eventone);
     //eventList e1 =new eventList("barcha barcha alwen","mdina1","10" ,R.drawable.photoone);
     //eventList e2 =new eventList("barcha chwaya alwen","mdina2","15" ,R.drawable.phototwo);
+    private ImageView userprofile;
+    private TextView userName , userEmail , userPoints;
 
 
     // List<com.example.bassametproject.event> eventList1;
@@ -58,10 +64,52 @@ public class Home extends MarketActivity  implements NavigationView.OnNavigation
     adapterShopsHome myAdapt ;
     ImageView Achievements;
 
+    private FirebaseDatabase database;
+    private DatabaseReference userRef2;
+    private FirebaseAuth fAuth;
+    private FirebaseUser user;
+
+    public static String username , userphotourl  , useremail ,userPoint;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_menu);
+        View headerView = navigationView.getHeaderView(0);
+        userprofile = headerView.findViewById(R.id.userprofile);
+        userName = headerView.findViewById(R.id.textView8);
+        userEmail = headerView.findViewById(R.id.textView28);
+        userPoints = headerView.findViewById(R.id.textView25);
+
+        fAuth = FirebaseAuth.getInstance();
+
+        user = fAuth.getCurrentUser();
+
+        userRef2 = database.getInstance().getReference("User").child(user.getUid());
+
+        userRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    userphotourl = ds.child("image").getValue().toString();
+                    username = ds.child("name").getValue().toString();
+                    useremail = ds.child("email").getValue().toString();
+                    userPoint = ds.child("point").getValue().toString();
+                }
+                Picasso.get().load(Home.userphotourl).resize(500 , 500).into(userprofile);
+                userName.setText(Home.username);
+                userEmail.setText(Home.useremail);
+                userPoints.setText(Home.userPoint);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         Achievements=findViewById(R.id.Achievements);
         recyclerevent=findViewById(R.id.recyclerEvent);
@@ -118,29 +166,29 @@ public class Home extends MarketActivity  implements NavigationView.OnNavigation
         //events
 
 
-       com.example.bassametproject.ScaleCenterItemManager scaleCenterItemManager= new com.example.bassametproject.ScaleCenterItemManager(this, LinearLayoutManager.HORIZONTAL,false);
-       recyclerevent.setLayoutManager(new LinearLayoutManager(this));
-       recyclerevent.setLayoutManager(scaleCenterItemManager);
+        com.example.bassametproject.ScaleCenterItemManager scaleCenterItemManager= new com.example.bassametproject.ScaleCenterItemManager(this, LinearLayoutManager.HORIZONTAL,false);
+        recyclerevent.setLayoutManager(new LinearLayoutManager(this));
+        recyclerevent.setLayoutManager(scaleCenterItemManager);
         snapHelperevent.attachToRecyclerView(recyclerevent);
-         eventReference = FirebaseDatabase.getInstance().getReference().child("Events");
-       eventReference.addValueEventListener(new ValueEventListener() {
-         @Override
-           public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               eventslist = new ArrayList<eventList>();
-               for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
-               {
-                   eventList e = dataSnapshot1.getValue(eventList.class);
-                   eventslist.add(e);
-               }
-               adapterEvent = new adapterEvent(eventslist,Home.this);
-               recyclerevent.setAdapter(adapterEvent);
-           }
+        eventReference = FirebaseDatabase.getInstance().getReference().child("Events");
+        eventReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                eventslist = new ArrayList<eventList>();
+                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                {
+                    eventList e = dataSnapshot1.getValue(eventList.class);
+                    eventslist.add(e);
+                }
+                adapterEvent = new adapterEvent(eventslist,Home.this);
+                recyclerevent.setAdapter(adapterEvent);
+            }
 
-           @Override
-           public void onCancelled(@NonNull DatabaseError databaseError) {
-               Toast.makeText(Home.this, "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
-           }
-       });
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(Home.this, "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
         //Stores
 
         mref= FirebaseDatabase.getInstance().getReference("shops");
@@ -150,7 +198,7 @@ public class Home extends MarketActivity  implements NavigationView.OnNavigation
                 StoreItems=new ArrayList<>();
                 for(DataSnapshot ds:dataSnapshot.getChildren()){
                     StoreItem data=ds.getValue(StoreItem.class);
-                       Toast.makeText(Home.this, String.valueOf(data.getLongitude()),Toast.LENGTH_LONG).show();
+                    Toast.makeText(Home.this, String.valueOf(data.getLongitude()),Toast.LENGTH_LONG).show();
                     System.out.println("meow " + data.getLongitude());
                     StoreItems.add(data);
                 }

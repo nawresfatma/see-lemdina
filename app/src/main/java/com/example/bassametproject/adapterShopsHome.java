@@ -36,9 +36,9 @@ public class adapterShopsHome extends RecyclerView.Adapter<adapterShopsHome.MyVi
     public adapterShopsHome.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
 
-            LayoutInflater inflater = LayoutInflater.from(context);
-            View view = inflater.inflate(R.layout.item_menu_sellers, parent, false);
-            return new MyViewHolder(view);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.item_menu_sellers, parent, false);
+        return new MyViewHolder(view);
 
     }
 

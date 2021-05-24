@@ -31,6 +31,7 @@ import java.util.Collections;
 
 public class Ranking extends AppCompatActivity {
 
+    private ArrayList<String> menus;
     private DatabaseReference refRank;
     private RecyclerView recyclerViewRank;
     private ArrayList<User> listRank;
@@ -39,27 +40,18 @@ public class Ranking extends AppCompatActivity {
     private ImageView user1img , user2img , user3img;
     private AutoCompleteTextView rechercheRank , rechercheName , recherchePoint;
     private ArrayList<String> nameSearch , rankSearch , pointSearch;
-    private TextView back;
+    private LinearLayout back;
+
+    private Runnable dataRunnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ranking);
 
-        back = findViewById(R.id.Back);
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                Intent back = new Intent(Ranking.this, Home.class);
-                startActivity(back);
-            }
-        });
-
-       /* rechercheRank = findViewById(R.id.rechercheRank);
-        rechercheName = findViewById(R.id.rechercheName);
-        recherchePoint = findViewById(R.id.recherchePoint);*/
+//        rechercheRank = findViewById(R.id.rechercheRank);
+//        rechercheName = findViewById(R.id.rechercheName);
+//        recherchePoint = findViewById(R.id.recherchePoint);
 
         user1name = (TextView) findViewById(R.id.FirstplaceName);
         user2name = (TextView) findViewById(R.id.SecondplaceName);
@@ -72,90 +64,93 @@ public class Ranking extends AppCompatActivity {
 
         recyclerViewRank = (RecyclerView) findViewById(R.id.rankingRecycler);
 
-
-        recyclerViewRank.setLayoutManager(new LinearLayoutManager(this));
-
-
         listRank = new ArrayList<User>();
 
+//        //SearchView Places Names Array List
+//        nameSearch = new ArrayList<>();
+//        rankSearch = new ArrayList<>();
+//        pointSearch = new ArrayList<>();
+//        //SearchView Places Names Array List end
 
+        //watcherlistner();
 
-     //watcherlistner();
-
-        refRank = FirebaseDatabase.getInstance().getReference().child("User");
-        refRank.addValueEventListener(new ValueEventListener() {
+        dataRunnable = new Runnable() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                nameSearch = new ArrayList<String>();
-                rankSearch = new ArrayList<String>();
-                pointSearch = new ArrayList<String>();
-                listRank.clear();
-                int i = 1;
+            public void run() {
+                refRank = FirebaseDatabase.getInstance().getReference("User");
+                refRank.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot data: dataSnapshot.getChildren()) {
+                        listRank.clear();
+                        int i = 1;
 
+                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                            User u = dataSnapshot1.child("user").getValue(User.class);
+                            System.out.println("meow " + u.getEmail());
 
-                    User u =data.child("user").getValue(User.class);
-                    Toast.makeText(Ranking.this, data.toString(),Toast.LENGTH_LONG).show();
-                    //SearchView Places Names Array List start
+//                    //SearchView Places Names Array List start
+//                    nameSearch.add(u.getName());
+//                    rankSearch.add(String.valueOf(i));
+//                    pointSearch.add(String.valueOf(u.getPoint()));
+//                    //SearchView Places Names Array List end
 
-                    nameSearch.add(u.getName());
-                    rankSearch.add(String.valueOf(i));
-                    pointSearch.add(String.valueOf(u.getPoint()));
-                    //SearchView Places Names Array List end
+                            listRank.add(u);
+                            i++;
+                        }
 
-                    listRank.add(u);
-                    i++;
-                }
+                        Collections.sort(listRank , User.pointSort);
 
-                Collections.sort(listRank , User.pointSort);
+                        Collections.reverse(listRank);
 
-                Collections.reverse(listRank);
+                        for(int r = 0 ; r < listRank.size() ; r++)
+                        {
+                            listRank.get(r).setRank(r+1);
+                        }
 
-                for(int r = 0 ; r < listRank.size() ; r++)
-                {
-                    listRank.get(r).setRank(r+1);
-                }
+                        Picasso.get().load(listRank.get(0).getImage()).resize(500 , 500).into(user1img);
+                        Picasso.get().load(listRank.get(1).getImage()).resize(500 , 500).into(user2img);
+                        Picasso.get().load(listRank.get(2).getImage()).resize(500 , 500).into(user3img);
 
-                Picasso.get().load(listRank.get(0).getImage()).resize(500 , 500).into(user1img);
-                Picasso.get().load(listRank.get(1).getImage()).resize(500 , 500).into(user2img);
-                Picasso.get().load(listRank.get(2).getImage()).resize(500 , 500).into(user3img);
+                        user1name.setText(listRank.get(0).getName());
+                        user2name.setText(listRank.get(1).getName());
+                        user3name.setText(listRank.get(2).getName());
 
-                user1name.setText(listRank.get(0).getName());
-                user2name.setText(listRank.get(1).getName());
-                user3name.setText(listRank.get(2).getName());
+//                user1point.setText(String.valueOf(listRank.get(0).getPoint()));
+//                user2point.setText(String.valueOf(listRank.get(1).getPoint()));
+//                user3point.setText(String.valueOf(listRank.get(2).getPoint()));
 
-                user1point.setText(String.valueOf(listRank.get(0).getPoint()));
-                user2point.setText(String.valueOf(listRank.get(1).getPoint()));
-                user3point.setText(String.valueOf(listRank.get(2).getPoint()));
+                        for(int j = 0 ; j < 3 ; j++)
+                        {
+                            listRank.remove(0);
+                        }
 
-                for(int j = 0 ; j < 3 ; j++)
-                {
-                    listRank.remove(0);
-                }
+                        adapterRank = new rankAdapter(Ranking.this, listRank);
+                        recyclerViewRank.setLayoutManager(new LinearLayoutManager(Ranking.this));
+                        recyclerViewRank.setAdapter(adapterRank);
 
-                adapterRank = new rankAdapter( Ranking.this,listRank);
-                recyclerViewRank.setAdapter(adapterRank);
+                        //SearchView Places Names Array List start
+                        ArrayAdapter<String> adapterSearch = new ArrayAdapter<String>(Ranking.this , android.R.layout.simple_list_item_1 , nameSearch);
+                        ArrayAdapter<String> adapterSearch2 = new ArrayAdapter<String>(Ranking.this , android.R.layout.simple_list_item_1 , rankSearch);
+                        ArrayAdapter<String> adapterSearch3 = new ArrayAdapter<String>(Ranking.this , android.R.layout.simple_list_item_1 , pointSearch);
 
-                //SearchView Places Names Array List start
-                ArrayAdapter<String> adapterSearch = new ArrayAdapter<String>(Ranking.this , android.R.layout.simple_list_item_1 , nameSearch);
-                ArrayAdapter<String> adapterSearch2 = new ArrayAdapter<String>(Ranking.this , android.R.layout.simple_list_item_1 , rankSearch);
-                ArrayAdapter<String> adapterSearch3 = new ArrayAdapter<String>(Ranking.this , android.R.layout.simple_list_item_1 , pointSearch);
+//                rechercheRank.setAdapter(adapterSearch2);
+//                rechercheName.setAdapter(adapterSearch);
+//                recherchePoint.setAdapter(adapterSearch3);
+                        //SearchView Places Names Array List end
 
-                rechercheRank.setAdapter(adapterSearch2);
-                rechercheName.setAdapter(adapterSearch);
-                recherchePoint.setAdapter(adapterSearch3);
-                //SearchView Places Names Array List end
+                    }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
+        };
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(Ranking.this, " something is wrong !", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
+        Thread dataThread = new Thread(dataRunnable);
+        dataThread.start();
 
     }
 
@@ -172,7 +167,7 @@ public class Ranking extends AppCompatActivity {
             }
         }
 
-        adapterRank = new rankAdapter(Ranking.this,listRank);
+        adapterRank = new rankAdapter(Ranking.this, MorePlacesSearchList);
         recyclerViewRank.setAdapter(adapterRank);
 
 
@@ -193,7 +188,7 @@ public class Ranking extends AppCompatActivity {
             i++;
         }
 
-        adapterRank = new rankAdapter(Ranking.this,listRank);
+        adapterRank = new rankAdapter(Ranking.this, MorePlacesSearchList);
         recyclerViewRank.setAdapter(adapterRank);
 
 
@@ -218,64 +213,58 @@ public class Ranking extends AppCompatActivity {
 
     }
 
-    private void watcherlistner()
-    {
-        rechercheRank.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//    private void watcherlistner()
+//    {
+//        rechercheRank.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                filterSearchRank(s.toString());
+//            }
+//        });
+//
+//        rechercheName.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                filterSearchName(s.toString());
+//            }
+//        });
+//
+//        recherchePoint.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                filterSearchPoint(s.toString());
+//            }
+//        });
+//    }
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                filterSearchRank(s.toString());
-            }
-        });
-
-        rechercheName.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                filterSearchName(s.toString());
-            }
-        });
-
-        recherchePoint.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                filterSearchPoint(s.toString());
-            }
-        });
-    }
-
-    @Override
-    public void onBackPressed() {
-        finish();
-        Intent back = new Intent(Ranking.this, Home.class);
-        startActivity(back);
-    }
 }

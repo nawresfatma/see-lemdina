@@ -12,6 +12,8 @@ public class StoreItem {
     private float longitude ,latitude;
     private int type;
 
+
+
     public StoreItem(String storeImage, String storeName, String storeDescription, String id, float storeRate, String storeLocation, String openingHour, float longitude, float latitude) {
         this.storeImage = storeImage;
         this.storeName = storeName;

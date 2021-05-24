@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,9 +19,9 @@ import java.util.ArrayList;
 public class ratingAdapter extends RecyclerView.Adapter<ratingAdapter.RatingViewHolder> {
 
     Context context;
-    ArrayList<RatinList> ratingComments;
+    ArrayList<RatingComment> ratingComments;
 
-    public ratingAdapter(Context c , ArrayList<RatinList> r)
+    public ratingAdapter(Context c , ArrayList<RatingComment> r)
     {
         context = c;
         ratingComments = r;
@@ -39,8 +40,6 @@ public class ratingAdapter extends RecyclerView.Adapter<ratingAdapter.RatingView
         holder.title.setText(ratingComments.get(position).getTitle());
         Picasso.get().load(ratingComments.get(position).getImage()).resize(500 , 500).into(holder.imgrating);
         holder.ratingBar.setRating(ratingComments.get(position).getRating());
-
-
 
     }
 

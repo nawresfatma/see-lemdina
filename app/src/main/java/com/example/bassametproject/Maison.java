@@ -46,39 +46,63 @@ public class Maison extends AppCompatActivity {
     RecyclerView recyclerAccessory;
     SnapHelper snapHelper;
     ScaleCenterItemManager scaleCenterItemManager;
-    List<SlideModel> slideModels= new ArrayList<>();
+    List<SlideModel> slideModels = new ArrayList<>();
     //adapter
     myAdapterrecy maisonAdapter;
     adapterAccessory adapterAccessory1;
     // onClick Item
-    TextView shopName , shopDescription,openHour,storeLocation;
-    String name , desc,hour,location;
+    TextView shopName, shopDescription, openHour, storeLocation;
+    String name, desc, hour, location;
+    RecyclerView recyclerViewRating;
+    ArrayList<RatingComment> listRating;
 
     //firebase
     private FirebaseDatabase database;
+    private DatabaseReference refRating;
+    ratingAdapter adapterRating;
     //video
     VideoView videoView;
+    ImageView play_button;
 
     //end video declaration
-    private DatabaseReference userRef, refRate ,refAccessory,refShop;
+    private DatabaseReference userRef, refRate, refAccessory, refShop;
     private FirebaseAuth fAuth;
     private FirebaseUser user;
     public String username, userphotourl;
     //map dialogue
     ImageButton getdirection;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maison);
- //Video
-        MediaController mediaController=new MediaController(this);
- videoView=(VideoView) findViewById(R.id.videoView);
-videoView.setMediaController(mediaController);
-mediaController.setAnchorView(videoView);
-Uri uri =Uri.parse("gs://pfe2021-270a5.appspot.com/Video/videoTest.mp4");
-videoView.setVideoURI(uri);
-videoView.start();
+        //Video
+        MediaController mediaController = new MediaController(this);
+        videoView = (VideoView) findViewById(R.id.videoView);
+        play_button = (ImageView) findViewById(R.id.play_btn);
+        videoView.setMediaController(mediaController);
+        mediaController.setAnchorView(videoView);
+        Uri uri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/pfe2021-270a5.appspot.com/o/Video%2Fyt1s.com%20-%20Hands%20%2030%20Second%20Ad.mp4?alt=media&token=ed1a8548-6214-4ed9-a6bb-5a67d647b702");
+        videoView.setVideoURI(uri);
+        videoView.setMediaController(null);
+        videoView.start();
+
+        videoView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                videoView.pause();
+                play_button.setVisibility(View.VISIBLE);
+            }
+        });
+
+        play_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                videoView.start();
+                play_button.setVisibility(View.GONE);
+            }
+        });
 
 //end video
 //imageSlider
@@ -87,17 +111,17 @@ videoView.start();
         slideModels.add(new SlideModel(R.drawable.mtaaslider, ScaleTypes.FIT));
         imageSlider.setImageList(slideModels);
         //onclick Item
-        shopDescription=findViewById(R.id.shopDesc1);
-        shopName=findViewById(R.id.shopName1);
-        storeLocation=findViewById(R.id.storeLocation);
-        openHour=findViewById(R.id.openingHour);
+        shopDescription = findViewById(R.id.shopDesc1);
+        shopName = findViewById(R.id.shopName1);
+        storeLocation = findViewById(R.id.storeLocation);
+        openHour = findViewById(R.id.openingHour);
 
         getData();
         setData();
 
 
         //accessory
-        recyclerAccessory=findViewById(R.id.moreaccessory1);
+        recyclerAccessory = findViewById(R.id.moreaccessory1);
         //user firebase
         fAuth = FirebaseAuth.getInstance();
         user = fAuth.getCurrentUser();
@@ -106,7 +130,7 @@ videoView.start();
         // refRate = database.getInstance().getReference(adapterShops.theChosenOne).child(adapterShops.shopStatic.getStoreName());
         //   refShop = database.getInstance().getReference("shops").child("store1").child(adapterShops.shopStatic.getStoreName());
         //BottomNavigation
-        BottomNavigationView navView=findViewById(R.id.navView);
+        BottomNavigationView navView = findViewById(R.id.navView);
         navView.setItemIconTintList(null);
 
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -123,7 +147,7 @@ videoView.start();
 
 
         //Firebase accessory
-        refAccessory = FirebaseDatabase.getInstance().getReference(adapterShops.shops).child(adapterShopsHome.shop1.getId()).child("products");
+        refAccessory = FirebaseDatabase.getInstance().getReference(adapterShops.shops).child("store2").child("products");
         refAccessory.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -134,7 +158,7 @@ videoView.start();
                     ListProduct p1 = data2.getValue(ListProduct.class);
                     accessoryList.add(p1);
                 }
-                adapterAccessory1 = new adapterAccessory(accessoryList,Maison.this);
+                adapterAccessory1 = new adapterAccessory(accessoryList, Maison.this);
                 snapHelper = new LinearSnapHelper();
                 scaleCenterItemManager = new ScaleCenterItemManager(Maison.this, LinearLayoutManager.HORIZONTAL, false);
 
@@ -151,47 +175,75 @@ videoView.start();
             }
         });
 
+        refRating = FirebaseDatabase.getInstance().getReference(adapterShops.shops).child("store2").child("RatingComment");
+
+        recyclerViewRating = (RecyclerView) findViewById(R.id.ratingrecycler);
+
+        recyclerViewRating.setLayoutManager(new LinearLayoutManager(this));
+
+
+        listRating = new ArrayList<RatingComment>();
+
+        refRating.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+
+                        RatingComment r = dataSnapshot1.getValue(RatingComment.class);
+                        listRating.add(r);
+
+                }
+
+                adapterRating = new ratingAdapter(Maison.this, listRating);
+                recyclerViewRating.setAdapter(adapterRating);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(Maison.this, " something is wrong !", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
-
-
-
 
 
     //onClick
-    private void getData(){
-        if (getIntent().hasExtra("Home")){
-            name=getIntent().getStringExtra("shopName");
+    private void getData() {
+        if (getIntent().hasExtra("Home")) {
+            name = getIntent().getStringExtra("shopName");
         }
     }
-    private void setData(){
+
+    private void setData() {
 /*shopName.setText(name);
 shopDescription.setText(desc);*/
-        if(adapterShopsHome.shop1!=null){
+        if (adapterShopsHome.shop1 != null) {
             storeLocation.setText(adapterShopsHome.shop1.getStoreLocation());
             shopName.setText(adapterShopsHome.shop1.getStoreName());
             shopDescription.setText(adapterShopsHome.shop1.getStoreDescription());
             openHour.setText(adapterShopsHome.shop1.getOpeningHour());
 
-        }else if(adapterShops.shop!=null){
+        } else if (adapterShops.shop != null) {
             storeLocation.setText(adapterShops.shop.getStoreLocation());
             shopName.setText(adapterShops.shop.getStoreName());
             shopDescription.setText(adapterShops.shop.getStoreDescription());
             openHour.setText(adapterShops.shop.getOpeningHour());
         }
     }
+
     //map dialog
-    public void openMapDialog(View view)
-    {
+    public void openMapDialog(View view) {
         finish();
-        Intent intent = new Intent(Maison.this , MapBoxActivity.class);
+        Intent intent = new Intent(Maison.this, MapBoxActivity.class);
         startActivity(intent);
     }
 
-    public void RateInterface (View v){
+    public void RateInterface(View v) {
         Intent intentLoadNewActivity = new Intent(Maison.this, Rating.class);
         startActivity(intentLoadNewActivity);
     }
-   /* public void backInterface (View v){
+    public void backInterface (View v){
       finish();
-    }*/
+    }
 }

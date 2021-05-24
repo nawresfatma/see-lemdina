@@ -33,7 +33,7 @@
         <activity android:name=".SellproductActivity" />
 
         <activity android:name=".MarketActivity" />
-        <activity android:name=".MapBoxActivity" />
+
         <activity
             android:name=".Produits"
             android:windowSoftInputMode="adjustPan" />
@@ -57,6 +57,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+            <activity android:name=".MapBoxActivity" >
+
         </activity>
 
         <meta-data

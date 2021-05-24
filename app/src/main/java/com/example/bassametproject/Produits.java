@@ -48,7 +48,7 @@ public class Produits extends AppCompatActivity {
         // MyAdapterprod myAdapt=new MyAdapterprod(productList,this);
         // recycler2.setAdapter(myAdapt);
 
-       // recycler2.setLayoutManager(new LinearLayoutManager(this));
+        // recycler2.setLayoutManager(new LinearLayoutManager(this));
         //recycler2.setLayoutManager(scaleCenterItemManager);
 
         BottomNavigationView navView=findViewById(R.id.navView);
@@ -80,8 +80,8 @@ public class Produits extends AppCompatActivity {
                 scaleCenterItemManager = new ScaleCenterItemManager(Produits.this, LinearLayoutManager.HORIZONTAL, false);
 
 //             recyclerAccessory.setLayoutManager(new LinearLayoutManager(Produits.this));
-              //  recyclerAccessory.setLayoutManager(scaleCenterItemManager);
-             //   recyclerAccessory.setAdapter(adapterAccessory);
+                //  recyclerAccessory.setLayoutManager(scaleCenterItemManager);
+                //   recyclerAccessory.setAdapter(adapterAccessory);
 
             }
 

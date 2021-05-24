@@ -66,7 +66,6 @@ public class Store extends AppCompatActivity {
         });
 
      /*p
-
         dbRef = FirebaseDatabase.getInstance().getReference("User");
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -74,9 +73,7 @@ public class Store extends AppCompatActivity {
                 User u = snapshot.child("user").getValue(User.class);
               currentPoints.setText(String.valueOf(u.getPoint()));
                 Toast.makeText(Store.this, currentPoints.toString(), Toast.LENGTH_SHORT).show();
-
                     }
-
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
                 Toast.makeText(Store.this, " something is wrong !", Toast.LENGTH_SHORT).show();
