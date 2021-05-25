@@ -43,8 +43,12 @@ public class Produits extends AppCompatActivity {
 
 
         store=findViewById(R.id.imageView);
-        recyclerAccessory = findViewById(R.id.recyclerMarkett);
-
+        recyclerAccessory = findViewById(R.id.recycler12);
+        snapHelper = new LinearSnapHelper();
+        scaleCenterItemManager = new ScaleCenterItemManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerAccessory.setLayoutManager(new LinearLayoutManager(this));
+        recyclerAccessory.setLayoutManager(scaleCenterItemManager);
+        snapHelper.attachToRecyclerView(recyclerAccessory);
         // MyAdapterprod myAdapt=new MyAdapterprod(productList,this);
         // recycler2.setAdapter(myAdapt);
 
@@ -76,12 +80,10 @@ public class Produits extends AppCompatActivity {
                     accessoryList.add(p1);
                 }
                 adapterAccessory = new adapterAccessory(accessoryList,Produits.this);
-                snapHelper = new LinearSnapHelper();
-                scaleCenterItemManager = new ScaleCenterItemManager(Produits.this, LinearLayoutManager.HORIZONTAL, false);
 
 //             recyclerAccessory.setLayoutManager(new LinearLayoutManager(Produits.this));
                 //  recyclerAccessory.setLayoutManager(scaleCenterItemManager);
-                //   recyclerAccessory.setAdapter(adapterAccessory);
+                  recyclerAccessory.setAdapter(adapterAccessory);
 
             }
 

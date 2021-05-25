@@ -147,20 +147,19 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
                 android:layout_marginTop="16dp"
                 android:text="Most Popular"
                 android:textColor="#000000"
                 android:textSize="19dp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guidelineBottom" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerMarkett"
+                android:id="@+id/recyclerMarket"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="44dp"
                 android:clipToPadding="false"
                 android:layout_marginBottom="100dp"
@@ -218,7 +217,7 @@
 
     </ScrollView>
 
-  
+
 
 
 

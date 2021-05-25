@@ -40,7 +40,7 @@ public class SellproductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sellproduct);
-        recycler=findViewById(R.id.recyclerMarkett);
+        recycler=findViewById(R.id.recyclerMarket);
         product=findViewById(R.id.products);
 
 
