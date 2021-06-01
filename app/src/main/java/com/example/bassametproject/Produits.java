@@ -34,6 +34,7 @@ public class Produits extends AppCompatActivity {
     List<ListProduct> listMaisons;
     DatabaseReference ref;
     ImageView store;
+    StoreItem shop;
 //produits
 
     @Override
@@ -69,13 +70,13 @@ public class Produits extends AppCompatActivity {
 
         });
         //Firebase
-        ref = FirebaseDatabase.getInstance().getReference().child("shops").child("store1").child("products");
+
+        ref = FirebaseDatabase.getInstance().getReference().child("shops");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 accessoryList = new ArrayList<>();
-                for (DataSnapshot data2 : dataSnapshot.getChildren()) {
-                    Toast.makeText(Produits.this, data2.toString(), Toast.LENGTH_LONG).show();
+                for (DataSnapshot data2 : dataSnapshot.child("store1").child("products").getChildren()) {
                     ListProduct p1 = data2.getValue(ListProduct.class);
                     accessoryList.add(p1);
                 }

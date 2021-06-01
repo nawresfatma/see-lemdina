@@ -50,60 +50,116 @@ public class Rating extends AppCompatActivity {
         dialograting_bar = findViewById(R.id.dialograting_bar);
         submitBtn = findViewById(R.id.animationView);
 
-        refRate = database.getInstance().getReference(adapterShops.shops).child("store2").child("RatingComment");
-        refStore = database.getInstance().getReference(adapterShops.shops).child("store2");
+        if (adapterShopsHome.shop1.getId() != null) {
 
-        submitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final RatingComment rate = new RatingComment();
+            refRate = database.getInstance().getReference(adapterShopsHome.shops).child(adapterShopsHome.shop1.getId()).child("RatingComment");
+            refStore = database.getInstance().getReference(adapterShopsHome.shops).child(adapterShopsHome.shop1.getId());
 
-                rate.setDescription(reviewDescription.getText().toString());
-                rate.setTitle(reviewTitle.getText().toString());
-                rate.setRating(dialograting_bar.getRating());
-                rate.setImage(Home.userphotourl);
-                rate.setName(Home.username);
+            submitBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    final RatingComment rate = new RatingComment();
 
-                fAuth = FirebaseAuth.getInstance();
+                    rate.setDescription(reviewDescription.getText().toString());
+                    rate.setTitle(reviewTitle.getText().toString());
+                    rate.setStoreRate(dialograting_bar.getRating());
+                    rate.setImage(Home.userphotourl);
+                    rate.setName(Home.username);
 
-                user = fAuth.getCurrentUser();
+                    fAuth = FirebaseAuth.getInstance();
 
-                refRate.child(user.getUid()).setValue(rate);
+                    user = fAuth.getCurrentUser();
+
+                    refRate.child(user.getUid()).setValue(rate);
 
 
+                    refRate.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot DataSnapshot) {
+                            for (DataSnapshot ds : DataSnapshot.getChildren()) {
+                                RateSum += Float.valueOf(ds.child("storeRate").getValue().toString());
+                                RateCount++;
+                            }
 
-                refRate.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot DataSnapshot) {
-                        for (DataSnapshot ds : DataSnapshot.getChildren()) {
-                            RateSum += Float.valueOf(ds.child("rating").getValue().toString());
-                            RateCount++;
+                            RateSum /= RateCount;
+
+                            HashMap hashMap = new HashMap();
+
+                            hashMap.put("storeRate", RateSum);
+
+                            refStore.updateChildren(hashMap);
+
+                            finish();
+                            //adapterShops.shops.
                         }
 
-                        RateSum /= RateCount;
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                        HashMap hashMap = new HashMap();
+                        }
+                    });
 
-                        hashMap.put("rating" , RateSum);
-
-                        refStore.updateChildren(hashMap);
-
-                        finish();
-                        //adapterShops.shops.
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-            }
-        });
+                }
+            });
 
 
+        } else if (adapterShops.shop.getId() != null) {
+            refRate = database.getInstance().getReference(adapterShops.shops).child(adapterShops.shop.getId()).child("RatingComment");
+            refStore = database.getInstance().getReference(adapterShops.shops).child(adapterShops.shop.getId());
+
+            submitBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    final RatingComment rate = new RatingComment();
+
+                    rate.setDescription(reviewDescription.getText().toString());
+                    rate.setTitle(reviewTitle.getText().toString());
+                    rate.setStoreRate(dialograting_bar.getRating());
+                    rate.setImage(Home.userphotourl);
+                    rate.setName(Home.username);
+
+                    fAuth = FirebaseAuth.getInstance();
+
+                    user = fAuth.getCurrentUser();
+
+                    refRate.child(user.getUid()).setValue(rate);
+
+
+                    refRate.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot DataSnapshot) {
+                            for (DataSnapshot ds : DataSnapshot.getChildren()) {
+                                RateSum += Float.valueOf(ds.child("storeRate").getValue().toString());
+                                RateCount++;
+                            }
+
+                            RateSum /= RateCount;
+
+                            HashMap hashMap = new HashMap();
+
+                            hashMap.put("storeRate", RateSum);
+
+                            refStore.updateChildren(hashMap);
+
+                            finish();
+                            //adapterShops.shops.
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                }
+            });
+
+
+        }
 
     }
+
+
 
 
 }

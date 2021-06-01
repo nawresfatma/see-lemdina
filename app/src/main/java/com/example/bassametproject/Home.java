@@ -198,8 +198,6 @@ public class Home extends MarketActivity  implements NavigationView.OnNavigation
                 StoreItems=new ArrayList<>();
                 for(DataSnapshot ds:dataSnapshot.getChildren()){
                     StoreItem data=ds.getValue(StoreItem.class);
-                    Toast.makeText(Home.this, String.valueOf(data.getLongitude()),Toast.LENGTH_LONG).show();
-                    System.out.println("meow " + data.getLongitude());
                     StoreItems.add(data);
                 }
                 myAdapt = new adapterShopsHome(StoreItems,Home.this);
@@ -287,7 +285,7 @@ public class Home extends MarketActivity  implements NavigationView.OnNavigation
                 startActivity(AchIntent);
                 break;
             case R.id.chatbot:
-                Intent chatIntent = new Intent(Home.this, chatbotActivity.class);
+                Intent chatIntent = new Intent(Home.this, intro_chatbot.class);
                 startActivity(chatIntent);
             case R.id.profile:
                 Intent ProfileIntent = new Intent(Home.this, Profile.class);

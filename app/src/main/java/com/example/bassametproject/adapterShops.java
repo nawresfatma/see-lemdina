@@ -48,8 +48,10 @@ public class adapterShops extends RecyclerView.Adapter<adapterShops.MyViewHolder
         final StoreItem store = StoreItems.get(position);
         holder.shopName.setText(store.getStoreName());
         holder.shopDescription.setText(store.getStoreDescription());
+        holder.rating.setText(String.valueOf(store.getStoreRate()));
+
         // holder.shopImage.setImageResource(R.drawable.rajell);
-        Picasso.get().load(StoreItems.get(position).getStoreImage()).into(holder.shopImage);
+        Picasso.get().load(StoreItems.get(position).getStoreImage()).resize(690,740 ).into(holder.shopImage);
 
         //const
         holder.item.setOnClickListener(new View.OnClickListener() {
@@ -74,12 +76,13 @@ public class adapterShops extends RecyclerView.Adapter<adapterShops.MyViewHolder
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView shopName, shopDescription;
+        TextView shopName, shopDescription,rating;
         ImageView shopImage;
         ConstraintLayout item;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            rating=itemView.findViewById(R.id.rating);
             shopName = itemView.findViewById(R.id.shopname);
             shopDescription = itemView.findViewById(R.id.shopDescription);
             shopImage = itemView.findViewById(R.id.img);

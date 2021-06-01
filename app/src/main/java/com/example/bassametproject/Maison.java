@@ -83,7 +83,7 @@ public class Maison extends AppCompatActivity {
         play_button = (ImageView) findViewById(R.id.play_btn);
         videoView.setMediaController(mediaController);
         mediaController.setAnchorView(videoView);
-        Uri uri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/pfe2021-270a5.appspot.com/o/Video%2Fyt1s.com%20-%20Hands%20%2030%20Second%20Ad.mp4?alt=media&token=ed1a8548-6214-4ed9-a6bb-5a67d647b702");
+        Uri uri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/pfe2021-270a5.appspot.com/o/Video%2FvideoTest.mp4?alt=media&token=84cbf850-7d95-4b76-9fea-f8aa80b5673c");
         videoView.setVideoURI(uri);
         videoView.setMediaController(null);
         videoView.start();
@@ -145,9 +145,71 @@ public class Maison extends AppCompatActivity {
         });
         //endNavBott
 
+        if (adapterShopsHome.shop1.getId() != null) {
+            //Firebase accessory
+            refAccessory = FirebaseDatabase.getInstance().getReference(adapterShopsHome.shops).child(adapterShopsHome.shop1.getId()).child("products");
+            refAccessory.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    accessoryList = new ArrayList<>();
+                    for (DataSnapshot data2 : dataSnapshot.getChildren()) {
+                        Toast.makeText(Maison.this, data2.toString(), Toast.LENGTH_SHORT).show();
+
+                        ListProduct p1 = data2.getValue(ListProduct.class);
+                        accessoryList.add(p1);
+                    }
+                    adapterAccessory1 = new adapterAccessory(accessoryList, Maison.this);
+                    snapHelper = new LinearSnapHelper();
+                    scaleCenterItemManager = new ScaleCenterItemManager(Maison.this, LinearLayoutManager.HORIZONTAL, false);
+
+                    recyclerAccessory.setLayoutManager(new LinearLayoutManager(Maison.this));
+                    recyclerAccessory.setLayoutManager(scaleCenterItemManager);
+                    recyclerAccessory.setAdapter(adapterAccessory1);
+
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(Maison.this, "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            refRating = FirebaseDatabase.getInstance().getReference(adapterShopsHome.shops).child(adapterShopsHome.shop1.getId()).child("RatingComment");
+
+            recyclerViewRating = (RecyclerView) findViewById(R.id.ratingrecycler);
+
+            recyclerViewRating.setLayoutManager(new LinearLayoutManager(this));
+
+
+            listRating = new ArrayList<RatingComment>();
+
+            refRating.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+
+                        RatingComment r = dataSnapshot1.getValue(RatingComment.class);
+                        listRating.add(r);
+
+                    }
+
+                    adapterRating = new ratingAdapter(Maison.this, listRating);
+                    recyclerViewRating.setAdapter(adapterRating);
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(Maison.this, " something is wrong !", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    else if (adapterShops.shop.getId() != null) {
 
         //Firebase accessory
-        refAccessory = FirebaseDatabase.getInstance().getReference(adapterShops.shops).child("store2").child("products");
+        refAccessory = FirebaseDatabase.getInstance().getReference(adapterShops.shops).child(adapterShops.shop.getId()).child("products");
         refAccessory.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -175,7 +237,7 @@ public class Maison extends AppCompatActivity {
             }
         });
 
-        refRating = FirebaseDatabase.getInstance().getReference(adapterShops.shops).child("store2").child("RatingComment");
+        refRating = FirebaseDatabase.getInstance().getReference(adapterShops.shops).child(adapterShops.shop.getId()).child("RatingComment");
 
         recyclerViewRating = (RecyclerView) findViewById(R.id.ratingrecycler);
 
@@ -190,8 +252,8 @@ public class Maison extends AppCompatActivity {
 
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
 
-                        RatingComment r = dataSnapshot1.getValue(RatingComment.class);
-                        listRating.add(r);
+                    RatingComment r = dataSnapshot1.getValue(RatingComment.class);
+                    listRating.add(r);
 
                 }
 
@@ -205,7 +267,8 @@ public class Maison extends AppCompatActivity {
                 Toast.makeText(Maison.this, " something is wrong !", Toast.LENGTH_SHORT).show();
             }
         });
-    }
+    }}
+
 
 
     //onClick
@@ -218,17 +281,18 @@ public class Maison extends AppCompatActivity {
     private void setData() {
 /*shopName.setText(name);
 shopDescription.setText(desc);*/
-        if (adapterShopsHome.shop1 != null) {
+        if (adapterShopsHome.shop1.getStoreName() != null) {
             storeLocation.setText(adapterShopsHome.shop1.getStoreLocation());
             shopName.setText(adapterShopsHome.shop1.getStoreName());
             shopDescription.setText(adapterShopsHome.shop1.getStoreDescription());
             openHour.setText(adapterShopsHome.shop1.getOpeningHour());
 
-        } else if (adapterShops.shop != null) {
+        } else if (adapterShops.shop.getStoreName() != null) {
             storeLocation.setText(adapterShops.shop.getStoreLocation());
             shopName.setText(adapterShops.shop.getStoreName());
             shopDescription.setText(adapterShops.shop.getStoreDescription());
             openHour.setText(adapterShops.shop.getOpeningHour());
+
         }
     }
 

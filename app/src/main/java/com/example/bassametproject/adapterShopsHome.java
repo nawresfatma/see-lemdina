@@ -47,6 +47,8 @@ public class adapterShopsHome extends RecyclerView.Adapter<adapterShopsHome.MyVi
         final StoreItem store = StoreItems.get(position);
         holder.shopName.setText(store.getStoreName());
         holder.shopDescription.setText(store.getStoreDescriptionShort());
+        holder.rating.setText(String.valueOf( store.getStoreRate()));
+
         // holder.shopImage.setImageResource(R.drawable.rajell);
         Picasso.get().load(StoreItems.get(position).getStoreImage()).resize(690,400 ).into(holder.shopImage);
 
@@ -72,12 +74,13 @@ public class adapterShopsHome extends RecyclerView.Adapter<adapterShopsHome.MyVi
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView shopName,shopDescription;
+        TextView shopName,shopDescription,rating;
         ImageView shopImage;
         ConstraintLayout item;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            rating=itemView.findViewById(R.id.rating1);
             shopName=itemView.findViewById(R.id.shopname);
             shopDescription=itemView.findViewById(R.id.shopDescription);
             shopImage=itemView.findViewById(R.id.img);

@@ -39,7 +39,7 @@ public class ratingAdapter extends RecyclerView.Adapter<ratingAdapter.RatingView
         holder.description.setText(ratingComments.get(position).getDescription());
         holder.title.setText(ratingComments.get(position).getTitle());
         Picasso.get().load(ratingComments.get(position).getImage()).resize(500 , 500).into(holder.imgrating);
-        holder.ratingBar.setRating(ratingComments.get(position).getRating());
+        holder.ratingBar.setRating(ratingComments.get(position).getStoreRate());
 
     }
 

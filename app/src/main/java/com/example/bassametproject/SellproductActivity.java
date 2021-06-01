@@ -56,7 +56,7 @@ public class SellproductActivity extends AppCompatActivity {
 
 
 //Firebase(Stores)
-        mreff= FirebaseDatabase.getInstance().getReference("shops");
+        mreff= FirebaseDatabase.getInstance().getReference().child("shops");
         mreff.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

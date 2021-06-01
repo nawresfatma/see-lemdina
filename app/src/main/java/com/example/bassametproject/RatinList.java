@@ -6,7 +6,7 @@ public class RatinList {
     private String name;
     private String title;
     private String description;
-    private Float rating;
+    private Float storeRate;
     private String image;
 
 
@@ -17,7 +17,7 @@ public class RatinList {
         this.name = name;
         this.title = title;
         this.description = description;
-        this.rating = rating;
+        this.storeRate = rating;
         this.image = image;
     }
 
@@ -46,12 +46,12 @@ public class RatinList {
         this.description = description;
     }
 
-    public Float getRating() {
-        return rating;
+    public Float getStoreRate() {
+        return storeRate;
     }
 
-    public void setRating(Float rating) {
-        this.rating = rating;
+    public void setStoreRate(Float storeRate) {
+        this.storeRate = storeRate;
     }
 
     public String getImage() {
@@ -69,7 +69,7 @@ public class RatinList {
     public static Comparator<RatinList> rateingSort = new Comparator<RatinList>() {
         @Override
         public int compare(RatinList b1, RatinList b2) {
-            return Float.compare(b1.rating , b2.rating);
+            return Float.compare(b1.storeRate , b2.storeRate);
         }
     };
 

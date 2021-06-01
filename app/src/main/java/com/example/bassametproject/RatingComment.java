@@ -6,7 +6,7 @@ public class RatingComment {
     private String name;
     private String title;
     private String description;
-    private Float rating;
+    private Float storeRate;
     private String image;
 
     public RatingComment() {
@@ -16,7 +16,7 @@ public class RatingComment {
         this.name = name;
         this.title = title;
         this.description = description;
-        this.rating = rating;
+        this.storeRate = rating;
         this.image = image;
     }
 
@@ -44,12 +44,12 @@ public class RatingComment {
         this.description = description;
     }
 
-    public Float getRating() {
-        return rating;
+    public Float getStoreRate() {
+        return storeRate;
     }
 
-    public void setRating(Float rating) {
-        this.rating = rating;
+    public void setStoreRate(Float storeRate) {
+        this.storeRate = storeRate;
     }
 
     public String getImage() {
@@ -67,7 +67,7 @@ public class RatingComment {
     public static Comparator<RatingComment> rateingSort = new Comparator<RatingComment>() {
         @Override
         public int compare(com.example.bassametproject.RatingComment b1, com.example.bassametproject.RatingComment b2) {
-            return Float.compare(b1.rating , b2.rating);
+            return Float.compare(b1.storeRate , b2.storeRate);
         }
     };
 
