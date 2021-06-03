@@ -6,7 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingTop="10dp"
     android:paddingLeft="5dp"
-    android:layout_marginRight="3dp">
+    android:layout_marginRight="3dp"
+    android:id="@+id/produitItem">
 
     <ImageView
         android:id="@+id/imageView62"

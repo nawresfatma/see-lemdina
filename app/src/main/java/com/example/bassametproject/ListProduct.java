@@ -3,6 +3,7 @@ package com.example.bassametproject;
 public class ListProduct {
     private String prod;
     private String prodName,prodDescription,prodPrice,prodRemise;
+    private String id;
 
     public ListProduct() {
     }
@@ -25,6 +26,14 @@ public class ListProduct {
         this.prodName = prodName;
         this.prodDescription = prodDescription;
         this.prodPrice = prodPrice;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getProdRemise() {

@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bassaametproject"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".produitActivity"></activity>
         <activity android:name=".photoItem" />
         <activity android:name=".TestActivity" />
         <activity android:name=".Achievements" />
@@ -31,9 +31,7 @@
         <activity android:name=".Rating" />
         <activity android:name=".activity_products_recycler" />
         <activity android:name=".SellproductActivity" />
-
         <activity android:name=".MarketActivity" />
-
         <activity
             android:name=".Produits"
             android:windowSoftInputMode="adjustPan" />
@@ -45,22 +43,17 @@
             android:screenOrientation="portrait" />
         <activity android:name=".Register" />
         <activity android:name=".eventActivity" />
-
-
-                <activity
-                    android:name=".Home"
-                    android:windowSoftInputMode="adjustPan"></activity>
-
-        <activity android:name=".LoginActivity" >
+        <activity
+            android:name=".Home"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-            <activity android:name=".MapBoxActivity" >
-
-        </activity>
+        <activity android:name=".MapBoxActivity"></activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".Maison">
+    tools:context=".produitActivity">
 
     <ScrollView
         android:id="@+id/scrollView5"
@@ -21,10 +21,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <com.denzcoskun.imageslider.ImageSlider
                 android:id="@+id/image_slider1"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
+                android:layout_marginTop="188dp"
                 app:iss_auto_cycle="true"
                 app:iss_corner_radius="20"
                 app:iss_delay="0"
@@ -32,13 +34,12 @@
                 app:iss_period="1000"
                 app:iss_placeholder="@drawable/mtaaslider"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" >
+                app:layout_constraintTop_toTopOf="parent">
 
 
             </com.denzcoskun.imageslider.ImageSlider>
-
 
             <TextView
                 android:id="@+id/textView30"
@@ -53,7 +54,7 @@
                 app:layout_constraintStart_toEndOf="@+id/back"
                 app:layout_constraintTop_toTopOf="@+id/back"
                 android:onClick="backInterface"
-               />
+                />
 
             <ImageView
                 android:id="@+id/imageView24"
@@ -69,34 +70,34 @@
                 app:layout_constraintVertical_bias="0.019"
                 app:srcCompat="@drawable/rac" />
 
+
             <TextView
                 android:id="@+id/product"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/open_sans_bold"
-                android:text="Maison\nEl Balgha"
+                android:text="Balgha\nHammam"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/imageView24"
-                app:layout_constraintTop_toTopOf="@+id/guideline11" />
-
+                app:layout_constraintTop_toBottomOf="@+id/imageView35" />
 
             <TextView
                 android:id="@+id/storeLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="8dp"
 
+                android:layout_marginTop="15dp"
                 android:fontFamily="@font/open_sans_semibold"
                 android:paddingLeft="25dp"
                 android:text="Rue de Tamis , Tunis"
                 android:textColor="#949494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/getdirection" />
+                app:layout_constraintTop_toBottomOf="@+id/product" />
 
             <com.github.florent37.shapeofview.shapes.RoundRectView
                 android:id="@+id/roundRectView4"
@@ -116,102 +117,17 @@
                 android:layout_marginRight="30dp"
 
                 app:shape_roundRect_topRightRadius="10dp"
-                >
+                />
 
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:outlineAmbientShadowColor="@color/black"
-                    android:layout_width="350dp"
-                    android:layout_height="85dp"
-                    app:srcCompat="@drawable/rr"
-                    tools:layout_editor_absoluteY="251dp" />
-            </com.github.florent37.shapeofview.shapes.RoundRectView>
-
-
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/open_sans_bold"
-                android:text="About Me "
-                android:textColor="#EB9069"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/imageView24"
-                app:layout_constraintTop_toBottomOf="@+id/roundRectView4" />
-
-            <TextView
-                android:id="@+id/rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="50dp"
-                android:fontFamily="@font/open_sans_bold"
-                android:text="Opening hours"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView13"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/roundRectView4" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
-                android:layout_marginTop="12dp"
-                app:layout_constraintEnd_toEndOf="@+id/rating"
-                app:layout_constraintStart_toStartOf="@+id/rating"
-                app:layout_constraintTop_toBottomOf="@+id/rating">
+                tools:layout_editor_absoluteX="88dp"
+                tools:layout_editor_absoluteY="394dp"/>
 
-                <TextView
-                    android:id="@+id/openingHour"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:text="8:30AM-6:00PM"
-                    android:textColor="#33D085"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView23"
-                    app:layout_constraintStart_toEndOf="@+id/textView23"
-                    app:layout_constraintTop_toTopOf="@+id/textView23" />
-
-                <TextView
-                    android:id="@+id/textView23"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:text="Monday-Saturday:"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/textView13"
-                    app:layout_constraintStart_toStartOf="@+id/storeLocation"
-                    app:layout_constraintTop_toBottomOf="@+id/rating" />
-
-            </LinearLayout>
-
-
-            <ImageButton
-                android:id="@+id/getdirection"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="55dp"
-                android:layout_marginEnd="8dp"
-                android:background="@color/white"
-                android:onClick="openMapDialog"
-                app:layout_constraintEnd_toEndOf="@+id/roundRectView4"
-                app:layout_constraintStart_toEndOf="@+id/product"
-                app:layout_constraintTop_toTopOf="@+id/guideline11"
-                app:srcCompat="@drawable/direction" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline8"
@@ -242,27 +158,13 @@
                 android:layout_marginLeft="16dp" />
 
 
-                <VideoView
-                    android:id="@+id/videoView"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView13"
-                    app:layout_constraintBottom_toBottomOf="@+id/guideline12"
-                    />
-
             <ImageView
                 android:id="@+id/play_btn"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:visibility="gone"
                 android:src="@drawable/ic_play"
-                app:layout_constraintBottom_toBottomOf="@+id/videoView"
-                app:layout_constraintEnd_toEndOf="@+id/videoView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/videoView" />
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent" />
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline12"
                 android:layout_width="wrap_content"
@@ -271,32 +173,16 @@
                 app:layout_constraintGuide_begin="712dp" />
 
             <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/open_sans_semibold"
-                android:text="FATHI BEN ABDALLAH"
-                android:textColor="#33D085"
-                app:layout_constraintEnd_toEndOf="@id/imageView24"
-                app:layout_constraintHorizontal_bias="0.088"
-                app:layout_constraintStart_toStartOf="@id/imageView24"
-                app:layout_constraintTop_toBottomOf="@+id/videoView" />
-
-            <TextView
                 android:id="@+id/prodDesc1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/open_sans"
                 android:lineSpacingExtra="6dp"
                 android:text="@string/desc"
-                app:layout_constraintEnd_toEndOf="@+id/videoView"
-                app:layout_constraintHorizontal_bias="0.408"
-                app:layout_constraintStart_toStartOf="@+id/videoView"
-                app:layout_constraintTop_toBottomOf="@+id/textView14"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/storeLocation"
                 tools:ignore="NotSibling" />
 
             <TextView
@@ -306,14 +192,15 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/open_sans_bold"
-                android:text="My Product "
+                android:text="Related Products"
                 android:textColor="#EB9069"
                 android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView37"
                 app:layout_constraintStart_toStartOf="@id/imageView24"
-                app:layout_constraintTop_toBottomOf="@+id/prodDesc1" />
+                app:layout_constraintTop_toBottomOf="@+id/textView37" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/moreaccessory1"
+                android:id="@+id/moreaccessory12"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="16dp"
@@ -333,7 +220,7 @@
                 android:textColor="#000000"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/moreaccessory1"
+                app:layout_constraintTop_toBottomOf="@+id/moreaccessory12"
                 android:layout_marginLeft="16dp" />
 
             <ImageView
@@ -350,7 +237,7 @@
                 android:layout_marginLeft="16dp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/ratingrecycler"
+                android:id="@+id/ratingrecycler"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -589,6 +476,123 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView20"
                 android:layout_marginLeft="16dp" />
 
+            <ImageView
+                android:id="@+id/imageView35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView24"
+                app:srcCompat="@drawable/tradionalsmall" />
+
+            <TextView
+                android:id="@+id/shopName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Magazin Balgha"
+                android:textColor="#2AA5DB"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView35"
+                app:layout_constraintStart_toEndOf="@+id/imageView35"
+                app:layout_constraintTop_toTopOf="@+id/imageView35" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="35 Dt"
+                android:textColor="#33D085"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/roundRectView4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.725"
+                app:layout_constraintStart_toEndOf="@+id/product"
+                app:layout_constraintTop_toTopOf="@+id/imageView24" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Color"
+                android:textAlignment="viewStart"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/prodDesc1" />
+
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Quantity"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/textView36"
+                app:layout_constraintTop_toBottomOf="@+id/textView36" />
+
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:text="1"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textView37"
+                app:layout_constraintStart_toEndOf="@+id/textView37"
+                app:layout_constraintTop_toTopOf="@+id/textView37"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <ImageView
+                android:id="@+id/imageView36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView38"
+                app:layout_constraintEnd_toStartOf="@+id/textView38"
+                app:layout_constraintTop_toTopOf="@+id/textView38"
+                app:srcCompat="@drawable/ellipse" />
+
+            <ImageView
+                android:id="@+id/imageView37"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView38"
+                app:layout_constraintStart_toEndOf="@+id/textView38"
+                app:layout_constraintTop_toTopOf="@+id/textView38"
+                app:layout_constraintVertical_bias="0.636"
+                app:srcCompat="@drawable/ellipse" />
+
+            <TextView
+                android:id="@+id/plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView36"
+                app:layout_constraintEnd_toEndOf="@+id/imageView36"
+                app:layout_constraintStart_toStartOf="@+id/imageView36"
+                app:layout_constraintTop_toTopOf="@+id/imageView36" />
+
+            <TextView
+                android:id="@+id/moin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView37"
+                app:layout_constraintEnd_toEndOf="@+id/imageView37"
+                app:layout_constraintStart_toStartOf="@+id/imageView37"
+                app:layout_constraintTop_toTopOf="@+id/imageView37" />
+
 
             <!--<androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/ratingrecycler"
@@ -607,15 +611,13 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navView"
-        app:itemIconSize="@dimen/bottom_navigation_icon_size"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        app:itemTextColor="@color/black"
-        android:background="@drawable/navcust"
+        android:background="@drawable/booknow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bar_menu">
+        >
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

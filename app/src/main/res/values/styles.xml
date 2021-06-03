@@ -2,7 +2,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="RatingBar" parent="Theme.AppCompat.Light.NoActionBar">>
+    <style name="RatingBar"  parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorControlActivated">#FFC300</item>
         <item name="colorControlNormal">@android:color/darker_gray</item>
         <item name="android:statusBarColor">#000</item>

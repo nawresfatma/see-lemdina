@@ -2,15 +2,12 @@ package com.example.bassametproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -34,7 +31,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -111,8 +107,8 @@ public class Maison extends AppCompatActivity {
         slideModels.add(new SlideModel(R.drawable.mtaaslider, ScaleTypes.FIT));
         imageSlider.setImageList(slideModels);
         //onclick Item
-        shopDescription = findViewById(R.id.shopDesc1);
-        shopName = findViewById(R.id.shopName1);
+        shopDescription = findViewById(R.id.prodDesc1);
+        shopName = findViewById(R.id.product);
         storeLocation = findViewById(R.id.storeLocation);
         openHour = findViewById(R.id.openingHour);
 
