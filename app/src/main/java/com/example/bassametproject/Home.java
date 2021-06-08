@@ -82,7 +82,7 @@ public class Home extends MarketActivity  implements NavigationView.OnNavigation
         userName = headerView.findViewById(R.id.textView8);
         userEmail = headerView.findViewById(R.id.textView28);
         userPoints = headerView.findViewById(R.id.textView25);
-
+//getdata
         fAuth = FirebaseAuth.getInstance();
 
         user = fAuth.getCurrentUser();

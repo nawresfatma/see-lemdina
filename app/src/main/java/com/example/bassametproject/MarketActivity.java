@@ -5,9 +5,12 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,11 +24,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -37,6 +43,13 @@ public class MarketActivity extends AppCompatActivity implements NavigationView.
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     NavigationView navigationView;
+    private FirebaseAuth fAuth;
+    private FirebaseUser user;
+    public static String username , userphotourl  , useremail ,userPoint;
+    private FirebaseDatabase database;
+    private DatabaseReference userRef2;
+    private ImageView userprofile;
+    private TextView userName , userEmail , userPoints;
 
     RecyclerView recyclerSouk;
     ArrayList<soukList> Mylist;
@@ -56,6 +69,40 @@ public class MarketActivity extends AppCompatActivity implements NavigationView.
         //navbott
         BottomNavigationView navView = findViewById(R.id.navView);
         navView.setItemIconTintList(null);
+//getdata
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_menu);
+        View headerView = navigationView.getHeaderView(0);
+        userprofile = headerView.findViewById(R.id.userprofile);
+        userName = headerView.findViewById(R.id.textView8);
+        userEmail = headerView.findViewById(R.id.textView28);
+        userPoints = headerView.findViewById(R.id.textView25);
+        fAuth = FirebaseAuth.getInstance();
+
+        user = fAuth.getCurrentUser();
+
+        userRef2 = database.getInstance().getReference("User").child(user.getUid());
+
+        userRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    userphotourl = ds.child("image").getValue().toString();
+                    username = ds.child("name").getValue().toString();
+                    useremail = ds.child("email").getValue().toString();
+                    userPoint = ds.child("point").getValue().toString();
+                }
+                Picasso.get().load(Home.userphotourl).resize(500 , 500).into(userprofile);
+                userName.setText(Home.username);
+                userEmail.setText(Home.useremail);
+                userPoints.setText(Home.userPoint);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 //Hooks
         drawerLayout = findViewById(R.id.container);
