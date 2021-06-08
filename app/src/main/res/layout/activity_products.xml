@@ -56,7 +56,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView23" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/filterProd"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginBottom="8dp"

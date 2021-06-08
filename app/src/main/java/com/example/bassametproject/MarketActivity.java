@@ -2,7 +2,12 @@ package com.example.bassametproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,39 +29,42 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class MarketActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+import static com.example.bassametproject.CardAdapter.CardList;
+
+public class MarketActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
-   DrawerLayout drawerLayout;
+    DrawerLayout drawerLayout;
     Toolbar toolbar;
     NavigationView navigationView;
 
     RecyclerView recyclerSouk;
     ArrayList<soukList> Mylist;
     CardAdapter Soukadapter;
-    //firebase
 
-    DatabaseReference soukRef ;
+    //firebase
+    DatabaseReference soukRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market);
-        recyclerSouk=findViewById(R.id.recyclerView);
+        recyclerSouk = findViewById(R.id.recyclerView);
 
         recyclerSouk.setLayoutManager(new LinearLayoutManager(this));
         //navbott
-        BottomNavigationView navView=findViewById(R.id.navView);
+        BottomNavigationView navView = findViewById(R.id.navView);
         navView.setItemIconTintList(null);
 
 //Hooks
-       drawerLayout=findViewById(R.id.container);
-        navigationView=findViewById(R.id.nav_menu);
-        toolbar=findViewById(R.id.menubut);
+        drawerLayout = findViewById(R.id.container);
+        navigationView = findViewById(R.id.nav_menu);
+        toolbar = findViewById(R.id.menubut);
 //toolbar
         setSupportActionBar(toolbar);
         navigationView.bringToFront();
-        ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -65,17 +73,17 @@ public class MarketActivity extends AppCompatActivity implements NavigationView.
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_menu);
 //Firebase(Stores)
-        soukRef= FirebaseDatabase.getInstance().getReference("Souk");
+        soukRef = FirebaseDatabase.getInstance().getReference("Souk");
         soukRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Mylist= new ArrayList<>();
-                for(DataSnapshot ds:dataSnapshot.getChildren()){
-                    soukList data=ds.getValue(soukList.class);
+                Mylist = new ArrayList<>();
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    soukList data = ds.getValue(soukList.class);
                     Mylist.add(data);
 
                 }
-                Soukadapter = new CardAdapter(Mylist,MarketActivity.this);
+                Soukadapter = new CardAdapter(Mylist, MarketActivity.this);
                 recyclerSouk.setAdapter(Soukadapter);
             }
 
@@ -95,24 +103,51 @@ public class MarketActivity extends AppCompatActivity implements NavigationView.
             }
 
         });
+
+        //search
+        EditText filterEdit = findViewById(R.id.filterSouk);
+        filterEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+
+    }
+    private void filter(String text) {
+        ArrayList<soukList> filteredList = new ArrayList<>();
+
+        for (soukList item : CardList) {
+            if (item.getSoukName().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+
+        Soukadapter.filterList(filteredList);
     }
 
-
-
-   @Override
-    public void onBackPressed(){
+    @Override
+    public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
 
             drawerLayout.closeDrawer(GravityCompat.START);
-        }
-        else
-        {
+        } else {
             super.onBackPressed();
         }
     }
 
 
-   @Override
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_home:
@@ -130,7 +165,7 @@ public class MarketActivity extends AppCompatActivity implements NavigationView.
             case R.id.chatbot:
                 Intent chatIntent = new Intent(MarketActivity.this, chatbotActivity.class);
                 startActivity(chatIntent);
-           case R.id.profile:
+            case R.id.profile:
                 Intent ProfileIntent = new Intent(MarketActivity.this, Profile.class);
                 startActivity(ProfileIntent);
                 break;
@@ -158,7 +193,6 @@ public class MarketActivity extends AppCompatActivity implements NavigationView.
         startActivity(intentLoadNewActivity);
     }
 */
-
 
 
 

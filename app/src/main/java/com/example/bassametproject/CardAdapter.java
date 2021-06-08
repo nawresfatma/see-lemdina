@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> {
-    ArrayList<soukList> CardList;
+    static ArrayList<soukList> CardList;
     Context c;
     public static soukList soukStatic;
     public static  String shops="souk";
@@ -60,6 +60,10 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
     @Override
     public int getItemCount() {
         return CardList.size();
+    }
+    public void filterList(ArrayList<soukList> filteredList) {
+        CardList = filteredList;
+        notifyDataSetChanged();
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView myText;

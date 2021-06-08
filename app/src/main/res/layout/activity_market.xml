@@ -87,7 +87,7 @@
                     android:layout_height="24dp"
                     android:layout_marginLeft="15dp"
                     app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-                    app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName"
+                    app:layout_constraintEnd_toStartOf="@+id/filterSouk"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="@+id/imageView16"
                     app:layout_constraintTop_toTopOf="@+id/imageView16"
@@ -109,7 +109,7 @@
                     android:layout_marginRight="411dp" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName"
+                    android:id="@+id/filterSouk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"

@@ -9,8 +9,11 @@ import androidx.recyclerview.widget.SnapHelper;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -26,7 +29,7 @@ import java.util.List;
 
 public class Produits extends AppCompatActivity {
 
-    List<ListProduct> accessoryList;
+    List<ListProduct> accessoryList1;
     RecyclerView recyclerAccessory;
     private SnapHelper snapHelper;
     ScaleCenterItemManager scaleCenterItemManager;
@@ -75,12 +78,12 @@ public class Produits extends AppCompatActivity {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                accessoryList = new ArrayList<>();
+                accessoryList1 = new ArrayList<>();
                 for (DataSnapshot data2 : dataSnapshot.child("store1").child("products").getChildren()) {
                     ListProduct p1 = data2.getValue(ListProduct.class);
-                    accessoryList.add(p1);
+                    accessoryList1.add(p1);
                 }
-                adapterAccessory = new adapterAccessory(accessoryList,Produits.this);
+                adapterAccessory = new adapterAccessory(accessoryList1,Produits.this);
 
 //             recyclerAccessory.setLayoutManager(new LinearLayoutManager(Produits.this));
                 //  recyclerAccessory.setLayoutManager(scaleCenterItemManager);
@@ -106,6 +109,36 @@ public class Produits extends AppCompatActivity {
                 startActivity(intentLoadNewActivity);
             }
         });
+        EditText editText = findViewById(R.id.filterProd);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+
+    }
+
+    private void filter(String text) {
+        ArrayList<ListProduct> filteredList = new ArrayList<>();
+
+        for (ListProduct item : accessoryList1) {
+            if (item.getProdName().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+
+        adapterAccessory.filterList(filteredList);
     }
 
 }

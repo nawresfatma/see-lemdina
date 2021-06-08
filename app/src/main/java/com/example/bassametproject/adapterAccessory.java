@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class adapterAccessory extends RecyclerView.Adapter<adapterAccessory.MyViewHolder> {
@@ -57,6 +58,12 @@ public class adapterAccessory extends RecyclerView.Adapter<adapterAccessory.MyVi
     public int getItemCount() {
         return accessoryList.size();
     }
+
+    public void filterList(ArrayList<ListProduct> filteredList) {
+        accessoryList = filteredList;
+        notifyDataSetChanged();
+    }
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView prodName,prodPrice;
         ImageView prodImg1;
