@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.SnapHelper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -175,6 +176,9 @@ shopDescription.setText(desc);*/
             storeLocation.setText(adapterAccessory.productStatic.getProdPrice());
             shopName.setText(adapterAccessory.productStatic.getProdName());
             productDescription.setText(adapterAccessory.productStatic.getProdDescription());
+    }
+    public void backInterface (View v){
+        finish();
     }
 
 }

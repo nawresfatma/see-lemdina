@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bassaametproject"
         android:usesCleartextTraffic="true">
-        <activity android:name=".produitActivity"></activity>
+        <activity android:name=".produitActivity" />
         <activity android:name=".photoItem" />
         <activity android:name=".TestActivity" />
         <activity android:name=".Achievements" />
@@ -46,14 +46,16 @@
         <activity
             android:name=".Home"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"></activity>
+            <activity android:name=".OnBoard">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MapBoxActivity"></activity>
+        <activity android:name=".MapBoxActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

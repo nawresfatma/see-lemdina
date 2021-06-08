@@ -140,5 +140,5 @@ public class Produits extends AppCompatActivity {
 
         adapterAccessory.filterList(filteredList);
     }
-
 }
+
