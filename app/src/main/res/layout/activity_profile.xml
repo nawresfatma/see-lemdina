@@ -11,7 +11,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imgprofile"
+            android:id="@+id/userImg"
             android:layout_width="115dp"
             android:layout_height="115dp"
             android:layout_marginTop="40dp"
@@ -47,23 +47,23 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
 
-            app:layout_constraintEnd_toEndOf="@+id/textView46"
-            app:layout_constraintStart_toStartOf="@+id/textView46"
-            app:layout_constraintTop_toBottomOf="@+id/textView46" />
+            app:layout_constraintEnd_toEndOf="@+id/userMail"
+            app:layout_constraintStart_toStartOf="@+id/userMail"
+            app:layout_constraintTop_toBottomOf="@+id/userMail" />
 
         <TextView
-            android:id="@+id/textView46"
+            android:id="@+id/userMail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
             android:text="KimoHermi@gmail.com"
             android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/textView48"
-            app:layout_constraintStart_toStartOf="@+id/textView48"
-            app:layout_constraintTop_toBottomOf="@+id/textView48" />
+            app:layout_constraintEnd_toEndOf="@+id/userName"
+            app:layout_constraintStart_toStartOf="@+id/userName"
+            app:layout_constraintTop_toBottomOf="@+id/userName" />
 
         <TextView
-            android:id="@+id/textView47"
+            android:id="@+id/userPoint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
@@ -76,7 +76,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView44" />
 
         <TextView
-            android:id="@+id/textView48"
+            android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -86,9 +86,9 @@
             android:textSize="25dp"
 
 
-            app:layout_constraintEnd_toEndOf="@+id/imgprofile"
-            app:layout_constraintStart_toStartOf="@+id/imgprofile"
-            app:layout_constraintTop_toBottomOf="@+id/imgprofile" />
+            app:layout_constraintEnd_toEndOf="@+id/userImg"
+            app:layout_constraintStart_toStartOf="@+id/userImg"
+            app:layout_constraintTop_toBottomOf="@+id/userImg" />
 
         <ImageView
             android:id="@+id/imageView51"
@@ -101,7 +101,7 @@
             android:layout_marginBottom="78dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView47"
+            app:layout_constraintTop_toBottomOf="@+id/userPoint"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/man" />
 
@@ -115,7 +115,7 @@
             android:layout_marginBottom="79dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView47"
+            app:layout_constraintTop_toBottomOf="@+id/userPoint"
             app:layout_constraintVertical_bias="0.066"
             app:srcCompat="@drawable/woman" />
 
@@ -127,7 +127,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView47"
+            app:layout_constraintTop_toBottomOf="@+id/userPoint"
             app:layout_constraintVertical_bias="0.247"
             app:srcCompat="@drawable/lligne" />
 
@@ -136,10 +136,10 @@
             android:layout_width="17dp"
             android:layout_height="19dp"
             android:layout_marginTop="24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView47"
-            app:layout_constraintEnd_toEndOf="@+id/textView47"
+            app:layout_constraintBottom_toBottomOf="@+id/userPoint"
+            app:layout_constraintEnd_toEndOf="@+id/userPoint"
             app:layout_constraintHorizontal_bias="0.933"
-            app:layout_constraintStart_toStartOf="@+id/textView47"
+            app:layout_constraintStart_toStartOf="@+id/userPoint"
             app:layout_constraintTop_toBottomOf="@+id/textView44"
             app:srcCompat="@drawable/coin" />
 

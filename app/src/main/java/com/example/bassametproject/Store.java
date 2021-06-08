@@ -14,11 +14,13 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -36,6 +38,10 @@ public class Store extends AppCompatActivity {
     FirebaseAuth fAuth;
     DatabaseReference dbRef,refUser;
 
+    private FirebaseUser user;
+    private DatabaseReference userRef2;
+    private FirebaseDatabase database;
+    public static String userPoint;
 
 
     @Override
@@ -81,6 +87,33 @@ public class Store extends AppCompatActivity {
         }
             );
 */
+
+        fAuth = FirebaseAuth.getInstance();
+
+        user = fAuth.getCurrentUser();
+
+        userRef2 = database.getInstance().getReference("User").child(user.getUid());
+        userRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+
+                    userPoint = ds.child("point").getValue().toString();
+                }
+
+
+                currentPoints.setText(Home.userPoint);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
 //firebase store
         storeReference= FirebaseDatabase.getInstance().getReference("store");
         storeReference.addListenerForSingleValueEvent(new ValueEventListener() {
