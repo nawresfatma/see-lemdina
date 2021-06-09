@@ -15,6 +15,7 @@ import android.widget.RatingBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.airbnb.lottie.RenderMode;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -49,6 +50,8 @@ public class Rating extends AppCompatActivity {
         reviewDescription = findViewById(R.id.reviewDescription);
         dialograting_bar = findViewById(R.id.dialograting_bar);
         submitBtn = findViewById(R.id.animationView);
+
+        submitBtn.setRenderMode(RenderMode.HARDWARE);
 
         if (adapterShopsHome.shop1.getId() != null) {
 
