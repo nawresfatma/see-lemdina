@@ -91,7 +91,7 @@ public class MarketActivity extends AppCompatActivity implements NavigationView.
                     useremail = ds.child("email").getValue().toString();
                     userPoint = ds.child("point").getValue().toString();
                 }
-                Picasso.get().load(Home.userphotourl).resize(500 , 500).into(userprofile);
+                Picasso.get().load(Home.userphotourl).resize(500 , 500).transform(new CircleTransform()).into(userprofile);
                 userName.setText(Home.username);
                 userEmail.setText(Home.useremail);
                 userPoints.setText(Home.userPoint);

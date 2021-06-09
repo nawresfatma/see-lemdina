@@ -72,7 +72,7 @@ public class Rating extends AppCompatActivity {
 
                     refRate.child(user.getUid()).setValue(rate);
 
-
+                    submitBtn.playAnimation();
                     refRate.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot DataSnapshot) {

@@ -11,15 +11,34 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class Achievements extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+    //drawer declarations
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     NavigationView navigationView;
+    private FirebaseDatabase database;
+    private DatabaseReference userRef2;
+    private FirebaseAuth fAuth;
+    private FirebaseUser user;
+    private ImageView userprofile;
+    private TextView userName , userEmail , userPoints;
+    public static String username , userphotourl  , useremail ,userPoint;
+    //end Drawer declarations
+
     TextView missionsbut , Rankingbut,Store;
 
     @Override
@@ -32,7 +51,42 @@ public class Achievements extends AppCompatActivity implements NavigationView.On
         //BottomNavigation
         BottomNavigationView navView=findViewById(R.id.navView);
         navView.setItemIconTintList(null);
-        //Hooks
+//getdata
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_menu);
+        View headerView = navigationView.getHeaderView(0);
+        userprofile = headerView.findViewById(R.id.userprofile);
+        userName = headerView.findViewById(R.id.textView8);
+        userEmail = headerView.findViewById(R.id.textView28);
+        userPoints = headerView.findViewById(R.id.textView25);
+
+        fAuth = FirebaseAuth.getInstance();
+
+        user = fAuth.getCurrentUser();
+
+        userRef2 = database.getInstance().getReference("User").child(user.getUid());
+
+        userRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    userphotourl = ds.child("image").getValue().toString();
+                    username = ds.child("name").getValue().toString();
+                    useremail = ds.child("email").getValue().toString();
+                    userPoint = ds.child("point").getValue().toString();
+                }
+                Picasso.get().load(Home.userphotourl).resize(500 , 500).transform(new CircleTransform()).into(userprofile);
+                userName.setText(Home.username);
+                userEmail.setText(Home.useremail);
+                userPoints.setText(Home.userPoint);
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            } });
+
+
+            //Hooks
         drawerLayout=findViewById(R.id.container);
         navigationView=findViewById(R.id.nav_menu);
         toolbar=findViewById(R.id.menubut);

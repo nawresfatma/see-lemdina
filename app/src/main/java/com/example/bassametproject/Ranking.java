@@ -266,5 +266,7 @@ public class Ranking extends AppCompatActivity {
 //            }
 //        });
 //    }
-
+public void backInterface (View v){
+    finish();
+}
 }

@@ -75,14 +75,14 @@ public class Home extends MarketActivity  implements NavigationView.OnNavigation
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+//getdata
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_menu);
         View headerView = navigationView.getHeaderView(0);
         userprofile = headerView.findViewById(R.id.userprofile);
         userName = headerView.findViewById(R.id.textView8);
         userEmail = headerView.findViewById(R.id.textView28);
         userPoints = headerView.findViewById(R.id.textView25);
-//getdata
+
         fAuth = FirebaseAuth.getInstance();
 
         user = fAuth.getCurrentUser();
@@ -98,13 +98,13 @@ public class Home extends MarketActivity  implements NavigationView.OnNavigation
                     useremail = ds.child("email").getValue().toString();
                     userPoint = ds.child("point").getValue().toString();
                 }
-                Picasso.get().load(Home.userphotourl).resize(500 , 500).into(userprofile);
+                Picasso.get().load(Home.userphotourl).resize(500 , 500).transform(new CircleTransform()).into(userprofile);
                 userName.setText(Home.username);
                 userEmail.setText(Home.useremail);
                 userPoints.setText(Home.userPoint);
 
             }
-
+//end get Data
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
