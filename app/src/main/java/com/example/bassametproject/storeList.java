@@ -5,14 +5,24 @@ public class storeList {
     private String prName;
     private String prPrice ;
     private String prImg;
+    private int category;
 
     public storeList() {
     }
 
-    public storeList(String prName, String prPrice, String prImg) {
+    public storeList(String prName, String prPrice, String prImg, int category) {
         this.prName = prName;
         this.prPrice = prPrice;
         this.prImg = prImg;
+        this.category = category;
+    }
+
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
     }
 
     public String getPrName() {

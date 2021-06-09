@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +27,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class Store extends AppCompatActivity {
+public class Store extends AppCompatActivity  implements View.OnClickListener {
+
 
     RecyclerView storeRecycler;
     TextView currentPoints;
@@ -42,7 +44,8 @@ public class Store extends AppCompatActivity {
     private DatabaseReference userRef2;
     private FirebaseDatabase database;
     public static String userPoint;
-
+TextView all,pop;
+    private DatabaseReference storeReference1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +53,10 @@ public class Store extends AppCompatActivity {
         setContentView(R.layout.activity_store);
         storeRecycler=findViewById(R.id.recyclerView5);
         currentPoints=findViewById(R.id.point);
-
+        all =  findViewById(R.id.all);
+        pop = findViewById(R.id.popular);
+        pop.setOnClickListener(this);
+        all.setOnClickListener(this);
 
        /*listStores.add(new ListStore("chachia" , "100" ,R.drawable.chachia));
         listStores.add(new ListStore("chachia" , "100" ,R.drawable.chachia));
@@ -111,31 +117,29 @@ public class Store extends AppCompatActivity {
 
             }
         });
+        listStores = new ArrayList<>();
 
-
-
-//firebase store
-        storeReference= FirebaseDatabase.getInstance().getReference("store");
+        storeReference = FirebaseDatabase.getInstance().getReference("store");
         storeReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                listStores=new ArrayList<>();
-                for(DataSnapshot d1: dataSnapshot.getChildren())
-                {
+                listStores.clear();
 
+                for (DataSnapshot d1 : dataSnapshot.getChildren()) {
 
-                    storeList s = d1.getValue(storeList.class);
-                    listStores.add(s);
+                    if(d1!=null){
+                        storeList s = d1.getValue(storeList.class);
 
+                        if(s!=null){
 
-                }
+                                Toast.makeText(Store.this, String.valueOf(s.getCategory()), Toast.LENGTH_SHORT).show();
+                                listStores.add(s);
 
-
-                storeAdapter = new storeAdapter(listStores,Store.this);
-                storeRecycler.setLayoutManager(new GridLayoutManager(Store.this,2));
+                        }
+                    }}
+                storeAdapter = new storeAdapter(listStores, Store.this);
+                storeRecycler.setLayoutManager(new GridLayoutManager(Store.this, 2));
                 storeRecycler.setAdapter(storeAdapter);
-
-
             }
 
             @Override
@@ -144,7 +148,54 @@ public class Store extends AppCompatActivity {
             }
         });
 
+//firebase store
 
 
+    }
+    @Override
+    public void onClick(View view) {
+        switch (view.getId())
+        {
+            case R.id.all:
+                getData(0);
+                break;
+
+            case R.id.popular:
+                getData(1);
+                break;
+
+        }
+
+    }
+    public void getData(int category) {
+        storeReference1 = FirebaseDatabase.getInstance().getReference("store");
+        storeReference1.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listStores.clear();
+
+                for (DataSnapshot d : dataSnapshot.getChildren()) {
+
+                    if(d!=null){
+                    storeList s1 = d.getValue(storeList.class);
+                    if (s1.getCategory()!=category)
+                    {
+                        s1=null;
+                    }
+
+                        if(s1!=null){
+                            Toast.makeText(Store.this, String.valueOf(s1.getCategory()), Toast.LENGTH_SHORT).show();
+                            listStores.add(s1);
+                        }
+                    }}
+                storeAdapter= new storeAdapter(listStores, Store.this);
+                storeRecycler.setLayoutManager(new GridLayoutManager(Store.this, 2));
+                storeRecycler.setAdapter(storeAdapter);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(Store.this, "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

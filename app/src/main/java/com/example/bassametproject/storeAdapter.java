@@ -27,8 +27,15 @@ public class storeAdapter extends RecyclerView.Adapter<storeAdapter.ViewHolder> 
     @NonNull
     @Override
     public storeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if(viewType == 0)
+        {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_store,parent,false);
-        return  new storeAdapter.ViewHolder(v);
+        return  new storeAdapter.ViewHolder(v);}
+        if(viewType == 1) {
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_store,parent,false);
+            return  new storeAdapter.ViewHolder(v);}
+
+        return null;
     }
 
     @Override
