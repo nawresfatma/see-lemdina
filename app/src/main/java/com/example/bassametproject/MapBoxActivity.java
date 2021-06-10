@@ -270,16 +270,18 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
           @SuppressWarnings( {"MissingPermission"})
           @Override
           public boolean onMapClick(@NonNull LatLng point) {
-
-              //Point destinationPoint = Point.fromLngLat(point.getLongitude(), point.getLatitude());
               Point destinationPoint = null;
+
               if(adapterShopsHome.shop1!=null){
+
                   destinationPoint = Point.fromLngLat(adapterShopsHome.shop1.getLongitude(), adapterShopsHome.shop1.getLatitude());
+                  adapterShopsHome.shop1=null;
 
               }else if(adapterShops.shop!=null){
                   destinationPoint = Point.fromLngLat(adapterShops.shop.getLongitude(), adapterShopsHome.shop1.getLatitude());
+                  adapterShops.shop=null;
 
-              }
+              }else{  destinationPoint = Point.fromLngLat(point.getLongitude(), point.getLatitude());}
               Point originPoint = Point.fromLngLat(locationComponent.getLastKnownLocation().getLongitude(),
                       locationComponent.getLastKnownLocation().getLatitude());
 

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -158,10 +159,12 @@ TextView all,pop;
         {
             case R.id.all:
                 getData(0);
+                all.setTextColor(Color.parseColor("#33D085"));
                 break;
 
             case R.id.popular:
                 getData(1);
+                pop.setTextColor(Color.parseColor("#33D085"));
                 break;
 
         }
