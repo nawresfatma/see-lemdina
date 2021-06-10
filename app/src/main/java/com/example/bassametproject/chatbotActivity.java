@@ -118,6 +118,7 @@ public class chatbotActivity extends AppCompatActivity {
                     tip.setVisibility(View.GONE);
                     for (DataSnapshot ds : snapshot.getChildren()) {
                         if (ds.getKey().equals(fAuth.getCurrentUser().getUid())) {
+
                             for (DataSnapshot messages_firebase : ds.getChildren()) {
                                 messages.add(new userMsg((String) messages_firebase.child("message").getValue(), new User((String) messages_firebase.child("sender").child("name").getValue(), LoadActivity.userphotourl), time));
                             }

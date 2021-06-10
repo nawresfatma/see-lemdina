@@ -51,6 +51,8 @@ public class User {
         this.rank = rank;
     }
 
+
+
     public int getPoint() {
         return point;
     }

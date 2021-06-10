@@ -19,7 +19,9 @@
     <com.mapbox.mapboxsdk.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
-        android:layout_height="660dp"
+
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView32"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -35,25 +37,11 @@
             android:layout_margin="20dp"
             android:layout_marginTop="600dp"
             android:background="@drawable/_3dicon"
-            android:backgroundTint="#3AD98D" />
+            android:backgroundTint="#EB9069" />
     </com.mapbox.mapboxsdk.maps.MapView>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/progressBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <ScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
+    <ImageView
                 android:id="@+id/imageView32"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -61,8 +49,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/progressBar"
                 app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintTop_toBottomOf="@+id/progressBar"
                 mapbox:srcCompat="@drawable/maprectt" />
 
             <TextView
@@ -71,78 +59,84 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:padding="6dp"
-                android:paddingStart="20dp"
+                android:paddingStart="55dp"
                 android:text="where are you ?"
-                android:textAlignment="center"
+                android:textAlignment="gravity"
+                android:gravity="start"
                 android:textColor="#aaaa"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-
                 app:layout_constraintTop_toTopOf="@+id/imageView32" />
 
             <TextView
                 android:id="@+id/TextDestination"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="42dp"
                 android:padding="6dp"
-                android:paddingStart="20dp"
+                android:paddingStart="55dp"
                 android:text="where are you going?"
-                android:textAlignment="center"
+                android:textAlignment="gravity"
+                android:gravity="start"
                 android:textColor="#aaaa"
                 app:layout_constraintEnd_toEndOf="@+id/Textlocation"
                 app:layout_constraintStart_toStartOf="@+id/Textlocation"
                 app:layout_constraintTop_toBottomOf="@+id/Textlocation" />
 
 
-            <ImageButton
-                android:id="@+id/startButton"
-                android:layout_width="246dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="32dp"
-                android:background="@drawable/btnchatbot"
-                android:enabled="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/TextDestination" />
+    <TextView
+        android:id="@+id/startButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custombut"
+        android:paddingLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:paddingTop="6dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="6dp"
+        android:text="Start Navigation"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/TextDestination"
+        app:layout_constraintStart_toStartOf="@+id/TextDestination"
+        app:layout_constraintTop_toBottomOf="@+id/TextDestination" />
 
-            <TextView
-                android:id="@+id/btn_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Start Navigation"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/startButton"
-                app:layout_constraintEnd_toEndOf="@+id/startButton"
-                app:layout_constraintStart_toStartOf="@+id/startButton"
-                app:layout_constraintTop_toTopOf="@+id/startButton" />
+    <ImageView
+        android:id="@+id/imageView39"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_marginStart="35dp"
+        app:layout_constraintBottom_toTopOf="@+id/redpin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/orangepin"
+        mapbox:srcCompat="@drawable/linevr" />
 
-            <com.airbnb.lottie.LottieAnimationView
+    <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/orangepin"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
                 app:layout_constraintBottom_toBottomOf="@+id/Textlocation"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/Textlocation"
-                app:lottie_autoPlay="false"
+                app:lottie_autoPlay="true"
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/animationorangepin" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/redpin"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
                 app:layout_constraintBottom_toBottomOf="@+id/TextDestination"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/TextDestination"
-                app:lottie_autoPlay="false"
+                app:lottie_autoPlay="true"
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/animationredpin" />
 
-        </ScrollView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

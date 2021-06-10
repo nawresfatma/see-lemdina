@@ -19,6 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 // classes needed to initialize map
+import com.airbnb.lottie.LottieAnimationView;
+import com.airbnb.lottie.RenderMode;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
@@ -68,12 +70,12 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
     private static final String ICON_ID = "ICON_ID";
     private static final String LAYER_ID = "LAYER_ID";
 
-
+    private LottieAnimationView redpin,orangepin;
     // variables for adding location layer
     private MapView mapView;
     private MapboxMap mapboxMap;
     Button Button3D;
-    ImageButton startButton;
+    TextView startButton;
     private boolean _3d;
     TextView textDestination,textLocation ;
     ProgressBar mapboxProgressBar;
@@ -101,7 +103,10 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
 // Mapbox access token is configured here. This needs to be called either in your application
 // object or in the same activity which contains the mapview.
         Mapbox.getInstance(this, getString(R.string.access_token));
-
+//        redpin.findViewById(R.id.redpin);
+  //      orangepin.findViewById(R.id.orangepin);
+    //    redpin.setRenderMode(RenderMode.HARDWARE);
+      //  orangepin.setRenderMode(RenderMode.AUTOMATIC);
 
 // This contains the MapView in XML and needs to be called after the access token is configured.
         setContentView(R.layout.activity_map_box);

@@ -45,7 +45,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
         if (holder.getItemViewType() == Message.USER_MESSAGE) {
-            Picasso.get().load(LoadActivity.userphotourl).resize(500,500).into(holder.image);
+           Picasso.get().load(Home.userphotourl).resize(500,500).into(holder.image);
+          //  Picasso.get().load(User.get(position).getImage()).resize(500,500 ).into(holder.image);
             holder.message.setText(messages.get(position).message);
             holder.time.setText(messages.get(position).createdAt);
         } else {

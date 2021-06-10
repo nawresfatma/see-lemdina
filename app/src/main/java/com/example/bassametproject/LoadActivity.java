@@ -57,7 +57,7 @@ public class LoadActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 for (DataSnapshot ds : snapshot.getChildren()) {
-                                        userphotourl = ds.child("photoURL").getValue().toString();
+                                        userphotourl = ds.child("image").getValue().toString();
                                         username = ds.child("name").getValue().toString();
                                         useremail = ds.child("email").getValue().toString();
                                 }

@@ -16,7 +16,7 @@ public class intro_chatbot extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro_chatbot);
-intentText=findViewById(R.id.btn_txt);
+intentText=findViewById(R.id.startButton);
 btnImage=findViewById(R.id.menubutt);
         intentText.setOnClickListener(new View.OnClickListener() {
             @Override
