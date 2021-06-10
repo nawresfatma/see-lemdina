@@ -170,6 +170,8 @@ public class Achievements extends AppCompatActivity implements NavigationView.On
             case R.id.chatbot:
                 Intent chatIntent = new Intent(Achievements.this, chatbotActivity.class);
                 startActivity(chatIntent);
+                break;
+
             case R.id.profile:
                 Intent ProfileIntent = new Intent(Achievements.this, Profile.class);
                 startActivity(ProfileIntent);
@@ -179,7 +181,7 @@ public class Achievements extends AppCompatActivity implements NavigationView.On
                 startActivity(MapIntent);
                 break;
             case R.id.LeaderBoard:
-                Intent LeaderBoardIntent = new Intent(Achievements.this, LeaderBoard.class);
+                Intent LeaderBoardIntent = new Intent(Achievements.this, Ranking.class);
                 startActivity(LeaderBoardIntent);
                 break;
             case R.id.logout:
@@ -187,6 +189,7 @@ public class Achievements extends AppCompatActivity implements NavigationView.On
                 Intent logoutIntent = new Intent(Achievements.this,LoginActivity.class);
                 startActivity(logoutIntent);
                 Toast.makeText(Achievements.this, "signed out successfully ! ", Toast.LENGTH_SHORT).show();
+                break;
 
 
         }

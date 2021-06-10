@@ -170,6 +170,8 @@ public class MissionsActivity extends AppCompatActivity implements NavigationVie
             case R.id.chatbot:
                 Intent chatIntent = new Intent(MissionsActivity.this, chatbotActivity.class);
                 startActivity(chatIntent);
+                break;
+
             case R.id.profile:
                 Intent ProfileIntent = new Intent(MissionsActivity.this, Profile.class);
                 startActivity(ProfileIntent);
@@ -179,7 +181,7 @@ public class MissionsActivity extends AppCompatActivity implements NavigationVie
                 startActivity(MapIntent);
                 break;
             case R.id.LeaderBoard:
-                Intent LeaderBoardIntent = new Intent(MissionsActivity.this, LeaderBoard.class);
+                Intent LeaderBoardIntent = new Intent(MissionsActivity.this, Ranking.class);
                 startActivity(LeaderBoardIntent);
                 break;
             case R.id.logout:
@@ -187,6 +189,8 @@ public class MissionsActivity extends AppCompatActivity implements NavigationVie
                 Intent logoutIntent = new Intent(MissionsActivity.this,LoginActivity.class);
                 startActivity(logoutIntent);
                 Toast.makeText(MissionsActivity.this, "signed out successfully ! ", Toast.LENGTH_SHORT).show();
+                break;
+
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

@@ -132,6 +132,8 @@ public class Profile extends AppCompatActivity  implements NavigationView.OnNavi
             case R.id.chatbot:
                 Intent chatIntent = new Intent(Profile.this, intro_chatbot.class);
                 startActivity(chatIntent);
+                break;
+
             case R.id.profile:
                 Intent ProfileIntent = new Intent(Profile.this, Profile.class);
                 startActivity(ProfileIntent);
@@ -141,7 +143,7 @@ public class Profile extends AppCompatActivity  implements NavigationView.OnNavi
                 startActivity(MapIntent);
                 break;
             case R.id.LeaderBoard:
-                Intent LeaderBoardIntent = new Intent(Profile.this, LeaderBoard.class);
+                Intent LeaderBoardIntent = new Intent(Profile.this, Ranking.class);
                 startActivity(LeaderBoardIntent);
                 break;
 

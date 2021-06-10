@@ -283,6 +283,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             case R.id.chatbot:
                 Intent chatIntent = new Intent(Home.this, intro_chatbot.class);
                 startActivity(chatIntent);
+                break;
             case R.id.profile:
                 Intent ProfileIntent = new Intent(Home.this, Profile.class);
                 startActivity(ProfileIntent);
@@ -292,7 +293,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 startActivity(MapIntent);
                 break;
             case R.id.LeaderBoard:
-                Intent LeaderBoardIntent = new Intent(Home.this, LeaderBoard.class);
+                Intent LeaderBoardIntent = new Intent(Home.this, Ranking.class);
                 startActivity(LeaderBoardIntent);
                 break;
             case R.id.logout:
@@ -300,7 +301,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 Intent logoutIntent = new Intent(Home.this,LoginActivity.class);
                 startActivity(logoutIntent);
                 Toast.makeText(Home.this, "signed out successfully ! ", Toast.LENGTH_SHORT).show();
-
+                break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

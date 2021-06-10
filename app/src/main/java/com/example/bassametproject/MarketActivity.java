@@ -210,6 +210,8 @@ public class MarketActivity extends AppCompatActivity implements NavigationView.
             case R.id.chatbot:
                 Intent chatIntent = new Intent(MarketActivity.this, chatbotActivity.class);
                 startActivity(chatIntent);
+                break;
+
             case R.id.profile:
                 Intent ProfileIntent = new Intent(MarketActivity.this, Profile.class);
                 startActivity(ProfileIntent);
@@ -219,7 +221,7 @@ public class MarketActivity extends AppCompatActivity implements NavigationView.
                 startActivity(MapIntent);
                 break;
             case R.id.LeaderBoard:
-                Intent LeaderBoardIntent = new Intent(MarketActivity.this, LeaderBoard.class);
+                Intent LeaderBoardIntent = new Intent(MarketActivity.this, Ranking.class);
                 startActivity(LeaderBoardIntent);
                 break;
             case R.id.logout:
@@ -227,6 +229,7 @@ public class MarketActivity extends AppCompatActivity implements NavigationView.
                 Intent logoutIntent = new Intent(MarketActivity.this,LoginActivity.class);
                 startActivity(logoutIntent);
                 Toast.makeText(MarketActivity.this, "signed out successfully ! ", Toast.LENGTH_SHORT).show();
+                break;
 
 
         }
