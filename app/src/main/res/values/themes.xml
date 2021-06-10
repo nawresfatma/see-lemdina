@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Bassaametproject" parent="">
+    <style name="Theme.Bassaametproject" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Primary brand color. -->
 
         <item name="colorOnPrimary">@color/white</item>
@@ -11,7 +11,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
         <!-- Customize your theme here. -->
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 </resources>

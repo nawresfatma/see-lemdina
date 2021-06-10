@@ -43,7 +43,8 @@ public class produitActivity extends AppCompatActivity {
     adapterAccessory adapterAccessory1;
     // onClick Item
     TextView shopName, productDescription , storeLocation,prodName,prodPrice;
-    String name, desc, hour, location;
+    private static String name,location;
+
     RecyclerView recyclerViewRating;
     ArrayList<RatingComment> listRating;
 
@@ -58,7 +59,6 @@ public class produitActivity extends AppCompatActivity {
     private FirebaseAuth fAuth;
     private FirebaseUser user;
     public String username, userphotourl;
-    private DatabaseReference refStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +106,6 @@ public class produitActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 accessoryList = new ArrayList<>();
                 for (DataSnapshot data2 : dataSnapshot.getChildren()) {
-                    Toast.makeText(produitActivity.this, data2.toString(), Toast.LENGTH_SHORT).show();
 
                     ListProduct p1 = data2.getValue(ListProduct.class);
                     accessoryList.add(p1);
@@ -128,27 +127,24 @@ public class produitActivity extends AppCompatActivity {
             }
         });
 
-        refStore = FirebaseDatabase.getInstance().getReference("shops").child(adapterAccessory.productStatic.getId());
+        refRate = FirebaseDatabase.getInstance().getReference("shops").child(adapterAccessory.productStatic.getId()).child("RatingComment");
 
         recyclerViewRating = (RecyclerView) findViewById(R.id.ratingrecycler);
 
         recyclerViewRating.setLayoutManager(new LinearLayoutManager(this));
 
 
-        listRating = new ArrayList<RatingComment>();
-refRate=refStore.child("RatingComment");
-        refStore.addValueEventListener(new ValueEventListener() {
+        refRate.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listRating = new ArrayList<RatingComment>();
 
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    refRate=refStore.child("RatingComment");
-                    RatingComment r = dataSnapshot1.child("RatingComment").getValue(RatingComment.class);
-                    listRating.add(r);
-                    StoreItem s =dataSnapshot1.getValue(StoreItem.class);
-                    shopName.setText(s.getStoreName());
-                    storeLocation.setText(s.getStoreLocation());
-                }
+                    if(dataSnapshot1!=null){
+                        RatingComment r = dataSnapshot1.getValue(RatingComment.class);
+                         listRating.add(r);
+
+                }}
 
                 adapterRating = new ratingAdapter(produitActivity.this, listRating);
                 recyclerViewRating.setAdapter(adapterRating);
@@ -160,6 +156,29 @@ refRate=refStore.child("RatingComment");
                 Toast.makeText(produitActivity.this, " something is wrong !", Toast.LENGTH_SHORT).show();
             }
         });
+        refShop=FirebaseDatabase.getInstance().getReference("shops").child(adapterAccessory.productStatic.getId());
+        refShop.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    if(ds!=null){
+                        name = ds.child("storeName").getValue().toString();
+                        Toast.makeText(produitActivity.this, name, Toast.LENGTH_LONG).show();
+                     //   location = ds.child("storeLocation").getValue().toString();
+
+
+                    }}
+                shopName.setText(produitActivity.name);
+                storeLocation.setText(produitActivity.location);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(produitActivity.this, " something is wrong !", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
 

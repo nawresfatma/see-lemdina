@@ -35,20 +35,18 @@ import java.util.List;
 
 import static com.example.bassametproject.adapterShops.shop;
 
-public class Home extends MarketActivity  implements NavigationView.OnNavigationItemSelectedListener{
+public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     //drawer
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     NavigationView navigationView;
     RecyclerView recycler,recyclerevent;
-    // com.example.bassametproject.adapterEvent adapterevent;
+
     private SnapHelper snapHelper,snapHelperevent;
     adapterEvent adapterEvent;
     //listevent
     List<eventList> eventslist;
-    //  eventList e =new eventList("barcha alwen","mdina","25" ,R.drawable.eventone);
-    //eventList e1 =new eventList("barcha barcha alwen","mdina1","10" ,R.drawable.photoone);
-    //eventList e2 =new eventList("barcha chwaya alwen","mdina2","15" ,R.drawable.phototwo);
+
     private ImageView userprofile;
     private TextView userName , userEmail , userPoints;
 
