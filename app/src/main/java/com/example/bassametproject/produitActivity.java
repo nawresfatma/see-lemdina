@@ -42,7 +42,7 @@ public class produitActivity extends AppCompatActivity {
     myAdapterrecy maisonAdapter;
     adapterAccessory adapterAccessory1;
     // onClick Item
-    TextView shopName, productDescription , storeLocation,prodName,prodPrice;
+    TextView shopName, productDescription , shopLocation,prodName,prodPrice;
     private static String name,location;
 
     RecyclerView recyclerViewRating;
@@ -75,7 +75,7 @@ public class produitActivity extends AppCompatActivity {
         shopName = findViewById(R.id.shopName);
         prodName=findViewById(R.id.product);
         prodPrice=findViewById(R.id.price);
-        storeLocation = findViewById(R.id.storeLocation);
+        shopLocation = findViewById(R.id.storeLocation);
         recyclerAccessory1=findViewById(R.id.moreaccessory12);
         getData();
         setData();
@@ -156,21 +156,22 @@ public class produitActivity extends AppCompatActivity {
                 Toast.makeText(produitActivity.this, " something is wrong !", Toast.LENGTH_SHORT).show();
             }
         });
-        refShop=FirebaseDatabase.getInstance().getReference("shops").child(adapterAccessory.productStatic.getId());
+        refShop=FirebaseDatabase.getInstance().getReference("shops");
         refShop.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 for (DataSnapshot ds : snapshot.getChildren()) {
-                    if(ds!=null){
-                        name = ds.child("storeName").getValue().toString();
-                        Toast.makeText(produitActivity.this, name, Toast.LENGTH_LONG).show();
-                     //   location = ds.child("storeLocation").getValue().toString();
+                       StoreItem s = ds.getValue(StoreItem.class);
+                       if(s.getId()==adapterAccessory.productStatic.getId()) {
+                           name =s.getStoreName();
+                           Toast.makeText(produitActivity.this, name, Toast.LENGTH_LONG).show();
+                           location = s.getStoreLocation();
 
-
-                    }}
+                       }
+                    }
                 shopName.setText(produitActivity.name);
-                storeLocation.setText(produitActivity.location);
+                shopLocation.setText(produitActivity.location);
             }
 
             @Override
