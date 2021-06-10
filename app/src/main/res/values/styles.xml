@@ -2,6 +2,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <style name="RatingBar"  parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorControlActivated">#FFC300</item>
         <item name="colorControlNormal">@android:color/darker_gray</item>
@@ -20,7 +21,13 @@
         <item name="android:layout_marginBottom">12dp</item>
         <item name="android:textStyle">bold</item>
     </style>
-    <style name="google">
-        <item name="android:background">#ffff</item>
-    </style>
+<!--    <style name="google">-->
+<!--        <item name="android:background">#ffff</item>-->
+<!--    </style>-->
+<!--    <style name="RobotoTextViewStyle" parent="android:Widget.TextView">&ndash;&gt;-->
+<!--        <item name="android:fontFamily">@font/sans-serif-smallcaps</item>-->
+<!--    </style>-->
+<!--    <style name="NavigationView" >-->
+<!--        <item name="fontFamily">@font/open_sans</item>-->
+<!--    </style>-->
 </resources>

@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:orientation="vertical"
-                app:layout_constraintGuide_begin="10dp"
+                app:layout_constraintGuide_begin="0dp"
                 app:layout_constraintGuide_percent="0.06"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -79,28 +79,30 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="64dp"
+                android:layout_marginTop="88dp"
                 android:fontFamily="@font/open_sans_bold"
                 android:gravity="center"
                 android:text="Highly recommended stores"
                 android:textColor="#FA845F"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@id/gLeft"
+                app:layout_constraintHorizontal_bias="0.213"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
-            <ImageView
+            <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/imageView29"
-                android:layout_width="133dp"
-                android:layout_height="144dp"
-                android:layout_marginTop="72dp"
-                android:layout_marginEnd="24dp"
+                android:layout_width="136dp"
+                android:layout_height="158dp"
+                android:layout_marginTop="68dp"
+                android:background="@null"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.922"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerMarkett"
-                app:srcCompat="@drawable/cube1" />
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/storeaniim" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerMarkett"
@@ -126,7 +128,7 @@
                 android:textColor="#FA845F"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toStartOf="@+id/imageView29"
-                app:layout_constraintHorizontal_bias="0.052"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@id/gLeft"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerMarkett" />
 
@@ -134,7 +136,7 @@
                 android:id="@+id/textView5"
                 android:layout_width="208dp"
                 android:layout_height="68dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="28dp"
                 android:layout_marginEnd="24dp"
                 android:fontFamily="@font/open_sans_bold"

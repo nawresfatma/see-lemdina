@@ -16,13 +16,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
     <com.mapbox.mapboxsdk.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
 
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView32"
+        android:layout_height="600dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         mapbox:mapbox_cameraTargetLat="38.9098"
@@ -40,20 +41,17 @@
             android:backgroundTint="#EB9069" />
     </com.mapbox.mapboxsdk.maps.MapView>
 
-
     <ImageView
-                android:id="@+id/imageView32"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                app:layout_constraintTop_toBottomOf="@+id/progressBar"
-                mapbox:srcCompat="@drawable/maprectt" />
+        android:id="@+id/imageView32"
+        android:layout_width="411dp"
+        android:layout_height="226dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        mapbox:srcCompat="@drawable/maprectt" />
 
-            <TextView
+    <TextView
                 android:id="@+id/Textlocation"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
