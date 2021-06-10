@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -181,6 +182,11 @@ public class Achievements extends AppCompatActivity implements NavigationView.On
                 Intent LeaderBoardIntent = new Intent(Achievements.this, LeaderBoard.class);
                 startActivity(LeaderBoardIntent);
                 break;
+            case R.id.logout:
+                logout();
+                Intent logoutIntent = new Intent(Achievements.this,LoginActivity.class);
+                startActivity(logoutIntent);
+                Toast.makeText(Achievements.this, "signed out successfully ! ", Toast.LENGTH_SHORT).show();
 
 
         }
@@ -188,4 +194,9 @@ public class Achievements extends AppCompatActivity implements NavigationView.On
         return true;
 
 
-    }}
+    }
+    private void logout() {
+        fAuth.signOut();
+
+    }
+}

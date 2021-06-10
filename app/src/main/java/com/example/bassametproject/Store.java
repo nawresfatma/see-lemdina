@@ -2,6 +2,8 @@ package com.example.bassametproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,11 +12,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,7 +34,9 @@ import java.util.ArrayList;
 
 public class Store extends AppCompatActivity  implements View.OnClickListener {
 
-
+    DrawerLayout drawerLayout;
+    Toolbar toolbar;
+    NavigationView navigationView;
     RecyclerView storeRecycler;
     TextView currentPoints;
     User currentPointString;
@@ -40,12 +46,13 @@ public class Store extends AppCompatActivity  implements View.OnClickListener {
     DatabaseReference storeReference;
     FirebaseAuth fAuth;
     DatabaseReference dbRef,refUser;
-
+    private ImageView userprofile;
+    private TextView userName , userEmail , userPoints;
+    public static String username , userphotourl  , useremail ,userPoint;
     private FirebaseUser user;
     private DatabaseReference userRef2;
     private FirebaseDatabase database;
-    public static String userPoint;
-TextView all,pop;
+    TextView all,pop;
     private DatabaseReference storeReference1;
 
     @Override
@@ -58,11 +65,6 @@ TextView all,pop;
         pop = findViewById(R.id.popular);
         pop.setOnClickListener(this);
         all.setOnClickListener(this);
-
-       /*listStores.add(new ListStore("chachia" , "100" ,R.drawable.chachia));
-        listStores.add(new ListStore("chachia" , "100" ,R.drawable.chachia));
-        listStores.add(new ListStore("chachia" , "100",R.drawable.chachia));
-        listStores.add(new ListStore("chachia" , "100",R.drawable.chachia));*/
 
         BottomNavigationView navView=findViewById(R.id.navView);
         navView.setItemIconTintList(null);
@@ -133,8 +135,8 @@ TextView all,pop;
 
                         if(s!=null){
 
-                                Toast.makeText(Store.this, String.valueOf(s.getCategory()), Toast.LENGTH_SHORT).show();
-                                listStores.add(s);
+                            Toast.makeText(Store.this, String.valueOf(s.getCategory()), Toast.LENGTH_SHORT).show();
+                            listStores.add(s);
 
                         }
                     }}
@@ -180,11 +182,11 @@ TextView all,pop;
                 for (DataSnapshot d : dataSnapshot.getChildren()) {
 
                     if(d!=null){
-                    storeList s1 = d.getValue(storeList.class);
-                    if (s1.getCategory()!=category)
-                    {
-                        s1=null;
-                    }
+                        storeList s1 = d.getValue(storeList.class);
+                        if (s1.getCategory()!=category)
+                        {
+                            s1=null;
+                        }
 
                         if(s1!=null){
                             Toast.makeText(Store.this, String.valueOf(s1.getCategory()), Toast.LENGTH_SHORT).show();
@@ -201,4 +203,8 @@ TextView all,pop;
             }
         });
     }
+    public void backInterface (View v){
+        finish();
+    }
+
 }

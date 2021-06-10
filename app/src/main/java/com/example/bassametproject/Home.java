@@ -299,11 +299,20 @@ public class Home extends MarketActivity  implements NavigationView.OnNavigation
                 Intent LeaderBoardIntent = new Intent(Home.this, LeaderBoard.class);
                 startActivity(LeaderBoardIntent);
                 break;
-
+            case R.id.logout:
+                logout();
+                Intent logoutIntent = new Intent(Home.this,LoginActivity.class);
+                startActivity(logoutIntent);
+                Toast.makeText(Home.this, "signed out successfully ! ", Toast.LENGTH_SHORT).show();
 
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
 
 
-    }}
+    }
+    private void logout() {
+        fAuth.signOut();
+
+    }
+}

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OnBoard extends AppCompatActivity {
+public class OnBoard extends Activity {
     private OnBoardingAdapter onboardingAdapter;
     private LinearLayout layoutonboardingIndicator;
     private TextView skip;

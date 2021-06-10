@@ -20,4 +20,7 @@
         <item name="android:layout_marginBottom">12dp</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="google">
+        <item name="android:background">#ffff</item>
+    </style>
 </resources>

@@ -1,6 +1,7 @@
 package com.example.bassametproject;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -56,7 +57,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends Activity {
 
     //facebook start
     private CallbackManager mCallbackManager;
@@ -72,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
 
     //google start
 
-    private SignInButton signInButton;
+    private Button signInButton;
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
     private Button btnSignOut;
@@ -449,10 +450,8 @@ public class LoginActivity extends AppCompatActivity {
             String personEmail = account.getEmail();
             String personId = account.getId();
             Uri personPhoto = account.getPhotoUrl();
-
             Picasso.get().load(personPhoto).into(googleImg);
             googletxt.setText(personName + " " + personGivenName + " " + personFamilyName + " " + personEmail + " " + personId);
-
         }
     }*/
 

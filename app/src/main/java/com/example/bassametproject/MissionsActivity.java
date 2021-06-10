@@ -15,6 +15,7 @@
         import android.view.View;
         import android.widget.ImageView;
         import android.widget.TextView;
+        import android.widget.Toast;
 
         import com.google.android.material.bottomnavigation.BottomNavigationView;
         import com.google.android.material.navigation.NavigationView;
@@ -150,6 +151,7 @@ public class MissionsActivity extends AppCompatActivity implements NavigationVie
         }
     }
 
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -180,8 +182,11 @@ public class MissionsActivity extends AppCompatActivity implements NavigationVie
                 Intent LeaderBoardIntent = new Intent(MissionsActivity.this, LeaderBoard.class);
                 startActivity(LeaderBoardIntent);
                 break;
-
-
+            case R.id.logout:
+                logout();
+                Intent logoutIntent = new Intent(MissionsActivity.this,LoginActivity.class);
+                startActivity(logoutIntent);
+                Toast.makeText(MissionsActivity.this, "signed out successfully ! ", Toast.LENGTH_SHORT).show();
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
@@ -189,6 +194,10 @@ public class MissionsActivity extends AppCompatActivity implements NavigationVie
 
     }
 
+    private void logout() {
+        fAuth.signOut();
+
+    }
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {

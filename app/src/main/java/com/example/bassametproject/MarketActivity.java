@@ -224,11 +224,23 @@ public class MarketActivity extends AppCompatActivity implements NavigationView.
                 Intent LeaderBoardIntent = new Intent(MarketActivity.this, LeaderBoard.class);
                 startActivity(LeaderBoardIntent);
                 break;
+            case R.id.logout:
+                logout();
+                Intent logoutIntent = new Intent(MarketActivity.this,LoginActivity.class);
+                startActivity(logoutIntent);
+                Toast.makeText(MarketActivity.this, "signed out successfully ! ", Toast.LENGTH_SHORT).show();
 
 
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+
+
+    }
+    private void logout() {
+        fAuth.signOut();
+
+        }
 
 
     }
@@ -244,5 +256,4 @@ public class MarketActivity extends AppCompatActivity implements NavigationView.
 
 
 
-}
 
