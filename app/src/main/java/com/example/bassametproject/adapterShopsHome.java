@@ -22,7 +22,7 @@ public class adapterShopsHome extends RecyclerView.Adapter<adapterShopsHome.MyVi
     List<StoreItem> StoreItems = new ArrayList<>();
     Context context;
     public static StoreItem shop1;
-    public static  String shops="shops";
+    public static String shops="shops";
     String i="2";
 
     public adapterShopsHome(List<StoreItem> storeItems, Context c) {

@@ -275,13 +275,13 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
           @SuppressWarnings( {"MissingPermission"})
           @Override
           public boolean onMapClick(@NonNull LatLng point) {
-              Point destinationPoint = null;
+
+              Point destinationPoint ;
 
               if(adapterShopsHome.shop1!=null){
 
                   destinationPoint = Point.fromLngLat(adapterShopsHome.shop1.getLongitude(), adapterShopsHome.shop1.getLatitude());
-                  adapterShopsHome.shop1=null;
-                       try {
+                        try {
                            Geocoder geocoderD = new Geocoder(MapBoxActivity.this, Locale.getDefault());
                            List<Address> addresses = geocoderD.getFromLocation( adapterShopsHome.shop1.getLatitude(), adapterShopsHome.shop1.getLongitude(),1);
                            String address = addresses.get(0).getAddressLine(0);
@@ -291,30 +291,30 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
                        }
 
               }else if(adapterShops.shop!=null){
-                  destinationPoint = Point.fromLngLat(adapterShops.shop.getLongitude(), adapterShopsHome.shop1.getLatitude());
-                  adapterShops.shop=null;
-                       try {
-                           Geocoder geocoderD = new Geocoder(MapBoxActivity.this, Locale.getDefault());
-                           List<Address> addresses = geocoderD.getFromLocation( adapterShops.shop.getLatitude(), adapterShops.shop.getLongitude(),1);
-                           String address = addresses.get(0).getAddressLine(0);
-                           textDestination.setText(address);
-                       } catch (IOException e) {
-                           e.printStackTrace();
-                       }
+                  destinationPoint = Point.fromLngLat(adapterShops.shop.getLongitude(), adapterShops.shop.getLatitude());
+                  try {
+                      Geocoder geocoderD = new Geocoder(MapBoxActivity.this, Locale.getDefault());
+                      List<Address> addresses = geocoderD.getFromLocation( adapterShops.shop.getLatitude(), adapterShops.shop.getLongitude(),1);
+                      String address = addresses.get(0).getAddressLine(0);
+                      textDestination.setText(address);
+                  } catch (IOException e) {
+                      e.printStackTrace();
+                  }
 
 
               }else{
                   destinationPoint = Point.fromLngLat(point.getLongitude(), point.getLatitude());
-                       try {
-                           Geocoder geocoderD = new Geocoder(MapBoxActivity.this, Locale.getDefault());
-                           List<Address> addresses = geocoderD.getFromLocation( point.getLatitude(), point.getLongitude(),1);
-                           String address = addresses.get(0).getAddressLine(0);
-                           textDestination.setText(address);
-                       } catch (IOException e) {
-                           e.printStackTrace();
-                       }
+                  try {
+                      Geocoder geocoderD = new Geocoder(MapBoxActivity.this, Locale.getDefault());
+                      List<Address> addresses = geocoderD.getFromLocation( point.getLatitude(), point.getLongitude(),1);
+                      String address = addresses.get(0).getAddressLine(0);
+                      textDestination.setText(address);
+                  } catch (IOException e) {
+                      e.printStackTrace();
+                  }
 
               }
+
               Point originPoint = Point.fromLngLat(locationComponent.getLastKnownLocation().getLongitude(),
                       locationComponent.getLastKnownLocation().getLatitude());
 
