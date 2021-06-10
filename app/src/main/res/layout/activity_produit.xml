@@ -125,7 +125,9 @@
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 tools:layout_editor_absoluteX="88dp"
-                tools:layout_editor_absoluteY="394dp"/>
+                tools:layout_editor_absoluteY="394dp"
+                android:orientation="horizontal"
+                tools:ignore="MissingConstraints" />
 
 
             <androidx.constraintlayout.widget.Guideline
@@ -162,7 +164,8 @@
                 android:layout_height="75dp"
                 android:src="@drawable/ic_play"
                 android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints" />
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline12"
                 android:layout_width="wrap_content"

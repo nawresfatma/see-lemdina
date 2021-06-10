@@ -108,7 +108,7 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
         mapView = findViewById(R.id.mapView);
         mapView.getMapAsync(this);
         Button3D = findViewById(R.id.Button3D);
-       //textDestination=findViewById(R.id.TextDestination);
+       textDestination=findViewById(R.id.TextDestination);
        textLocation=findViewById(R.id.Textlocation);
         mapboxProgressBar=findViewById(R.id.progressBar);
 
@@ -276,12 +276,40 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
 
                   destinationPoint = Point.fromLngLat(adapterShopsHome.shop1.getLongitude(), adapterShopsHome.shop1.getLatitude());
                   adapterShopsHome.shop1=null;
+                       try {
+                           Geocoder geocoderD = new Geocoder(MapBoxActivity.this, Locale.getDefault());
+                           List<Address> addresses = geocoderD.getFromLocation( adapterShopsHome.shop1.getLatitude(), adapterShopsHome.shop1.getLongitude(),1);
+                           String address = addresses.get(0).getAddressLine(0);
+                           textDestination.setText(address);
+                       } catch (IOException e) {
+                           e.printStackTrace();
+                       }
 
               }else if(adapterShops.shop!=null){
                   destinationPoint = Point.fromLngLat(adapterShops.shop.getLongitude(), adapterShopsHome.shop1.getLatitude());
                   adapterShops.shop=null;
+                       try {
+                           Geocoder geocoderD = new Geocoder(MapBoxActivity.this, Locale.getDefault());
+                           List<Address> addresses = geocoderD.getFromLocation( adapterShops.shop.getLatitude(), adapterShops.shop.getLongitude(),1);
+                           String address = addresses.get(0).getAddressLine(0);
+                           textDestination.setText(address);
+                       } catch (IOException e) {
+                           e.printStackTrace();
+                       }
 
-              }else{  destinationPoint = Point.fromLngLat(point.getLongitude(), point.getLatitude());}
+
+              }else{
+                  destinationPoint = Point.fromLngLat(point.getLongitude(), point.getLatitude());
+                       try {
+                           Geocoder geocoderD = new Geocoder(MapBoxActivity.this, Locale.getDefault());
+                           List<Address> addresses = geocoderD.getFromLocation( point.getLatitude(), point.getLongitude(),1);
+                           String address = addresses.get(0).getAddressLine(0);
+                           textDestination.setText(address);
+                       } catch (IOException e) {
+                           e.printStackTrace();
+                       }
+
+              }
               Point originPoint = Point.fromLngLat(locationComponent.getLastKnownLocation().getLongitude(),
                       locationComponent.getLastKnownLocation().getLatitude());
 
@@ -289,6 +317,7 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
               if (source != null) {
                   source.setGeoJson(Feature.fromGeometry(destinationPoint));
               }
+              //where u r
               try {
                   Geocoder geocoder = new Geocoder(MapBoxActivity.this, Locale.getDefault());
                   List<Address> addresses = geocoder.getFromLocation( locationComponent.getLastKnownLocation().getLatitude(), locationComponent.getLastKnownLocation().getLongitude(),1);
@@ -297,6 +326,9 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
               } catch (IOException e) {
                   e.printStackTrace();
               }
+
+              //where u r end
+
               getRoute(originPoint, destinationPoint);
               mapboxProgressBar.setVisibility(View.VISIBLE);
               return true;

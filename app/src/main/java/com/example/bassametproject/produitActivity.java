@@ -42,7 +42,7 @@ public class produitActivity extends AppCompatActivity {
     myAdapterrecy maisonAdapter;
     adapterAccessory adapterAccessory1;
     // onClick Item
-    TextView shopName, productDescription , storeLocation,prodName;
+    TextView shopName, productDescription , storeLocation,prodName,prodPrice;
     String name, desc, hour, location;
     RecyclerView recyclerViewRating;
     ArrayList<RatingComment> listRating;
@@ -51,17 +51,15 @@ public class produitActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference refRating;
     ratingAdapter adapterRating;
-    //video
-    VideoView videoView;
-    ImageView play_button;
+
 
     //end video declaration
     private DatabaseReference userRef, refRate, refAccessory, refShop;
     private FirebaseAuth fAuth;
     private FirebaseUser user;
     public String username, userphotourl;
-    //map dialogue
-    ImageButton getdirection;
+    private DatabaseReference refStore;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +74,7 @@ public class produitActivity extends AppCompatActivity {
         productDescription = findViewById(R.id.prodDesc1);
         shopName = findViewById(R.id.shopName);
         prodName=findViewById(R.id.product);
+        prodPrice=findViewById(R.id.price);
         storeLocation = findViewById(R.id.storeLocation);
         recyclerAccessory1=findViewById(R.id.moreaccessory12);
         getData();
@@ -129,7 +128,7 @@ public class produitActivity extends AppCompatActivity {
             }
         });
 
-        refRating = FirebaseDatabase.getInstance().getReference("shops").child(adapterAccessory.productStatic.getId()).child("RatingComment");
+        refStore = FirebaseDatabase.getInstance().getReference("shops").child(adapterAccessory.productStatic.getId());
 
         recyclerViewRating = (RecyclerView) findViewById(R.id.ratingrecycler);
 
@@ -137,16 +136,18 @@ public class produitActivity extends AppCompatActivity {
 
 
         listRating = new ArrayList<RatingComment>();
-
-        refRating.addValueEventListener(new ValueEventListener() {
+refRate=refStore.child("RatingComment");
+        refStore.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-
-                    RatingComment r = dataSnapshot1.getValue(RatingComment.class);
+                    refRate=refStore.child("RatingComment");
+                    RatingComment r = dataSnapshot1.child("RatingComment").getValue(RatingComment.class);
                     listRating.add(r);
-
+                    StoreItem s =dataSnapshot1.getValue(StoreItem.class);
+                    shopName.setText(s.getStoreName());
+                    storeLocation.setText(s.getStoreLocation());
                 }
 
                 adapterRating = new ratingAdapter(produitActivity.this, listRating);
@@ -173,8 +174,8 @@ public class produitActivity extends AppCompatActivity {
 /*shopName.setText(name);
 shopDescription.setText(desc);*/
 
-            storeLocation.setText(adapterAccessory.productStatic.getProdPrice());
-            shopName.setText(adapterAccessory.productStatic.getProdName());
+            prodPrice.setText(adapterAccessory.productStatic.getProdPrice());
+            prodName.setText(adapterAccessory.productStatic.getProdName());
             productDescription.setText(adapterAccessory.productStatic.getProdDescription());
     }
     public void backInterface (View v){
