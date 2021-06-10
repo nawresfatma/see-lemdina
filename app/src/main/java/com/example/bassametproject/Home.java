@@ -33,8 +33,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.bassametproject.adapterShops.shop;
-
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     //drawer
     DrawerLayout drawerLayout;
@@ -147,7 +145,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         recyclerevent.setLayoutManager(scaleCenterItemManager);
         snapHelperevent.attachToRecyclerView(recyclerevent);
         //BottomNavigation
-        BottomNavigationView navView=findViewById(R.id.navView);
+        BottomNavigationView navView=findViewById(R.id.bookNow);
         navView.setItemIconTintList(null);
 
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

@@ -11,11 +11,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -85,14 +82,14 @@ public class produitActivity extends AppCompatActivity {
         user = fAuth.getCurrentUser();
         userRef = database.getInstance().getReference("User").child(user.getUid());
 
-        BottomNavigationView navView = findViewById(R.id.navView);
+        BottomNavigationView navView = findViewById(R.id.bookNow);
         navView.setItemIconTintList(null);
 
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 item.getItemId();
-                startActivity(new Intent(getApplicationContext(), Scan.class));
+                startActivity(new Intent(getApplicationContext(), CallActivity.class));
                 overridePendingTransition(0, 0);
                 return true;
             }

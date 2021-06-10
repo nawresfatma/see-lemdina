@@ -50,7 +50,7 @@ public class Achievements extends AppCompatActivity implements NavigationView.On
         Rankingbut=findViewById(R.id.Rankingbut);
         Store=findViewById(R.id.Store);
         //BottomNavigation
-        BottomNavigationView navView=findViewById(R.id.navView);
+        BottomNavigationView navView=findViewById(R.id.bookNow);
         navView.setItemIconTintList(null);
 //getdata
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_menu);

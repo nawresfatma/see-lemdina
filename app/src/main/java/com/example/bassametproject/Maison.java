@@ -126,7 +126,7 @@ public class Maison extends AppCompatActivity {
         // refRate = database.getInstance().getReference(adapterShops.theChosenOne).child(adapterShops.shopStatic.getStoreName());
         //   refShop = database.getInstance().getReference("shops").child("store1").child(adapterShops.shopStatic.getStoreName());
         //BottomNavigation
-        BottomNavigationView navView = findViewById(R.id.navView);
+        BottomNavigationView navView = findViewById(R.id.bookNow);
         navView.setItemIconTintList(null);
 
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

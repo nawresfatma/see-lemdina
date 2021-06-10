@@ -606,7 +606,7 @@
     </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navView"
+        android:id="@+id/bookNow"
         app:itemIconSize="@dimen/bottom_navigation_icon_size"
         android:layout_width="match_parent"
         android:layout_height="60dp"

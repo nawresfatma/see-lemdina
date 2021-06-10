@@ -123,7 +123,7 @@ public class MissionsActivity extends AppCompatActivity implements NavigationVie
             }
         });
 
-        BottomNavigationView navView=findViewById(R.id.navView);
+        BottomNavigationView navView=findViewById(R.id.bookNow);
         navView.setItemIconTintList(null);
 
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

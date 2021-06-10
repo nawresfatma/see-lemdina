@@ -59,7 +59,7 @@ public class Produits extends AppCompatActivity {
         // recycler2.setLayoutManager(new LinearLayoutManager(this));
         //recycler2.setLayoutManager(scaleCenterItemManager);
 
-        BottomNavigationView navView=findViewById(R.id.navView);
+        BottomNavigationView navView=findViewById(R.id.bookNow);
         navView.setItemIconTintList(null);
 
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

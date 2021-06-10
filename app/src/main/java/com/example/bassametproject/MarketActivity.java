@@ -6,10 +6,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,7 +65,7 @@ public class MarketActivity extends AppCompatActivity implements NavigationView.
 
         recyclerSouk.setLayoutManager(new LinearLayoutManager(this));
         //navbott
-        BottomNavigationView navView = findViewById(R.id.navView);
+        BottomNavigationView navView = findViewById(R.id.bookNow);
         navView.setItemIconTintList(null);
 //getdata
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_menu);

@@ -45,7 +45,7 @@
                 app:layout_constraintVertical_bias="1.0"
                 android:onClick="backInterface"/>
 
-            <ImageView
+            <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/imageView13"
                 android:layout_width="104dp"
                 android:layout_height="179dp"
@@ -54,7 +54,9 @@
                 app:layout_constraintHorizontal_bias="0.939"
                 app:layout_constraintStart_toEndOf="@+id/imageButton2"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/fusee" />
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/animation"  />
 
             <TextView
                 android:id="@+id/textView13"
@@ -247,7 +249,7 @@
     </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navView"
+        android:id="@+id/bookNow"
 
         app:itemIconSize="@dimen/bottom_navigation_icon_size"
         android:layout_width="match_parent"
