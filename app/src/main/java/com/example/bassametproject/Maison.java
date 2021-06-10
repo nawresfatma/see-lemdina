@@ -141,7 +141,7 @@ public class Maison extends AppCompatActivity {
         });
         //endNavBott
 
-        if (adapterShopsHome.shop1.getId() != null) {
+        if (adapterShopsHome.shop1 != null) {
             //Firebase accessory
             refAccessory = FirebaseDatabase.getInstance().getReference(adapterShopsHome.shops).child(adapterShopsHome.shop1.getId()).child("products");
             refAccessory.addValueEventListener(new ValueEventListener() {
@@ -201,8 +201,11 @@ public class Maison extends AppCompatActivity {
                     Toast.makeText(Maison.this, " something is wrong !", Toast.LENGTH_SHORT).show();
                 }
             });
+            adapterShopsHome.shop1=null;
+
+
         }
-    else if (adapterShops.shop.getId() != null) {
+    else if (adapterShops.shop!= null) {
 
         //Firebase accessory
         refAccessory = FirebaseDatabase.getInstance().getReference(adapterShops.shops).child(adapterShops.shop.getId()).child("products");
@@ -263,6 +266,8 @@ public class Maison extends AppCompatActivity {
                 Toast.makeText(Maison.this, " something is wrong !", Toast.LENGTH_SHORT).show();
             }
         });
+            adapterShops.shop=null;
+
     }}
 
 
@@ -277,13 +282,14 @@ public class Maison extends AppCompatActivity {
     private void setData() {
 /*shopName.setText(name);
 shopDescription.setText(desc);*/
-        if (adapterShopsHome.shop1.getStoreName() != null) {
+        if (adapterShopsHome.shop1!= null) {
+
             storeLocation.setText(adapterShopsHome.shop1.getStoreLocation());
             shopName.setText(adapterShopsHome.shop1.getStoreName());
             shopDescription.setText(adapterShopsHome.shop1.getStoreDescription());
             openHour.setText(adapterShopsHome.shop1.getOpeningHour());
 
-        } else if (adapterShops.shop.getStoreName() != null) {
+        } else if (adapterShops.shop != null) {
             storeLocation.setText(adapterShops.shop.getStoreLocation());
             shopName.setText(adapterShops.shop.getStoreName());
             shopDescription.setText(adapterShops.shop.getStoreDescription());

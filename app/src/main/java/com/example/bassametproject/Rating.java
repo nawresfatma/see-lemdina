@@ -53,7 +53,7 @@ public class Rating extends AppCompatActivity {
 
         submitBtn.setRenderMode(RenderMode.HARDWARE);
 
-        if (adapterShopsHome.shop1.getId() != null) {
+        if (adapterShopsHome.shop1 != null) {
 
             refRate = database.getInstance().getReference(adapterShopsHome.shops).child(adapterShopsHome.shop1.getId()).child("RatingComment");
             refStore = database.getInstance().getReference(adapterShopsHome.shops).child(adapterShopsHome.shop1.getId());
@@ -105,8 +105,8 @@ public class Rating extends AppCompatActivity {
                 }
             });
 
-
-        } else if (adapterShops.shop.getId() != null) {
+adapterShopsHome.shop1=null;
+        } else if (adapterShops.shop!= null) {
             refRate = database.getInstance().getReference(adapterShops.shops).child(adapterShops.shop.getId()).child("RatingComment");
             refStore = database.getInstance().getReference(adapterShops.shops).child(adapterShops.shop.getId());
 
@@ -157,7 +157,7 @@ public class Rating extends AppCompatActivity {
                 }
             });
 
-
+adapterShops.shop=null;
         }
 
     }
