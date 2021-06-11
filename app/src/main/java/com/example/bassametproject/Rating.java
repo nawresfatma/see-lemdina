@@ -105,7 +105,7 @@ public class Rating extends AppCompatActivity {
                 }
             });
 
-adapterShopsHome.shop1=null;
+
         } else if (adapterShops.shop!= null) {
             refRate = database.getInstance().getReference(adapterShops.shops).child(adapterShops.shop.getId()).child("RatingComment");
             refStore = database.getInstance().getReference(adapterShops.shops).child(adapterShops.shop.getId());
@@ -157,7 +157,6 @@ adapterShopsHome.shop1=null;
                 }
             });
 
-adapterShops.shop=null;
         }
 
     }

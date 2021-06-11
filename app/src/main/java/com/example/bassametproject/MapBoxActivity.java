@@ -286,7 +286,9 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
                            List<Address> addresses = geocoderD.getFromLocation( adapterShopsHome.shop1.getLatitude(), adapterShopsHome.shop1.getLongitude(),1);
                            String address = addresses.get(0).getAddressLine(0);
                            textDestination.setText(address);
-                       } catch (IOException e) {
+                            adapterShopsHome.shop1=null;
+
+                        } catch (IOException e) {
                            e.printStackTrace();
                        }
 
@@ -297,6 +299,8 @@ public class MapBoxActivity extends AppCompatActivity implements OnMapReadyCallb
                       List<Address> addresses = geocoderD.getFromLocation( adapterShops.shop.getLatitude(), adapterShops.shop.getLongitude(),1);
                       String address = addresses.get(0).getAddressLine(0);
                       textDestination.setText(address);
+                      adapterShops.shop=null;
+
                   } catch (IOException e) {
                       e.printStackTrace();
                   }
