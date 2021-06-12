@@ -201,7 +201,7 @@ public class Maison extends AppCompatActivity {
                     Toast.makeText(Maison.this, " something is wrong !", Toast.LENGTH_SHORT).show();
                 }
             });
-            adapterShopsHome.shop1=null;
+
 
 
         }
@@ -266,7 +266,7 @@ public class Maison extends AppCompatActivity {
                 Toast.makeText(Maison.this, " something is wrong !", Toast.LENGTH_SHORT).show();
             }
         });
-            adapterShops.shop=null;
+
 
     }}
 
