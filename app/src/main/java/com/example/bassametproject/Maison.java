@@ -73,16 +73,20 @@ public class Maison extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maison);
+        setTitle(" ");
         //Video
         MediaController mediaController = new MediaController(this);
         videoView = (VideoView) findViewById(R.id.videoView);
         play_button = (ImageView) findViewById(R.id.play_btn);
         videoView.setMediaController(mediaController);
         mediaController.setAnchorView(videoView);
-        Uri uri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/pfe2021-270a5.appspot.com/o/Video%2FvideoTest.mp4?alt=media&token=84cbf850-7d95-4b76-9fea-f8aa80b5673c");
+        Uri uri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/pfe2021-270a5.appspot.com/o/shp2.mp4?alt=media&token=26e14c28-b655-4d21-a33d-fa195528e5ac");
         videoView.setVideoURI(uri);
         videoView.setMediaController(null);
         videoView.start();
+        Toast.makeText(Maison.this, "video playing", Toast.LENGTH_SHORT).show();
+
+
 
         videoView.setOnClickListener(new View.OnClickListener() {
             @Override

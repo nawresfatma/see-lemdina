@@ -61,6 +61,7 @@ public class MarketActivity extends AppCompatActivity implements NavigationView.
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market);
+        setTitle(" ");
         recyclerSouk = findViewById(R.id.recyclerView);
 
         recyclerSouk.setLayoutManager(new LinearLayoutManager(this));

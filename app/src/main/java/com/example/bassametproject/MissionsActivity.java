@@ -52,6 +52,7 @@ public class MissionsActivity extends AppCompatActivity implements NavigationVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle(" ");
         setContentView(R.layout.activity_missions);
         checkStore=findViewById(R.id.checkStore);
 

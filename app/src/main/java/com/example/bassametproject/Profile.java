@@ -46,6 +46,7 @@ public class Profile extends AppCompatActivity  implements NavigationView.OnNavi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        setTitle(" ");
         userprofile = findViewById(R.id.userImg);
         userName=findViewById(R.id.userName);
         userEmail=findViewById(R.id.userMail);

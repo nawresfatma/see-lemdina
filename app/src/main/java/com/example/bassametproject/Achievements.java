@@ -46,6 +46,7 @@ public class Achievements extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_achievements);
+        setTitle(" ");
         missionsbut=findViewById(R.id.eventLocation);
         Rankingbut=findViewById(R.id.Rankingbut);
         Store=findViewById(R.id.Store);
