@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -56,6 +57,8 @@ public class Store extends AppCompatActivity  implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
         storeRecycler=findViewById(R.id.recyclerView5);
+        ((SimpleItemAnimator) storeRecycler.getItemAnimator()).setSupportsChangeAnimations(false);
+
         currentPoints=findViewById(R.id.point);
         all =  findViewById(R.id.all);
         pop = findViewById(R.id.popular);
@@ -192,6 +195,8 @@ public class Store extends AppCompatActivity  implements View.OnClickListener {
                 storeAdapter= new storeAdapter(listStores, Store.this);
                 storeRecycler.setLayoutManager(new GridLayoutManager(Store.this, 2));
                 storeRecycler.setAdapter(storeAdapter);
+                ((SimpleItemAnimator) storeRecycler.getItemAnimator()).setSupportsChangeAnimations(false);
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
