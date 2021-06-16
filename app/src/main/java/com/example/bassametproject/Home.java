@@ -155,8 +155,16 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 item.getItemId();
-                startActivity(new Intent(getApplicationContext(), Scan.class));
-                overridePendingTransition(0, 0);
+                Intent launchIntent = new Intent(getPackageManager().getLaunchIntentForPackage("com.DefaultCompany.VufioraTshirtTemplate"));
+
+
+                if(launchIntent != null){
+
+
+                    startActivity(launchIntent);
+                }
+
+
                 return true;
             }
 

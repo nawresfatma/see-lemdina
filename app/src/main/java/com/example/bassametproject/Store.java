@@ -72,8 +72,16 @@ public class Store extends AppCompatActivity  implements View.OnClickListener {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 item.getItemId();
-                startActivity(new Intent(getApplicationContext(), Scan.class));
-                overridePendingTransition(0, 0);
+                Intent launchIntent = new Intent(getPackageManager().getLaunchIntentForPackage("com.DefaultCompany.VufioraTshirtTemplate"));
+
+
+                if(launchIntent != null){
+
+
+                    startActivity(launchIntent);
+                }
+
+
                 return true;
             }
 
@@ -161,11 +169,13 @@ public class Store extends AppCompatActivity  implements View.OnClickListener {
             case R.id.all:
                 getData(0);
                 all.setTextColor(Color.parseColor("#33D085"));
+             //   pop.setTextColor(Color.parseColor("#000"));
                 break;
 
             case R.id.popular:
                 getData(1);
                 pop.setTextColor(Color.parseColor("#33D085"));
+             //   all.setTextColor(Color.parseColor("#aaa"));
                 break;
 
         }

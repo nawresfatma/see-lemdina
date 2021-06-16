@@ -38,7 +38,7 @@ class MyAdapterprod extends RecyclerView.Adapter<MyAdapterprod.MyViewHolder> {
         holder.prodDesc.setText(productClass.getProdDescription());
         holder.prodPrice.setText(productClass.getProdPrice());
         holder.prodRemise.setText(productClass.getProdRemise());
-        Picasso.get().load(productList.get(position).getProd()).into(holder.prodImg);
+        Picasso.get().load(productList.get(position).getProd()).resize(100,100).into(holder.prodImg);
     }
 
     @Override

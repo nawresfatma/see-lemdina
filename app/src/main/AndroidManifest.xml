@@ -47,14 +47,15 @@
             android:name=".Home"
             android:windowSoftInputMode="adjustPan"/>
 
-            <activity android:name=".OnBoard"  android:screenOrientation="portrait"/>
+
                 <activity android:name=".MapBoxActivity"  android:screenOrientation="portrait" />
                     <activity
                         android:name=".chatbotActivity"
-                        android:screenOrientation="portrait"></activity>
+                        android:screenOrientation="portrait"/>
 
                         <activity android:name=".LoginActivity"
-                            android:screenOrientation="portrait">
+                            android:screenOrientation="portrait"/>
+        <activity android:name=".OnBoard"  android:screenOrientation="portrait">
 
                 <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

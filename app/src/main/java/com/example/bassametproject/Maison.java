@@ -59,6 +59,7 @@ public class Maison extends AppCompatActivity {
     //video
     VideoView videoView;
     ImageView play_button;
+    ImageSlider imageSlider;
 
     //end video declaration
     private DatabaseReference userRef, refRate, refAccessory, refShop;
@@ -107,9 +108,7 @@ public class Maison extends AppCompatActivity {
 //end video
 //imageSlider
         ImageSlider imageSlider = findViewById(R.id.image_slider1);
-        slideModels.add(new SlideModel(R.drawable.mtaaslider, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable.mtaaslider, ScaleTypes.FIT));
-        imageSlider.setImageList(slideModels);
+
         //onclick Item
         shopDescription = findViewById(R.id.prodDesc1);
         shopName = findViewById(R.id.product);
@@ -118,6 +117,7 @@ public class Maison extends AppCompatActivity {
 
         getData();
         setData();
+        imageSlider.setImageList(slideModels);
 
 
         //accessory
@@ -137,8 +137,16 @@ public class Maison extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 item.getItemId();
-                startActivity(new Intent(getApplicationContext(), Scan.class));
-                overridePendingTransition(0, 0);
+                Intent launchIntent = new Intent(getPackageManager().getLaunchIntentForPackage("com.DefaultCompany.VufioraTshirtTemplate"));
+
+
+                if(launchIntent != null){
+
+
+                    startActivity(launchIntent);
+                }
+
+
                 return true;
             }
 
@@ -153,10 +161,10 @@ public class Maison extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     accessoryList = new ArrayList<>();
                     for (DataSnapshot data2 : dataSnapshot.getChildren()) {
-                        Toast.makeText(Maison.this, data2.toString(), Toast.LENGTH_SHORT).show();
 
                         ListProduct p1 = data2.getValue(ListProduct.class);
                         accessoryList.add(p1);
+
                     }
                     adapterAccessory1 = new adapterAccessory(accessoryList, Maison.this);
                     snapHelper = new LinearSnapHelper();
@@ -218,7 +226,6 @@ public class Maison extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 accessoryList = new ArrayList<>();
                 for (DataSnapshot data2 : dataSnapshot.getChildren()) {
-                    Toast.makeText(Maison.this, data2.toString(), Toast.LENGTH_SHORT).show();
 
                     ListProduct p1 = data2.getValue(ListProduct.class);
                     accessoryList.add(p1);
@@ -293,11 +300,19 @@ shopDescription.setText(desc);*/
             shopDescription.setText(adapterShopsHome.shop1.getStoreDescription());
             openHour.setText(adapterShopsHome.shop1.getOpeningHour());
 
+            slideModels.add(new SlideModel(adapterShopsHome.shop1.getStoreImage(), ScaleTypes.FIT));
+            slideModels.add(new SlideModel(adapterShopsHome.shop1.getStoreImage(), ScaleTypes.FIT));
+
+
+
         } else if (adapterShops.shop != null) {
             storeLocation.setText(adapterShops.shop.getStoreLocation());
             shopName.setText(adapterShops.shop.getStoreName());
             shopDescription.setText(adapterShops.shop.getStoreDescription());
             openHour.setText(adapterShops.shop.getOpeningHour());
+
+            slideModels.add(new SlideModel(adapterShops.shop.getStoreImage(), ScaleTypes.FIT));
+            slideModels.add(new SlideModel(adapterShops.shop.getStoreImage(), ScaleTypes.FIT));
 
         }
     }
